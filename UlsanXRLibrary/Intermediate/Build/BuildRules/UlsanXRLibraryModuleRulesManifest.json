@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"D:\\Git\\UlsanXRLibrary_TestCode\\UlsanXRLibrary\\Source\\UlsanXRLibrary\\UlsanXRLibrary.Build.cs",
+		"D:\\Git\\UlsanXRLibrary_TestCode\\UlsanXRLibrary\\Source\\UlsanXRLibrary.Target.cs",
+		"D:\\Git\\UlsanXRLibrary_TestCode\\UlsanXRLibrary\\Source\\UlsanXRLibraryEditor.Target.cs"
+	],
+	"EngineVersion": "5.6.0"
+}

@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "UlsanXRLibrary",
+			"Path": "..\\Source\\UlsanXRLibrary.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "UlsanXRLibraryEditor",
+			"Path": "..\\Source\\UlsanXRLibraryEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}
