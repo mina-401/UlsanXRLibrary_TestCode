@@ -17,9 +17,14 @@
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 // ********** Begin Class UBaseGameInstance ********************************************************
+#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BaseGameInstance_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execConnect); \
+	DECLARE_FUNCTION(execStartServer);
+
+
 ULSANXRLIBRARY_API UClass* Z_Construct_UClass_UBaseGameInstance_NoRegister();
 
-#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BaseGameInstance_h_15_INCLASS_NO_PURE_DECLS \
+#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BaseGameInstance_h_16_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUBaseGameInstance(); \
 	friend struct Z_Construct_UClass_UBaseGameInstance_Statics; \
@@ -30,7 +35,7 @@ public: \
 	DECLARE_SERIALIZER(UBaseGameInstance)
 
 
-#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BaseGameInstance_h_15_ENHANCED_CONSTRUCTORS \
+#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BaseGameInstance_h_16_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UBaseGameInstance(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
@@ -42,12 +47,13 @@ public: \
 	NO_API virtual ~UBaseGameInstance();
 
 
-#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BaseGameInstance_h_12_PROLOG
-#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BaseGameInstance_h_15_GENERATED_BODY \
+#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BaseGameInstance_h_13_PROLOG
+#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BaseGameInstance_h_16_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BaseGameInstance_h_15_INCLASS_NO_PURE_DECLS \
-	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BaseGameInstance_h_15_ENHANCED_CONSTRUCTORS \
+	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BaseGameInstance_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BaseGameInstance_h_16_INCLASS_NO_PURE_DECLS \
+	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BaseGameInstance_h_16_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

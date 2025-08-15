@@ -16,24 +16,4 @@ class ULSANXRLIBRARY_API UTitleMain : public UTitleUserWidget
 public:
 	void NativeConstruct();
 
-	UFUNCTION(BlueprintCallable)
-	void MainWidgetInit();
-
-	UFUNCTION(BlueprintCallable)
-	void CreateChildWidget(TSubclassOf<UUserWidget> _Widget, bool _IsVisible);
-
-	void SetCurWidget(class UTitleUserWidget* _CurWidget)
-	{
-		CurWidget = _CurWidget;
-	}
-
-	class UTitleUserWidget* GetCurWidget()
-	{
-		return CurWidget;
-	}
-
-private:
-	class  UCanvasPanel* CanvasPanel;
-	class UTitleUserWidget* CurWidget;
-	//TMultiMap<ETitleUIType, UTitleUserWidget*> Widgets;
 };

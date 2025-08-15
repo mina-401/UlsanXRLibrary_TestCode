@@ -16,14 +16,7 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
-class UUserWidget;
-
 // ********** Begin Class UTitleMain ***************************************************************
-#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleMain_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
-	DECLARE_FUNCTION(execCreateChildWidget); \
-	DECLARE_FUNCTION(execMainWidgetInit);
-
-
 ULSANXRLIBRARY_API UClass* Z_Construct_UClass_UTitleMain_NoRegister();
 
 #define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleMain_h_15_INCLASS_NO_PURE_DECLS \
@@ -53,7 +46,6 @@ public: \
 #define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleMain_h_15_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleMain_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
 	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleMain_h_15_INCLASS_NO_PURE_DECLS \
 	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleMain_h_15_ENHANCED_CONSTRUCTORS \
 private: \

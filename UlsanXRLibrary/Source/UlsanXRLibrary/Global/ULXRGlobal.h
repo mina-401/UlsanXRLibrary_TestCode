@@ -14,4 +14,10 @@ class ULSANXRLIBRARY_API UULXRGlobal : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
 	
+
+public:
+
+	static TArray<FAssetData> AssetsPath(UClass* _Class);
+	static void AssetPackagePath(UClass* _Class, const FString& _AssetName, FString& _Path);
+
 };

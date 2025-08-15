@@ -11,6 +11,7 @@
     <None Include="..\..\Source\UlsanXRLibraryEditor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.gitignore" />
     <None Include="..\..\.vsconfig" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
@@ -102,9 +103,6 @@
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Title\TitleGameMode.h">
       <Filter>Source\UlsanXRLibrary\Mode\Title</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Title\TitleGameModeBase.cpp">
-      <Filter>Source\UlsanXRLibrary\Mode\Title</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Title\TitleHUD.cpp">
       <Filter>Source\UlsanXRLibrary\Mode\Title</Filter>
     </ClCompile>
@@ -130,6 +128,12 @@
       <Filter>Source\UlsanXRLibrary\Mode\Title\UI</Filter>
     </ClCompile>
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Title\UI\TitleMain.h">
+      <Filter>Source\UlsanXRLibrary\Mode\Title\UI</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Title\UI\TitleOpenServer.cpp">
+      <Filter>Source\UlsanXRLibrary\Mode\Title\UI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Title\UI\TitleOpenServer.h">
       <Filter>Source\UlsanXRLibrary\Mode\Title\UI</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Title\UI\TitleRobby.cpp">

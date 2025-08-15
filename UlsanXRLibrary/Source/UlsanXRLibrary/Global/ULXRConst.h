@@ -20,4 +20,11 @@ public:
 		static FName TitleMainPanelName;
 		static FName PlayMainPanelName;
 	};
+
+
+	class Level
+	{
+	public:
+		static FString PlayLevelName;
+	};
 };

@@ -19,7 +19,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 // ********** Begin Class UULXREnum ****************************************************************
 ULSANXRLIBRARY_API UClass* Z_Construct_UClass_UULXREnum_NoRegister();
 
-#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_15_INCLASS_NO_PURE_DECLS \
+#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_27_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUULXREnum(); \
 	friend struct Z_Construct_UClass_UULXREnum_Statics; \
@@ -30,7 +30,7 @@ public: \
 	DECLARE_SERIALIZER(UULXREnum)
 
 
-#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_15_ENHANCED_CONSTRUCTORS \
+#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_27_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UULXREnum(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
@@ -42,12 +42,12 @@ public: \
 	NO_API virtual ~UULXREnum();
 
 
-#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_12_PROLOG
-#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_15_GENERATED_BODY \
+#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_24_PROLOG
+#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_27_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_15_INCLASS_NO_PURE_DECLS \
-	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_15_ENHANCED_CONSTRUCTORS \
+	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_27_INCLASS_NO_PURE_DECLS \
+	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_27_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -58,5 +58,16 @@ class UULXREnum;
 
 #undef CURRENT_FILE_ID
 #define CURRENT_FILE_ID FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h
+
+// ********** Begin Enum ETitleUIType **************************************************************
+#define FOREACH_ENUM_ETITLEUITYPE(op) \
+	op(ETitleUIType::TitleRoom) \
+	op(ETitleUIType::TitleMain) \
+	op(ETitleUIType::TitleServer) 
+
+enum class ETitleUIType : uint8;
+template<> struct TIsUEnumClass<ETitleUIType> { enum { Value = true }; };
+template<> ULSANXRLIBRARY_API UEnum* StaticEnum<ETitleUIType>();
+// ********** End Enum ETitleUIType ****************************************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

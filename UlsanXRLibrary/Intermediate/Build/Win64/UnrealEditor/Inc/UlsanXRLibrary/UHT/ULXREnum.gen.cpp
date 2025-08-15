@@ -15,8 +15,76 @@ void EmptyLinkFunctionForGeneratedCodeULXREnum() {}
 COREUOBJECT_API UClass* Z_Construct_UClass_UObject();
 ULSANXRLIBRARY_API UClass* Z_Construct_UClass_UULXREnum();
 ULSANXRLIBRARY_API UClass* Z_Construct_UClass_UULXREnum_NoRegister();
+ULSANXRLIBRARY_API UEnum* Z_Construct_UEnum_UlsanXRLibrary_ETitleUIType();
 UPackage* Z_Construct_UPackage__Script_UlsanXRLibrary();
 // ********** End Cross Module References **********************************************************
+
+// ********** Begin Enum ETitleUIType **************************************************************
+static FEnumRegistrationInfo Z_Registration_Info_UEnum_ETitleUIType;
+static UEnum* ETitleUIType_StaticEnum()
+{
+	if (!Z_Registration_Info_UEnum_ETitleUIType.OuterSingleton)
+	{
+		Z_Registration_Info_UEnum_ETitleUIType.OuterSingleton = GetStaticEnum(Z_Construct_UEnum_UlsanXRLibrary_ETitleUIType, (UObject*)Z_Construct_UPackage__Script_UlsanXRLibrary(), TEXT("ETitleUIType"));
+	}
+	return Z_Registration_Info_UEnum_ETitleUIType.OuterSingleton;
+}
+template<> ULSANXRLIBRARY_API UEnum* StaticEnum<ETitleUIType>()
+{
+	return ETitleUIType_StaticEnum();
+}
+struct Z_Construct_UEnum_UlsanXRLibrary_ETitleUIType_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/**\n * \n */" },
+#endif
+		{ "MAX.Comment", "/**\n * \n */" },
+		{ "MAX.DisplayName", "MAX" },
+		{ "MAX.Name", "ETitleUIType::MAX" },
+		{ "ModuleRelativePath", "Global/ULXREnum.h" },
+		{ "TitleMain.Comment", "/**\n * \n */" },
+		{ "TitleMain.DisplayName", "\xeb\xa9\x94\xec\x9d\xb8\xed\x99\x94\xeb\xa9\xb4" },
+		{ "TitleMain.Name", "ETitleUIType::TitleMain" },
+		{ "TitleRoom.Comment", "/**\n * \n */" },
+		{ "TitleRoom.DisplayName", "\xeb\xb0\xa9\xec\x9e\x85\xec\x9e\xa5" },
+		{ "TitleRoom.Name", "ETitleUIType::TitleRoom" },
+		{ "TitleServer.Comment", "/**\n * \n */" },
+		{ "TitleServer.DisplayName", "\xec\x84\x9c\xeb\xb2\x84\xec\x98\xa4\xed\x94\x88" },
+		{ "TitleServer.Name", "ETitleUIType::TitleServer" },
+	};
+#endif // WITH_METADATA
+	static constexpr UECodeGen_Private::FEnumeratorParam Enumerators[] = {
+		{ "ETitleUIType::TitleRoom", (int64)ETitleUIType::TitleRoom },
+		{ "ETitleUIType::TitleMain", (int64)ETitleUIType::TitleMain },
+		{ "ETitleUIType::TitleServer", (int64)ETitleUIType::TitleServer },
+		{ "ETitleUIType::MAX", (int64)ETitleUIType::MAX },
+	};
+	static const UECodeGen_Private::FEnumParams EnumParams;
+};
+const UECodeGen_Private::FEnumParams Z_Construct_UEnum_UlsanXRLibrary_ETitleUIType_Statics::EnumParams = {
+	(UObject*(*)())Z_Construct_UPackage__Script_UlsanXRLibrary,
+	nullptr,
+	"ETitleUIType",
+	"ETitleUIType",
+	Z_Construct_UEnum_UlsanXRLibrary_ETitleUIType_Statics::Enumerators,
+	RF_Public|RF_Transient|RF_MarkAsNative,
+	UE_ARRAY_COUNT(Z_Construct_UEnum_UlsanXRLibrary_ETitleUIType_Statics::Enumerators),
+	EEnumFlags::None,
+	(uint8)UEnum::ECppForm::EnumClass,
+	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UEnum_UlsanXRLibrary_ETitleUIType_Statics::Enum_MetaDataParams), Z_Construct_UEnum_UlsanXRLibrary_ETitleUIType_Statics::Enum_MetaDataParams)
+};
+UEnum* Z_Construct_UEnum_UlsanXRLibrary_ETitleUIType()
+{
+	if (!Z_Registration_Info_UEnum_ETitleUIType.InnerSingleton)
+	{
+		UECodeGen_Private::ConstructUEnum(Z_Registration_Info_UEnum_ETitleUIType.InnerSingleton, Z_Construct_UEnum_UlsanXRLibrary_ETitleUIType_Statics::EnumParams);
+	}
+	return Z_Registration_Info_UEnum_ETitleUIType.InnerSingleton;
+}
+// ********** End Enum ETitleUIType ****************************************************************
 
 // ********** Begin Class UULXREnum ****************************************************************
 void UULXREnum::StaticRegisterNativesUULXREnum()
@@ -55,9 +123,6 @@ struct Z_Construct_UClass_UULXREnum_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "/**\n * \n */" },
-#endif
 		{ "IncludePath", "Global/ULXREnum.h" },
 		{ "ModuleRelativePath", "Global/ULXREnum.h" },
 	};
@@ -104,14 +169,17 @@ UULXREnum::~UULXREnum() {}
 // ********** Begin Registration *******************************************************************
 struct Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h__Script_UlsanXRLibrary_Statics
 {
+	static constexpr FEnumRegisterCompiledInInfo EnumInfo[] = {
+		{ ETitleUIType_StaticEnum, TEXT("ETitleUIType"), &Z_Registration_Info_UEnum_ETitleUIType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3564256125U) },
+	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UULXREnum, UULXREnum::StaticClass, TEXT("UULXREnum"), &Z_Registration_Info_UClass_UULXREnum, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UULXREnum), 1469637772U) },
+		{ Z_Construct_UClass_UULXREnum, UULXREnum::StaticClass, TEXT("UULXREnum"), &Z_Registration_Info_UClass_UULXREnum, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UULXREnum), 2004814767U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h__Script_UlsanXRLibrary_4125917802(TEXT("/Script/UlsanXRLibrary"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h__Script_UlsanXRLibrary_2936434774(TEXT("/Script/UlsanXRLibrary"),
 	Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h__Script_UlsanXRLibrary_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h__Script_UlsanXRLibrary_Statics::ClassInfo),
 	nullptr, 0,
-	nullptr, 0);
+	Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h__Script_UlsanXRLibrary_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h__Script_UlsanXRLibrary_Statics::EnumInfo));
 // ********** End Registration *********************************************************************
 
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

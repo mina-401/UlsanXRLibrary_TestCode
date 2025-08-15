@@ -7,7 +7,11 @@
         "Includes": [
             "d:\\git\\ulsanxrlibrary_testcode\\ulsanxrlibrary\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\ulsanxrlibrary\\definitions.ulsanxrlibrary.h",
             "d:\\git\\ulsanxrlibrary_testcode\\ulsanxrlibrary\\source\\ulsanxrlibrary\\global\\ulxrglobal.h",
-            "d:\\git\\ulsanxrlibrary_testcode\\ulsanxrlibrary\\intermediate\\build\\win64\\unrealeditor\\inc\\ulsanxrlibrary\\uht\\ulxrglobal.generated.h"
+            "d:\\git\\ulsanxrlibrary_testcode\\ulsanxrlibrary\\intermediate\\build\\win64\\unrealeditor\\inc\\ulsanxrlibrary\\uht\\ulxrglobal.generated.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\assetregistry\\public\\assetregistry\\assetregistrymodule.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\assetregistry\\public\\assetregistry\\iassetregistry.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\coreuobject\\public\\misc\\assetregistryinterface.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\assetregistry\\uht\\iassetregistry.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

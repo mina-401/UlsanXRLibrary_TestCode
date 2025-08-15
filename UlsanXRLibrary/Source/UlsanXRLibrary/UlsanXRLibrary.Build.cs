@@ -14,10 +14,15 @@ public class UlsanXRLibrary : ModuleRules
         System.IO.Path.Combine(ModuleDirectory, "Global") // Global 폴더 추가
               }
           );
-        
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput" });
 
-		PrivateDependencyModuleNames.AddRange(new string[] {  });
+		PublicDependencyModuleNames.AddRange(new string[] { 
+			
+			"Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "Sockets","Networking" 
+		
+		});
+
+
+        PrivateDependencyModuleNames.AddRange(new string[] {  });
 
 		// Uncomment if you are using Slate UI
 		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });

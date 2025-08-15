@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -9,6 +9,18 @@
 /**
  * 
  */
+
+UENUM(BlueprintType)
+enum class ETitleUIType : uint8
+{
+	TitleRoom UMETA(DisplayName = "방입장"),
+	TitleMain UMETA(DisplayName = "메인화면"),
+	TitleServer UMETA(DisplayName = "서버오픈"),
+	
+	MAX UMETA(DisplayName = "MAX"),
+};
+
+
 UCLASS()
 class ULSANXRLIBRARY_API UULXREnum : public UObject
 {

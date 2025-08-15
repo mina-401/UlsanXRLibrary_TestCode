@@ -252,6 +252,7 @@
     <None Include="..\..\UlsanXRLibrary.uproject"/>
     <None Include="..\..\Source\UlsanXRLibrary.Target.cs"/>
     <None Include="..\..\Source\UlsanXRLibraryEditor.Target.cs"/>
+    <None Include="..\..\.gitignore"/>
     <None Include="..\..\.vsconfig"/>
     <None Include="..\..\Config\DefaultEditor.ini"/>
     <None Include="..\..\Config\DefaultEngine.ini"/>
@@ -298,9 +299,6 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Title\TitleGameMode.h"/>
-    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Title\TitleGameModeBase.cpp">
-      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Title\TitleHUD.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -317,6 +315,10 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Title\UI\TitleMain.h"/>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Title\UI\TitleOpenServer.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Title\UI\TitleOpenServer.h"/>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Title\UI\TitleRobby.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
