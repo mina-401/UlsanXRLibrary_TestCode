@@ -1,0 +1,41 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.UlsanXRLibrary.cpp.obj": [
+			"TitleRobby.gen.cpp.obj",
+			"PerModuleInline.gen.cpp.obj",
+			"BaseCharacter.gen.cpp.obj",
+			"BaseGameInstance.gen.cpp.obj",
+			"BaseGameMode.gen.cpp.obj",
+			"BasePlayerController.gen.cpp.obj",
+			"GobalDataTable.gen.cpp.obj",
+			"TitleGameMode.gen.cpp.obj",
+			"TitleHUD.gen.cpp.obj",
+			"TitleMain.gen.cpp.obj",
+			"TitlePawn.gen.cpp.obj",
+			"TitlePlayerController.gen.cpp.obj",
+			"TitleUserWidget.gen.cpp.obj",
+			"UlsanXRLibrary.init.gen.cpp.obj",
+			"ULXRConst.gen.cpp.obj",
+			"ULXREnum.gen.cpp.obj",
+			"ULXRGlobal.gen.cpp.obj",
+			"BaseCharacter.cpp.obj",
+			"BaseGameInstance.cpp.obj",
+			"BaseGameMode.cpp.obj",
+			"BasePlayerController.cpp.obj",
+			"GobalDataTable.cpp.obj",
+			"ULXRConst.cpp.obj",
+			"ULXREnum.cpp.obj",
+			"ULXRGlobal.cpp.obj",
+			"TitleGameMode.cpp.obj",
+			"TitleGameModeBase.cpp.obj",
+			"TitleHUD.cpp.obj",
+			"TitlePawn.cpp.obj",
+			"TitlePlayerController.cpp.obj",
+			"TitleMain.cpp.obj",
+			"TitleRobby.cpp.obj",
+			"TitleUserWidget.cpp.obj",
+			"UlsanXRLibrary.cpp.obj"
+		]
+	}
+}
