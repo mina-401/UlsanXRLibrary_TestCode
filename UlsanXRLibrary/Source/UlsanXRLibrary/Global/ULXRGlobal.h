@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
+#include "Global/ULXRConst.h"
 #include "ULXRGlobal.generated.h"
 
 /**
@@ -20,4 +21,14 @@ public:
 	static TArray<FAssetData> AssetsPath(UClass* _Class);
 	static void AssetPackagePath(UClass* _Class, const FString& _AssetName, FString& _Path);
 
+	UFUNCTION(BlueprintCallable)
+	static int GetMaxPlayer()
+	{
+		return UULXRConst::Title::MaxPlayer;
+	};
+	UFUNCTION(BlueprintCallable)
+	static void SetMaxPlayer(int _Value)
+	{
+		UULXRConst::Title::MaxPlayer = _Value;
+	};
 };

@@ -32,13 +32,13 @@ public: \
 
 #define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_TitlePlayerController_h_15_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
-	NO_API ATitlePlayerController(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
+	NO_API ATitlePlayerController(); \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	ATitlePlayerController(ATitlePlayerController&&) = delete; \
 	ATitlePlayerController(const ATitlePlayerController&) = delete; \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, ATitlePlayerController); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ATitlePlayerController); \
-	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ATitlePlayerController) \
+	DEFINE_DEFAULT_CONSTRUCTOR_CALL(ATitlePlayerController) \
 	NO_API virtual ~ATitlePlayerController();
 
 

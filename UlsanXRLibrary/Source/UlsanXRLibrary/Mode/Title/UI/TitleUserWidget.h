@@ -40,13 +40,15 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void VisibleChangeUI(ETitleUIType _Type, ESlateVisibility _Value);
 
+	// 서버 연결 함수
 	UFUNCTION(BlueprintCallable)
 	void StartServer();
 
 	UFUNCTION(BlueprintCallable)
 	virtual void Connect();
+	//
 
-
+	// 애니메이션 재생 함수
 	void PlayAnim(EUMGSequencePlayMode::Type _mode);
 
 	UWidgetAnimation* GetCurAnimation()

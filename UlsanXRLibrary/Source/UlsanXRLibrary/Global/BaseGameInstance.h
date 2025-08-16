@@ -15,11 +15,19 @@ class ULSANXRLIBRARY_API UBaseGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
 
+	friend class UGobalDataTable;
+	friend class UFallGlobal;
+
 public:
+	UBaseGameInstance();
 	virtual void Init() override;
 
 	// UBaseGameInstance.h
 	void HandleNetworkFailure(UWorld* World, UNetDriver* NetDriver, ENetworkFailure::Type FailureType, const FString& ErrorString);
+	void HandleTravelFailure(UWorld* World, ETravelFailure::Type FailureType, const FString& Reason);
+
+	void ShowJoinFailedPopup();
+	void ShowJoinFailed();
 
 	UFUNCTION(BlueprintCallable)
 	void StartServer(FString& _IP, FString& _Port);
@@ -31,4 +39,9 @@ public:
 
 private:
 	class UTitleUserWidget* CurWidget = nullptr;
+
+	UPROPERTY(VisibleAnywhere, Category = "Data")
+	class UDataTable* DataTables = nullptr;
+	class UDataTable* ResourceDataTable = nullptr;
+	class UDataTable* LevelDataTable = nullptr;
 };

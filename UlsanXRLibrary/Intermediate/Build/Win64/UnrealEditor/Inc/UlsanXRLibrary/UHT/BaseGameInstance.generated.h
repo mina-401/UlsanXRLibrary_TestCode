@@ -36,14 +36,12 @@ public: \
 
 
 #define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BaseGameInstance_h_16_ENHANCED_CONSTRUCTORS \
-	/** Standard constructor, called after all reflected properties have been initialized */ \
-	NO_API UBaseGameInstance(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	UBaseGameInstance(UBaseGameInstance&&) = delete; \
 	UBaseGameInstance(const UBaseGameInstance&) = delete; \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UBaseGameInstance); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UBaseGameInstance); \
-	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UBaseGameInstance) \
+	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UBaseGameInstance) \
 	NO_API virtual ~UBaseGameInstance();
 
 

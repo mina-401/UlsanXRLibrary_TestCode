@@ -26,5 +26,24 @@ public:
 	{
 	public:
 		static FString PlayLevelName;
+		static FString TitleLevelName;
+	};
+
+	class Title
+	{
+	public:
+		static int MaxPlayer;
+	};
+
+	class Path
+	{
+	public:
+		static FString GlobalDataTablePath;
+	};
+
+	class Collision
+	{
+	public:
+		static FName ProfileName_Player;
 	};
 };

@@ -7,6 +7,14 @@
         "Includes": [
             "d:\\git\\ulsanxrlibrary_testcode\\ulsanxrlibrary\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\ulsanxrlibrary\\definitions.ulsanxrlibrary.h",
             "d:\\git\\ulsanxrlibrary_testcode\\ulsanxrlibrary\\source\\ulsanxrlibrary\\global\\ulxrglobal.h",
+            "d:\\git\\ulsanxrlibrary_testcode\\ulsanxrlibrary\\source\\ulsanxrlibrary\\global\\ulxrconst.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\coreuobject\\public\\uobject\\noexporttypes.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\coreuobject\\public\\uobject\\propertyaccessutil.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\coreuobject\\public\\serialization\\testundeclaredscriptstructobjectreferences.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\core\\public\\math\\unitconversion.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\core\\public\\math\\unitconversion.inl",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\core\\public\\internationalization\\polyglottextdata.h",
+            "d:\\git\\ulsanxrlibrary_testcode\\ulsanxrlibrary\\intermediate\\build\\win64\\unrealeditor\\inc\\ulsanxrlibrary\\uht\\ulxrconst.generated.h",
             "d:\\git\\ulsanxrlibrary_testcode\\ulsanxrlibrary\\intermediate\\build\\win64\\unrealeditor\\inc\\ulsanxrlibrary\\uht\\ulxrglobal.generated.h"
         ],
         "ImportedModules": [],

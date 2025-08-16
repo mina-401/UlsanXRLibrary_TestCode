@@ -16,10 +16,17 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+class UInputMappingContext;
+
 // ********** Begin Class ABasePlayerController ****************************************************
+#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BasePlayerController_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execAddMappingContext);
+
+
+#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BasePlayerController_h_16_CALLBACK_WRAPPERS
 ULSANXRLIBRARY_API UClass* Z_Construct_UClass_ABasePlayerController_NoRegister();
 
-#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BasePlayerController_h_15_INCLASS_NO_PURE_DECLS \
+#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BasePlayerController_h_16_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesABasePlayerController(); \
 	friend struct Z_Construct_UClass_ABasePlayerController_Statics; \
@@ -30,24 +37,24 @@ public: \
 	DECLARE_SERIALIZER(ABasePlayerController)
 
 
-#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BasePlayerController_h_15_ENHANCED_CONSTRUCTORS \
-	/** Standard constructor, called after all reflected properties have been initialized */ \
-	NO_API ABasePlayerController(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
+#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BasePlayerController_h_16_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	ABasePlayerController(ABasePlayerController&&) = delete; \
 	ABasePlayerController(const ABasePlayerController&) = delete; \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, ABasePlayerController); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(ABasePlayerController); \
-	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(ABasePlayerController) \
+	DEFINE_DEFAULT_CONSTRUCTOR_CALL(ABasePlayerController) \
 	NO_API virtual ~ABasePlayerController();
 
 
-#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BasePlayerController_h_12_PROLOG
-#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BasePlayerController_h_15_GENERATED_BODY \
+#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BasePlayerController_h_13_PROLOG
+#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BasePlayerController_h_16_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BasePlayerController_h_15_INCLASS_NO_PURE_DECLS \
-	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BasePlayerController_h_15_ENHANCED_CONSTRUCTORS \
+	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BasePlayerController_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BasePlayerController_h_16_CALLBACK_WRAPPERS \
+	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BasePlayerController_h_16_INCLASS_NO_PURE_DECLS \
+	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BasePlayerController_h_16_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

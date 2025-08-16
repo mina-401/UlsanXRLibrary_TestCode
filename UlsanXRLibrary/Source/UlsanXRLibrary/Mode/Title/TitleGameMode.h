@@ -14,4 +14,7 @@ class ULSANXRLIBRARY_API ATitleGameMode : public ABaseGameMode
 {
 	GENERATED_BODY()
 	
+protected:
+
+
 };

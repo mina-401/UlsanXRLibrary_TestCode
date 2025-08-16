@@ -15,9 +15,73 @@ void EmptyLinkFunctionForGeneratedCodeULXREnum() {}
 COREUOBJECT_API UClass* Z_Construct_UClass_UObject();
 ULSANXRLIBRARY_API UClass* Z_Construct_UClass_UULXREnum();
 ULSANXRLIBRARY_API UClass* Z_Construct_UClass_UULXREnum_NoRegister();
+ULSANXRLIBRARY_API UEnum* Z_Construct_UEnum_UlsanXRLibrary_EPlayerAnimation();
 ULSANXRLIBRARY_API UEnum* Z_Construct_UEnum_UlsanXRLibrary_ETitleUIType();
 UPackage* Z_Construct_UPackage__Script_UlsanXRLibrary();
 // ********** End Cross Module References **********************************************************
+
+// ********** Begin Enum EPlayerAnimation **********************************************************
+static FEnumRegistrationInfo Z_Registration_Info_UEnum_EPlayerAnimation;
+static UEnum* EPlayerAnimation_StaticEnum()
+{
+	if (!Z_Registration_Info_UEnum_EPlayerAnimation.OuterSingleton)
+	{
+		Z_Registration_Info_UEnum_EPlayerAnimation.OuterSingleton = GetStaticEnum(Z_Construct_UEnum_UlsanXRLibrary_EPlayerAnimation, (UObject*)Z_Construct_UPackage__Script_UlsanXRLibrary(), TEXT("EPlayerAnimation"));
+	}
+	return Z_Registration_Info_UEnum_EPlayerAnimation.OuterSingleton;
+}
+template<> ULSANXRLIBRARY_API UEnum* StaticEnum<EPlayerAnimation>()
+{
+	return EPlayerAnimation_StaticEnum();
+}
+struct Z_Construct_UEnum_UlsanXRLibrary_EPlayerAnimation_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
+		{ "BlueprintType", "true" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "/**\n * \n */" },
+#endif
+		{ "Idle.Comment", "/**\n * \n */" },
+		{ "Idle.DisplayName", "\xec\x84\x9c\xec\x9e\x88\xea\xb8\xb0" },
+		{ "Idle.Name", "EPlayerAnimation::Idle" },
+		{ "MAX.Comment", "/**\n * \n */" },
+		{ "MAX.DisplayName", "MAX" },
+		{ "MAX.Name", "EPlayerAnimation::MAX" },
+		{ "ModuleRelativePath", "Global/ULXREnum.h" },
+		{ "Walk.Comment", "/**\n * \n */" },
+		{ "Walk.DisplayName", "\xea\xb1\xb7\xea\xb8\xb0" },
+		{ "Walk.Name", "EPlayerAnimation::Walk" },
+	};
+#endif // WITH_METADATA
+	static constexpr UECodeGen_Private::FEnumeratorParam Enumerators[] = {
+		{ "EPlayerAnimation::Idle", (int64)EPlayerAnimation::Idle },
+		{ "EPlayerAnimation::Walk", (int64)EPlayerAnimation::Walk },
+		{ "EPlayerAnimation::MAX", (int64)EPlayerAnimation::MAX },
+	};
+	static const UECodeGen_Private::FEnumParams EnumParams;
+};
+const UECodeGen_Private::FEnumParams Z_Construct_UEnum_UlsanXRLibrary_EPlayerAnimation_Statics::EnumParams = {
+	(UObject*(*)())Z_Construct_UPackage__Script_UlsanXRLibrary,
+	nullptr,
+	"EPlayerAnimation",
+	"EPlayerAnimation",
+	Z_Construct_UEnum_UlsanXRLibrary_EPlayerAnimation_Statics::Enumerators,
+	RF_Public|RF_Transient|RF_MarkAsNative,
+	UE_ARRAY_COUNT(Z_Construct_UEnum_UlsanXRLibrary_EPlayerAnimation_Statics::Enumerators),
+	EEnumFlags::None,
+	(uint8)UEnum::ECppForm::EnumClass,
+	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UEnum_UlsanXRLibrary_EPlayerAnimation_Statics::Enum_MetaDataParams), Z_Construct_UEnum_UlsanXRLibrary_EPlayerAnimation_Statics::Enum_MetaDataParams)
+};
+UEnum* Z_Construct_UEnum_UlsanXRLibrary_EPlayerAnimation()
+{
+	if (!Z_Registration_Info_UEnum_EPlayerAnimation.InnerSingleton)
+	{
+		UECodeGen_Private::ConstructUEnum(Z_Registration_Info_UEnum_EPlayerAnimation.InnerSingleton, Z_Construct_UEnum_UlsanXRLibrary_EPlayerAnimation_Statics::EnumParams);
+	}
+	return Z_Registration_Info_UEnum_EPlayerAnimation.InnerSingleton;
+}
+// ********** End Enum EPlayerAnimation ************************************************************
 
 // ********** Begin Enum ETitleUIType **************************************************************
 static FEnumRegistrationInfo Z_Registration_Info_UEnum_ETitleUIType;
@@ -38,20 +102,13 @@ struct Z_Construct_UEnum_UlsanXRLibrary_ETitleUIType_Statics
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Enum_MetaDataParams[] = {
 		{ "BlueprintType", "true" },
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "/**\n * \n */" },
-#endif
-		{ "MAX.Comment", "/**\n * \n */" },
 		{ "MAX.DisplayName", "MAX" },
 		{ "MAX.Name", "ETitleUIType::MAX" },
 		{ "ModuleRelativePath", "Global/ULXREnum.h" },
-		{ "TitleMain.Comment", "/**\n * \n */" },
 		{ "TitleMain.DisplayName", "\xeb\xa9\x94\xec\x9d\xb8\xed\x99\x94\xeb\xa9\xb4" },
 		{ "TitleMain.Name", "ETitleUIType::TitleMain" },
-		{ "TitleRoom.Comment", "/**\n * \n */" },
 		{ "TitleRoom.DisplayName", "\xeb\xb0\xa9\xec\x9e\x85\xec\x9e\xa5" },
 		{ "TitleRoom.Name", "ETitleUIType::TitleRoom" },
-		{ "TitleServer.Comment", "/**\n * \n */" },
 		{ "TitleServer.DisplayName", "\xec\x84\x9c\xeb\xb2\x84\xec\x98\xa4\xed\x94\x88" },
 		{ "TitleServer.Name", "ETitleUIType::TitleServer" },
 	};
@@ -170,13 +227,14 @@ UULXREnum::~UULXREnum() {}
 struct Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h__Script_UlsanXRLibrary_Statics
 {
 	static constexpr FEnumRegisterCompiledInInfo EnumInfo[] = {
-		{ ETitleUIType_StaticEnum, TEXT("ETitleUIType"), &Z_Registration_Info_UEnum_ETitleUIType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3564256125U) },
+		{ EPlayerAnimation_StaticEnum, TEXT("EPlayerAnimation"), &Z_Registration_Info_UEnum_EPlayerAnimation, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 1988476378U) },
+		{ ETitleUIType_StaticEnum, TEXT("ETitleUIType"), &Z_Registration_Info_UEnum_ETitleUIType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3115851734U) },
 	};
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
 		{ Z_Construct_UClass_UULXREnum, UULXREnum::StaticClass, TEXT("UULXREnum"), &Z_Registration_Info_UClass_UULXREnum, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UULXREnum), 2004814767U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h__Script_UlsanXRLibrary_2936434774(TEXT("/Script/UlsanXRLibrary"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h__Script_UlsanXRLibrary_3203882956(TEXT("/Script/UlsanXRLibrary"),
 	Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h__Script_UlsanXRLibrary_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h__Script_UlsanXRLibrary_Statics::ClassInfo),
 	nullptr, 0,
 	Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h__Script_UlsanXRLibrary_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h__Script_UlsanXRLibrary_Statics::EnumInfo));

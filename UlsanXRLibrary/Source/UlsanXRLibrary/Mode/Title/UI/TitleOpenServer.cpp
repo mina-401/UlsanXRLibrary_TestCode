@@ -126,9 +126,6 @@ void UTitleOpenServer::Connect()
 	CheckInput(IP);
 	//CheckServer(IP, Port);
 
-	int a = 0;
-
-
 	if (false == bIPIsValid)
 	{
 		CurPlayAnim = IPIsNotValid;

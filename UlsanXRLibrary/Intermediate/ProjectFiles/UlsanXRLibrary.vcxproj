@@ -263,6 +263,10 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\UlsanXRLibrary\UlsanXRLibrary.h"/>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\BaseAnimInstance.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\BaseAnimInstance.h"/>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\BaseCharacter.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -279,10 +283,6 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\BasePlayerController.h"/>
-    <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\GobalDataTable.cpp">
-      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\GobalDataTable.h"/>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\ULXRConst.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -295,6 +295,34 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\ULXRGlobal.h"/>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\Data\GobalDataTable.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\Data\GobalDataTable.h"/>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\Data\LevelData.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\Data\LevelData.h"/>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayAnimInstance.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayAnimInstance.h"/>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayCharacter.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayCharacter.h"/>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayGameMode.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayGameMode.h"/>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayHUD.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayHUD.h"/>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayPlayerController.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayPlayerController.h"/>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Title\TitleGameMode.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>

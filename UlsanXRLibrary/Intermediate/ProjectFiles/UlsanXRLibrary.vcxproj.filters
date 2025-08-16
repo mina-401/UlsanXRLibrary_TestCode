@@ -43,6 +43,12 @@
     <Filter Include="Source\UlsanXRLibrary\Global">
       <UniqueIdentifier>{2F300DAB-39E0-3D36-B497-E33B29A6A8B4}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\BaseAnimInstance.cpp">
+      <Filter>Source\UlsanXRLibrary\Global</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\BaseAnimInstance.h">
+      <Filter>Source\UlsanXRLibrary\Global</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\BaseCharacter.cpp">
       <Filter>Source\UlsanXRLibrary\Global</Filter>
     </ClCompile>
@@ -67,12 +73,6 @@
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\BasePlayerController.h">
       <Filter>Source\UlsanXRLibrary\Global</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\GobalDataTable.cpp">
-      <Filter>Source\UlsanXRLibrary\Global</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\GobalDataTable.h">
-      <Filter>Source\UlsanXRLibrary\Global</Filter>
-    </ClInclude>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\ULXRConst.cpp">
       <Filter>Source\UlsanXRLibrary\Global</Filter>
     </ClCompile>
@@ -91,9 +91,57 @@
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\ULXRGlobal.h">
       <Filter>Source\UlsanXRLibrary\Global</Filter>
     </ClInclude>
+    <Filter Include="Source\UlsanXRLibrary\Global\Data">
+      <UniqueIdentifier>{1FC5F0EC-D3F1-31E8-8CCC-561D0B884B6A}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\Data\GobalDataTable.cpp">
+      <Filter>Source\UlsanXRLibrary\Global\Data</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\Data\GobalDataTable.h">
+      <Filter>Source\UlsanXRLibrary\Global\Data</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\Data\LevelData.cpp">
+      <Filter>Source\UlsanXRLibrary\Global\Data</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\Data\LevelData.h">
+      <Filter>Source\UlsanXRLibrary\Global\Data</Filter>
+    </ClInclude>
     <Filter Include="Source\UlsanXRLibrary\Mode">
       <UniqueIdentifier>{A9B3760F-DF65-3A14-A0F8-1C5F68FD5B28}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\UlsanXRLibrary\Mode\Play">
+      <UniqueIdentifier>{198BABC2-D5A9-34AC-BE5C-B6DEFA6BFA4B}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayAnimInstance.cpp">
+      <Filter>Source\UlsanXRLibrary\Mode\Play</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayAnimInstance.h">
+      <Filter>Source\UlsanXRLibrary\Mode\Play</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayCharacter.cpp">
+      <Filter>Source\UlsanXRLibrary\Mode\Play</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayCharacter.h">
+      <Filter>Source\UlsanXRLibrary\Mode\Play</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayGameMode.cpp">
+      <Filter>Source\UlsanXRLibrary\Mode\Play</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayGameMode.h">
+      <Filter>Source\UlsanXRLibrary\Mode\Play</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayHUD.cpp">
+      <Filter>Source\UlsanXRLibrary\Mode\Play</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayHUD.h">
+      <Filter>Source\UlsanXRLibrary\Mode\Play</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayPlayerController.cpp">
+      <Filter>Source\UlsanXRLibrary\Mode\Play</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayPlayerController.h">
+      <Filter>Source\UlsanXRLibrary\Mode\Play</Filter>
+    </ClInclude>
     <Filter Include="Source\UlsanXRLibrary\Mode\Title">
       <UniqueIdentifier>{9F084394-DD82-3F40-A451-256B1D59E509}</UniqueIdentifier>
     </Filter>

@@ -9,6 +9,13 @@
 /**
  * 
  */
+UENUM(BlueprintType)
+enum class EPlayerAnimation : uint8
+{
+	Idle UMETA(DisplayName = "서있기"),
+	Walk UMETA(DisplayName = "걷기"),
+	MAX UMETA(DisplayName = "MAX"),
+};
 
 UENUM(BlueprintType)
 enum class ETitleUIType : uint8
