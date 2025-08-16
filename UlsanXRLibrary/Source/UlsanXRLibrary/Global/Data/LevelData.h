@@ -6,6 +6,45 @@
 #include "UObject/NoExportTypes.h"
 #include "LevelData.generated.h"
 
+
+
+USTRUCT(BlueprintType)
+struct FItemData
+{
+	GENERATED_BODY()
+	FItemData() {}
+	~FItemData() {}
+public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	UStaticMesh* Mesh = nullptr;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	UMaterialInstance* MaterialInst = nullptr;
+};
+
+USTRUCT(BlueprintType)
+struct FBookItemDataRow : public FTableRowBase
+{
+	GENERATED_BODY()
+
+	FBookItemDataRow() {}
+	~FBookItemDataRow() {}
+
+public:
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	FItemData ItemData;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	FString Name = TEXT("None");
+
+	// ·¹º§
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
+	TSoftObjectPtr<UWorld> Level = nullptr;
+
+
+};
 USTRUCT(BlueprintType)
 struct FLevelDataRow : public FTableRowBase
 {

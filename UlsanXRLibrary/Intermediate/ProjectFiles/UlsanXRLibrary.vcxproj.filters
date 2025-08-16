@@ -106,6 +106,18 @@
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\Data\LevelData.h">
       <Filter>Source\UlsanXRLibrary\Global\Data</Filter>
     </ClInclude>
+    <Filter Include="Source\UlsanXRLibrary\Global\Object">
+      <UniqueIdentifier>{5473D567-9668-3C32-96A3-55A9F606B577}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\UlsanXRLibrary\Global\Object\Interface">
+      <UniqueIdentifier>{59E4A56D-41D5-355D-8C56-44BF5E5DCE33}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\Object\Interface\ItemInterface.cpp">
+      <Filter>Source\UlsanXRLibrary\Global\Object\Interface</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\Object\Interface\ItemInterface.h">
+      <Filter>Source\UlsanXRLibrary\Global\Object\Interface</Filter>
+    </ClInclude>
     <Filter Include="Source\UlsanXRLibrary\Mode">
       <UniqueIdentifier>{A9B3760F-DF65-3A14-A0F8-1C5F68FD5B28}</UniqueIdentifier>
     </Filter>
@@ -141,6 +153,39 @@
     </ClCompile>
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayPlayerController.h">
       <Filter>Source\UlsanXRLibrary\Mode\Play</Filter>
+    </ClInclude>
+    <Filter Include="Source\UlsanXRLibrary\Mode\Play\Object">
+      <UniqueIdentifier>{D7B89D7D-3C05-35E8-B276-A155CC8835BD}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\Object\Item.cpp">
+      <Filter>Source\UlsanXRLibrary\Mode\Play\Object</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\Object\Item.h">
+      <Filter>Source\UlsanXRLibrary\Mode\Play\Object</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\Object\TravelBook.cpp">
+      <Filter>Source\UlsanXRLibrary\Mode\Play\Object</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\Object\TravelBook.h">
+      <Filter>Source\UlsanXRLibrary\Mode\Play\Object</Filter>
+    </ClInclude>
+    <Filter Include="Source\UlsanXRLibrary\Mode\Play\Object\Item">
+      <UniqueIdentifier>{08B698CD-123D-3ED1-96C0-5189DD18FF41}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\Object\Item\Book.cpp">
+      <Filter>Source\UlsanXRLibrary\Mode\Play\Object\Item</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\Object\Item\Book.h">
+      <Filter>Source\UlsanXRLibrary\Mode\Play\Object\Item</Filter>
+    </ClInclude>
+    <Filter Include="Source\UlsanXRLibrary\Mode\Play\UI">
+      <UniqueIdentifier>{1960DD32-92C0-3C53-8A28-AA01BD7E8161}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\UI\PlayMain.cpp">
+      <Filter>Source\UlsanXRLibrary\Mode\Play\UI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\UI\PlayMain.h">
+      <Filter>Source\UlsanXRLibrary\Mode\Play\UI</Filter>
     </ClInclude>
     <Filter Include="Source\UlsanXRLibrary\Mode\Title">
       <UniqueIdentifier>{9F084394-DD82-3F40-A451-256B1D59E509}</UniqueIdentifier>

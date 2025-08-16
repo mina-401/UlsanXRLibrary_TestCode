@@ -58,9 +58,6 @@ protected:
     void Move(const struct FInputActionValue& Value);
 	void Look(const struct FInputActionValue& Value);
 
-
-	
-
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Play", meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* SpringArmComponent = nullptr;

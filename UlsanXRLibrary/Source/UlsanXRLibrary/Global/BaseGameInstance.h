@@ -44,4 +44,5 @@ private:
 	class UDataTable* DataTables = nullptr;
 	class UDataTable* ResourceDataTable = nullptr;
 	class UDataTable* LevelDataTable = nullptr;
+	class UDataTable* BookItemDataTable = nullptr;
 };

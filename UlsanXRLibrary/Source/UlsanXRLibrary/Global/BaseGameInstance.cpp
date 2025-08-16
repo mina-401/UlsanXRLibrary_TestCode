@@ -34,6 +34,15 @@ UBaseGameInstance::UBaseGameInstance()
 			}
 
 		}
+
+		if (nullptr != DataTables)
+		{
+			BookItemDataTable = DataTables->FindRow<FDataTableRow>("DT_BookItemDataTable", nullptr)->Resources;
+			if (nullptr == BookItemDataTable)
+			{
+				//return;
+			}
+		}
 	}
 }
 

@@ -32,4 +32,6 @@ class ULSANXRLIBRARY_API UGobalDataTable : public UBlueprintFunctionLibrary
 public:
 	static const FLevelDataRow* GetLevelData(UWorld* _World, const FString& _Name);
 	static void GetLevelDataName(UWorld* _World, FString& _Name);
+	static const FBookItemDataRow* GetBookItemData(UWorld* _World, const FString& _Name);
+
 };

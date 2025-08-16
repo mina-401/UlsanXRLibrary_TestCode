@@ -27,7 +27,13 @@ struct Z_Construct_UFunction_UULXRGlobal_GetMaxPlayer_Statics
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// Title -> play \xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd \xef\xbf\xbd\xcc\xb5\xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd \xef\xbf\xbd\xce\xbf\xef\xbf\xbd \xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd \xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd \n" },
+#endif
 		{ "ModuleRelativePath", "Global/ULXRGlobal.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "Title -> play \xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd \xef\xbf\xbd\xcc\xb5\xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd \xef\xbf\xbd\xce\xbf\xef\xbf\xbd \xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd \xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FIntPropertyParams NewProp_ReturnValue;
@@ -153,7 +159,7 @@ struct Z_Construct_UClass_UULXRGlobal_Statics
 #endif // WITH_METADATA
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_UULXRGlobal_GetMaxPlayer, "GetMaxPlayer" }, // 3692159581
+		{ &Z_Construct_UFunction_UULXRGlobal_GetMaxPlayer, "GetMaxPlayer" }, // 1055403208
 		{ &Z_Construct_UFunction_UULXRGlobal_SetMaxPlayer, "SetMaxPlayer" }, // 2472099006
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -199,10 +205,10 @@ UULXRGlobal::~UULXRGlobal() {}
 struct Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXRGlobal_h__Script_UlsanXRLibrary_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UULXRGlobal, UULXRGlobal::StaticClass, TEXT("UULXRGlobal"), &Z_Registration_Info_UClass_UULXRGlobal, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UULXRGlobal), 4022448656U) },
+		{ Z_Construct_UClass_UULXRGlobal, UULXRGlobal::StaticClass, TEXT("UULXRGlobal"), &Z_Registration_Info_UClass_UULXRGlobal, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UULXRGlobal), 1338216033U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXRGlobal_h__Script_UlsanXRLibrary_1643603579(TEXT("/Script/UlsanXRLibrary"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXRGlobal_h__Script_UlsanXRLibrary_2288686927(TEXT("/Script/UlsanXRLibrary"),
 	Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXRGlobal_h__Script_UlsanXRLibrary_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXRGlobal_h__Script_UlsanXRLibrary_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

@@ -303,6 +303,10 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\Data\LevelData.h"/>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\Object\Interface\ItemInterface.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\Object\Interface\ItemInterface.h"/>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayAnimInstance.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -323,6 +327,22 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayPlayerController.h"/>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\Object\Item.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\Object\Item.h"/>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\Object\TravelBook.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\Object\TravelBook.h"/>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\Object\Item\Book.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\Object\Item\Book.h"/>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\UI\PlayMain.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\UI\PlayMain.h"/>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Title\TitleGameMode.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>

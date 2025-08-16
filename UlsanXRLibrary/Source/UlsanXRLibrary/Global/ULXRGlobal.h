@@ -21,6 +21,9 @@ public:
 	static TArray<FAssetData> AssetsPath(UClass* _Class);
 	static void AssetPackagePath(UClass* _Class, const FString& _AssetName, FString& _Path);
 
+
+
+	// Title -> play 레벨 이동시 인원 제한 관련 
 	UFUNCTION(BlueprintCallable)
 	static int GetMaxPlayer()
 	{

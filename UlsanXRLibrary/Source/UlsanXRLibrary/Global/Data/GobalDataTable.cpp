@@ -2,7 +2,7 @@
 
 
 #include "Global/Data/GobalDataTable.h"
-#include "BaseGameInstance.h"
+#include "Global/BaseGameInstance.h"
 
 const FLevelDataRow* UGobalDataTable::GetLevelData(UWorld* _World, const FString& _Name)
 {
@@ -31,4 +31,25 @@ void UGobalDataTable::GetLevelDataName(UWorld* _World, FString& _Name)
 	{
 		_Name = Data->Level.GetAssetName();
 	}
+}
+
+const FBookItemDataRow* UGobalDataTable::GetBookItemData(UWorld* _World, const FString& _Name)
+{
+	UBaseGameInstance* Inst = _World->GetGameInstance<UBaseGameInstance>();
+
+	if (nullptr == Inst->BookItemDataTable)
+	{
+		//UE_LOG(GMLOG, Error, TEXT("%S(%u)> if (nullptr == Inst->ItemDataTable)"), __FUNCTION__, __LINE__);
+	}
+
+	FBookItemDataRow* Data = Inst->BookItemDataTable->FindRow<FBookItemDataRow>(*_Name, nullptr);
+
+	if (nullptr == Data)
+	{
+		return nullptr;
+	}
+
+	return Data;
+
+	//return nullptr;
 }

@@ -13,7 +13,9 @@ FString UULXRConst::Level::TitleLevelName = TEXT("TitleLevel");
 
 //콜리전 프로파일
 FName UULXRConst::Collision::ProfileName_Player = TEXT("Player");
+FName UULXRConst::Collision::ProfileName_Item = TEXT("Item");
 
+//DatatablePath
 FString UULXRConst::Path::GlobalDataTablePath =TEXT("/Game/BP/Global/Data/DT_GlobalDataTable.DT_GlobalDataTable");
 
 // Title -> Play 이동 

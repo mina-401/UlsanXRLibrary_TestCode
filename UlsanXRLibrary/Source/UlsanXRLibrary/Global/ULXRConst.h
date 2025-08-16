@@ -45,5 +45,6 @@ public:
 	{
 	public:
 		static FName ProfileName_Player;
+		static FName ProfileName_Item;
 	};
 };
