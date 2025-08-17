@@ -37,6 +37,8 @@ protected:
 	// IItemInterface
 	void InterectUpdate(class AItem* _Item, float _DeltaTime);
 	void InterectStart(class AItem* _Item);
+
+	UFUNCTION(BlueprintCallable)
 	void InterectEnd(class AItem* _Item);
 
 

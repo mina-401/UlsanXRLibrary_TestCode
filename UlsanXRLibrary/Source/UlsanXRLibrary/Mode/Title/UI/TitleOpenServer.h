@@ -23,7 +23,8 @@ public:
 
 	void Connect() override;
 
-	void StartServer() override;
+
+	//void StartServer(FString& _IP, FString& _Port) override;
 
 
 

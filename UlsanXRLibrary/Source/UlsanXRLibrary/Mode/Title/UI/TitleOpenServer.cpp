@@ -127,24 +127,24 @@ void UTitleOpenServer::Connect()
 	
 }
 
-void UTitleOpenServer::StartServer()
-{
-	CheckInput(IP);
-
-	if (false == bIPIsValid)
-	{
-		CurPlayAnim = IPIsNotValid;
-		PlayAnim(EUMGSequencePlayMode::Forward);
-		return;
-	}
-
-	else
-	{
-		CurPlayAnim = RoomIsNotValid;
-
-		SetConnection();
-
-		Super::StartServer();
-	}
-}
+//void UTitleOpenServer::StartServer(FString& _IP, FString& _Port)
+//{
+//	CheckInput(_IP);
+//
+//	if (false == bIPIsValid)
+//	{
+//		CurPlayAnim = IPIsNotValid;
+//		PlayAnim(EUMGSequencePlayMode::Forward);
+//		return;
+//	}
+//
+//	else
+//	{
+//		CurPlayAnim = RoomIsNotValid;
+//
+//		SetConnection();
+//
+//		Super::StartServer(_IP, _Port);
+//	}
+//}
 

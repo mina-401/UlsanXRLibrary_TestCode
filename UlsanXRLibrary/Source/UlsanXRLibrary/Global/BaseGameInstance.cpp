@@ -95,7 +95,7 @@ void UBaseGameInstance::ShowJoinFailed()
 }
 void UBaseGameInstance::StartServer(FString& _IP, FString& _Port)
 {
-	FString OpenLevel;
+
 	FString LevelPath = TEXT("");
 	FString LevelName = UULXRConst::Level::PlayLevelName;
 
@@ -105,8 +105,10 @@ void UBaseGameInstance::StartServer(FString& _IP, FString& _Port)
 
 
 	UULXRGlobal::AssetPackagePath(UWorld::StaticClass(), LevelName, LevelPath);
-	OpenLevel = FString::Printf(TEXT(":%s%s"), *_Port, *LevelPath);
+	FString OpenLevel = FString::Printf(TEXT(":%s%s"), *_Port, *LevelPath);
+	//FString URLString = FString::Printf(TEXT("%s:%s%s"), *_IP, *_Port,TEXT("listen"));
 
+		
 	UGameplayStatics::OpenLevel(GetWorld(), *OpenLevel, true, TEXT("listen"));
 
 }
@@ -115,10 +117,12 @@ void UBaseGameInstance::Connect(FString& _IP, FString& _Port)
 	/*SetIP(_IP);
 	SetPort(_Port);
 	*/
+	
 
 	FString ConnectLevelName = FString::Printf(TEXT("%s:%s"), *_IP, *_Port);
 	// 127.0.0.1:30000
 	UGameplayStatics::OpenLevel(GetWorld(), FName(*ConnectLevelName));
+	//UGameplayStatics::OpenLevel(GetWorld(), TEXT("8.8.8.8:30000"));
 }
 
 void UBaseGameInstance::WorldServerTravel(UWorld* _World)

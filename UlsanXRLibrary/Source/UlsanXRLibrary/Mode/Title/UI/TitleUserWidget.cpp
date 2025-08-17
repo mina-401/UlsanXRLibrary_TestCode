@@ -111,6 +111,9 @@ void UTitleUserWidget::Connect()
 
 	if (GameInstance == nullptr) return;
 
+
+
+
 	GameInstance->Connect(IP, Port);
 }
 void UTitleUserWidget::ServerTravelToWorld()
