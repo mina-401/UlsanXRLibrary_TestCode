@@ -2,7 +2,7 @@
 
 
 #include "Mode/Play/Object/Item.h"
-#include "Global/Data/GobalDataTable.h"
+#include "Global/Data/GlobalDataTable.h"
 #include "Global/ULXRConst.h"
 #include "Net/UnrealNetwork.h"
 #include "Global/Object/Interface/ItemInterface.h"
@@ -33,7 +33,7 @@ void AItem::BeginPlay()
 		//UE_LOG(GMLOG, Error, TEXT("%S(%u)> if (ItemDataKey == TEXT("") || true == ItemDataKey.IsEmpty())"), __FUNCTION__, __LINE__);
 		return;
 	}
-	const FBookItemDataRow* FindData = UGobalDataTable::GetBookItemData(GetWorld(), DataKey);
+	const FBookItemDataRow* FindData = UGlobalDataTable::GetBookItemData(GetWorld(), DataKey);
 	Data = FindData;
 	StaticMeshComponent->SetStaticMesh(Data->ItemData.Mesh );
 	StaticMeshComponent->SetMaterial(0, Data->ItemData.MaterialInst);

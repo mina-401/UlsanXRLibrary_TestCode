@@ -26,7 +26,9 @@ public:
 	{
 	public:
 		static FString PlayLevelName;
+		//static FString 01PlayLevelName;
 		static FString TitleLevelName;
+		static FString EndLevelName;
 	};
 
 	class Title
@@ -46,5 +48,6 @@ public:
 	public:
 		static FName ProfileName_Player;
 		static FName ProfileName_Item;
+		static FName ProfileName_WidgetInter;
 	};
 };

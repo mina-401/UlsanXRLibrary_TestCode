@@ -23,6 +23,7 @@ enum class ETitleUIType : uint8;
 
 // ********** Begin Class UTitleUserWidget *********************************************************
 #define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleUserWidget_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execServerTravelToWorld); \
 	DECLARE_FUNCTION(execConnect); \
 	DECLARE_FUNCTION(execStartServer); \
 	DECLARE_FUNCTION(execVisibleChangeUI); \

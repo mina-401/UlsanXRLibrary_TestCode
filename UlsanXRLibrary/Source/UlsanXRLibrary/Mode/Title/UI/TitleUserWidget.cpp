@@ -113,6 +113,14 @@ void UTitleUserWidget::Connect()
 
 	GameInstance->Connect(IP, Port);
 }
+void UTitleUserWidget::ServerTravelToWorld()
+{
+	class UBaseGameInstance* GameInstance = GetGameInstance<UBaseGameInstance>();;
+
+	if (GameInstance == nullptr) return;
+
+	GameInstance->WorldServerTravel(GetWorld());
+}
 void UTitleUserWidget::PlayAnim(EUMGSequencePlayMode::Type _mode)
 {
 	StopAnimation(CurPlayAnim);

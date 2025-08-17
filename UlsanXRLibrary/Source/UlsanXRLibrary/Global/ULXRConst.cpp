@@ -9,11 +9,14 @@ FName UULXRConst::UI::PlayMainPanelName = TEXT("MainCanvasPanel");
 
 // 입장할 방 이름
 FString UULXRConst::Level::PlayLevelName = TEXT("PlayLevel");
+//FString UULXRConst::Level::PlayLevelName = TEXT("01PlayLevel");
 FString UULXRConst::Level::TitleLevelName = TEXT("TitleLevel");
+FString UULXRConst::Level::EndLevelName = TEXT("EndLevel");
 
 //콜리전 프로파일
 FName UULXRConst::Collision::ProfileName_Player = TEXT("Player");
 FName UULXRConst::Collision::ProfileName_Item = TEXT("Item");
+FName UULXRConst::Collision::ProfileName_WidgetInter = TEXT("WidgetInter");
 
 //DatatablePath
 FString UULXRConst::Path::GlobalDataTablePath =TEXT("/Game/BP/Global/Data/DT_GlobalDataTable.DT_GlobalDataTable");

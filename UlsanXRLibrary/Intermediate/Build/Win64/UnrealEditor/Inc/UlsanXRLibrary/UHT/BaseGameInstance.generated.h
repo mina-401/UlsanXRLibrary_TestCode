@@ -16,8 +16,11 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+class UWorld;
+
 // ********** Begin Class UBaseGameInstance ********************************************************
 #define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_BaseGameInstance_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execWorldServerTravel); \
 	DECLARE_FUNCTION(execConnect); \
 	DECLARE_FUNCTION(execStartServer);
 

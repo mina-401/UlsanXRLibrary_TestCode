@@ -46,6 +46,9 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	virtual void Connect();
+
+	UFUNCTION(BlueprintCallable)
+	void ServerTravelToWorld();
 	//
 
 	// 애니메이션 재생 함수

@@ -20,17 +20,25 @@ public:
 	UFUNCTION(BlueprintImplementableEvent,BlueprintCallable)
 	void SetPlayBookNameEvent();
 
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
+	void SetVisible(bool _True);
+
+	class UWidgetComponent* GetWidgetComponent()
+	{
+		return WidgetComponent;
+	};
+
 protected:
 	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-	
-
-public:	
+	virtual void BeginPlay() override;	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
 private:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Item", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Play", meta = (AllowPrivateAccess = "true"))
 	FString Name = "";
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Play", meta = (AllowPrivateAccess = "true"))
+	class UWidgetComponent* WidgetComponent;
+
 };

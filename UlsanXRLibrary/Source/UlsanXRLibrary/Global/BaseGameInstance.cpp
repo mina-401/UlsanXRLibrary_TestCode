@@ -11,7 +11,7 @@
 #include <ULXRGlobal.h>
 #include <Mode/Title/UI/TitleUserWidget.h>
 #include <Mode/Title/UI/TitleRobby.h>
-#include <Data/GobalDataTable.h>
+#include <Data/GlobalDataTable.h>
 
 UBaseGameInstance::UBaseGameInstance()
 {
@@ -32,17 +32,20 @@ UBaseGameInstance::UBaseGameInstance()
 			{
 				//return;
 			}
-
-		}
-
-		if (nullptr != DataTables)
-		{
 			BookItemDataTable = DataTables->FindRow<FDataTableRow>("DT_BookItemDataTable", nullptr)->Resources;
 			if (nullptr == BookItemDataTable)
 			{
 				//return;
 			}
+			ActorDataTable = DataTables->FindRow<FDataTableRow>("DT_GlobalActorDataTable", nullptr)->Resources;
+			if (nullptr == ActorDataTable)
+			{
+				//UE_LOG(GMLOG, Fatal, TEXT("%S(%u)> if (nullptr == ActorDataTable)"), __FUNCTION__, __LINE__);
+			}
 		}
+
+		
+
 	}
 }
 
@@ -97,7 +100,7 @@ void UBaseGameInstance::StartServer(FString& _IP, FString& _Port)
 	FString LevelName = UULXRConst::Level::PlayLevelName;
 
 
-	UGobalDataTable::GetLevelDataName(GetWorld(), LevelName);
+	UGlobalDataTable::GetLevelDataName(GetWorld(), LevelName);
 
 
 
@@ -113,4 +116,21 @@ void UBaseGameInstance::Connect(FString& _IP, FString& _Port)
 	FString ConnectLevelName = FString::Printf(TEXT("%s:%s"), *_IP, *_Port);
 	// 127.0.0.1:30000
 	UGameplayStatics::OpenLevel(GetWorld(), FName(*ConnectLevelName));
+}
+
+void UBaseGameInstance::WorldServerTravel(UWorld* _World)
+{
+
+	if (nullptr == _World->GetAuthGameMode()) return;
+
+	FString LevelPath = TEXT("");
+	FString LevelName = UULXRConst::Level::EndLevelName;
+
+	UULXRGlobal::AssetPackagePath(UWorld::StaticClass(), LevelName, LevelPath);
+
+
+
+	_World->ServerTravel(LevelPath + TEXT("?listen"));
+
+
 }

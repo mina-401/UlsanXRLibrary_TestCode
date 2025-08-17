@@ -15,7 +15,7 @@ class ULSANXRLIBRARY_API UBaseGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
 
-	friend class UGobalDataTable;
+	friend class UGlobalDataTable;
 	friend class UFallGlobal;
 
 public:
@@ -35,6 +35,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void Connect(FString& _IP, FString& _Port);
 
+	UFUNCTION(BlueprintCallable)
+	void WorldServerTravel(UWorld* _World);
+
 	void SetCurWidget(class UTitleUserWidget* InWidget) { CurWidget = InWidget; }
 
 private:
@@ -45,4 +48,5 @@ private:
 	class UDataTable* ResourceDataTable = nullptr;
 	class UDataTable* LevelDataTable = nullptr;
 	class UDataTable* BookItemDataTable = nullptr;
+	class UDataTable* ActorDataTable = nullptr;
 };

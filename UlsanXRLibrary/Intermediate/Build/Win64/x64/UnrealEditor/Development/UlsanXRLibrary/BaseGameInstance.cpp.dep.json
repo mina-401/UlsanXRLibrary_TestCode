@@ -107,10 +107,10 @@
             "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\umg\\public\\components\\textblock.h",
             "c:\\program files\\epic games\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\umg\\uht\\textblock.generated.h",
             "d:\\git\\ulsanxrlibrary_testcode\\ulsanxrlibrary\\intermediate\\build\\win64\\unrealeditor\\inc\\ulsanxrlibrary\\uht\\titlerobby.generated.h",
-            "d:\\git\\ulsanxrlibrary_testcode\\ulsanxrlibrary\\source\\ulsanxrlibrary\\global\\data\\gobaldatatable.h",
+            "d:\\git\\ulsanxrlibrary_testcode\\ulsanxrlibrary\\source\\ulsanxrlibrary\\global\\data\\globaldatatable.h",
             "d:\\git\\ulsanxrlibrary_testcode\\ulsanxrlibrary\\source\\ulsanxrlibrary\\global\\data\\leveldata.h",
             "d:\\git\\ulsanxrlibrary_testcode\\ulsanxrlibrary\\intermediate\\build\\win64\\unrealeditor\\inc\\ulsanxrlibrary\\uht\\leveldata.generated.h",
-            "d:\\git\\ulsanxrlibrary_testcode\\ulsanxrlibrary\\intermediate\\build\\win64\\unrealeditor\\inc\\ulsanxrlibrary\\uht\\gobaldatatable.generated.h"
+            "d:\\git\\ulsanxrlibrary_testcode\\ulsanxrlibrary\\intermediate\\build\\win64\\unrealeditor\\inc\\ulsanxrlibrary\\uht\\globaldatatable.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []
