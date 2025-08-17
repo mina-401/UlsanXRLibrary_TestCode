@@ -253,6 +253,7 @@
     <None Include="..\..\Source\UlsanXRLibrary.Target.cs"/>
     <None Include="..\..\Source\UlsanXRLibraryEditor.Target.cs"/>
     <None Include="..\..\.gitignore"/>
+    <None Include="..\..\.vsconfig"/>
     <None Include="..\..\Config\DefaultEditor.ini"/>
     <None Include="..\..\Config\DefaultEngine.ini"/>
     <None Include="..\..\Config\DefaultGame.ini"/>
@@ -298,9 +299,6 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\Data\GlobalDataTable.h"/>
-    <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\Data\GobalDataTable.cpp">
-      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\Data\LevelData.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -309,6 +307,10 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\Object\Interface\ItemInterface.h"/>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Lobby\LobbyGameMode.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Lobby\LobbyGameMode.h"/>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\PlayAnimInstance.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>

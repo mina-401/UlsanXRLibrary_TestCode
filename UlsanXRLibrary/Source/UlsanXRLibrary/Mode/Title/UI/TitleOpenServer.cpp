@@ -122,9 +122,14 @@ void UTitleOpenServer::CheckInput(const FString& _IP)
 }
 
 void UTitleOpenServer::Connect()
+{	
+	Super::Connect();
+	
+}
+
+void UTitleOpenServer::StartServer()
 {
 	CheckInput(IP);
-	//CheckServer(IP, Port);
 
 	if (false == bIPIsValid)
 	{
@@ -133,16 +138,13 @@ void UTitleOpenServer::Connect()
 		return;
 	}
 
-	//else if (false == bIsServerAlive)
-	//{
-	//	CurPlayAnim = RoomIsNotValid;
-	//	PlayAnim(EUMGSequencePlayMode::Forward);
-	//	return;
-	//}
 	else
 	{
 		CurPlayAnim = RoomIsNotValid;
-		Super::Connect();
+
+		SetConnection();
+
+		Super::StartServer();
 	}
 }
 

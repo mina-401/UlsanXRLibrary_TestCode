@@ -23,6 +23,8 @@ public:
 
 	void Connect() override;
 
+	void StartServer() override;
+
 
 
 private:

@@ -10,11 +10,11 @@ void APlayGameMode::PreLogin(const FString& Options, const FString& Address, con
 {
 	Super::PreLogin(Options, Address, UniqueId, ErrorMessage);
 
-	AGameStateBase* PlayGameState = GetGameState<AGameStateBase>();
-	int CurrentPlayers = PlayGameState != nullptr ? PlayGameState->PlayerArray.Num() : 0;
+	//AGameStateBase* PlayGameState = GetGameState<AGameStateBase>();
+	//int CurrentPlayers = PlayGameState != nullptr ? PlayGameState->PlayerArray.Num() : 0;
 
-	if (UULXRConst::Title::MaxPlayer <= CurrentPlayers)
-	{
-		ErrorMessage = TEXT("ServerFull");
-	}
+	//if (UULXRConst::Title::MaxPlayer <= CurrentPlayers)
+	//{
+	//	ErrorMessage = TEXT("ServerFull");
+	//}
 }

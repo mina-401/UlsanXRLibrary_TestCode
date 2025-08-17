@@ -19,7 +19,7 @@ ATravelBook::ATravelBook()
 
     // 위젯 컴포넌트 생성
     WidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("Widget"));
-    WidgetComponent->SetupAttachment(RootComponent  );
+    WidgetComponent->SetupAttachment(RootComponent);
 
     // WidgetClass 로드 -> 나중에 바꿀 것
     static ConstructorHelpers::FClassFinder<UUserWidget> WidgetClass(

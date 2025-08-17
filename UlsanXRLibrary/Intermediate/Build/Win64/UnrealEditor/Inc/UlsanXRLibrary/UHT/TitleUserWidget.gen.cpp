@@ -22,6 +22,35 @@ UMG_API UEnum* Z_Construct_UEnum_UMG_ESlateVisibility();
 UPackage* Z_Construct_UPackage__Script_UlsanXRLibrary();
 // ********** End Cross Module References **********************************************************
 
+// ********** Begin Class UTitleUserWidget Function ClientTravelToWorld ****************************
+struct Z_Construct_UFunction_UTitleUserWidget_ClientTravelToWorld_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Mode/Title/UI/TitleUserWidget.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UTitleUserWidget_ClientTravelToWorld_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_UTitleUserWidget, nullptr, "ClientTravelToWorld", nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UTitleUserWidget_ClientTravelToWorld_Statics::Function_MetaDataParams), Z_Construct_UFunction_UTitleUserWidget_ClientTravelToWorld_Statics::Function_MetaDataParams)},  };
+UFunction* Z_Construct_UFunction_UTitleUserWidget_ClientTravelToWorld()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UTitleUserWidget_ClientTravelToWorld_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UTitleUserWidget::execClientTravelToWorld)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->ClientTravelToWorld();
+	P_NATIVE_END;
+}
+// ********** End Class UTitleUserWidget Function ClientTravelToWorld ******************************
+
 // ********** Begin Class UTitleUserWidget Function Connect ****************************************
 struct Z_Construct_UFunction_UTitleUserWidget_Connect_Statics
 {
@@ -208,6 +237,35 @@ DEFINE_FUNCTION(UTitleUserWidget::execServerTravelToWorld)
 }
 // ********** End Class UTitleUserWidget Function ServerTravelToWorld ******************************
 
+// ********** Begin Class UTitleUserWidget Function SetConnection **********************************
+struct Z_Construct_UFunction_UTitleUserWidget_SetConnection_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Mode/Title/UI/TitleUserWidget.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UTitleUserWidget_SetConnection_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_UTitleUserWidget, nullptr, "SetConnection", nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UTitleUserWidget_SetConnection_Statics::Function_MetaDataParams), Z_Construct_UFunction_UTitleUserWidget_SetConnection_Statics::Function_MetaDataParams)},  };
+UFunction* Z_Construct_UFunction_UTitleUserWidget_SetConnection()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UTitleUserWidget_SetConnection_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UTitleUserWidget::execSetConnection)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->SetConnection();
+	P_NATIVE_END;
+}
+// ********** End Class UTitleUserWidget Function SetConnection ************************************
+
 // ********** Begin Class UTitleUserWidget Function SetZOrder **************************************
 struct Z_Construct_UFunction_UTitleUserWidget_SetZOrder_Statics
 {
@@ -266,7 +324,7 @@ struct Z_Construct_UFunction_UTitleUserWidget_StartServer_Statics
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UTitleUserWidget_StartServer_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_UTitleUserWidget, nullptr, "StartServer", nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UTitleUserWidget_StartServer_Statics::Function_MetaDataParams), Z_Construct_UFunction_UTitleUserWidget_StartServer_Statics::Function_MetaDataParams)},  };
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UTitleUserWidget_StartServer_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_UTitleUserWidget, nullptr, "StartServer", nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020400, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UTitleUserWidget_StartServer_Statics::Function_MetaDataParams), Z_Construct_UFunction_UTitleUserWidget_StartServer_Statics::Function_MetaDataParams)},  };
 UFunction* Z_Construct_UFunction_UTitleUserWidget_StartServer()
 {
 	static UFunction* ReturnFunction = nullptr;
@@ -343,11 +401,13 @@ void UTitleUserWidget::StaticRegisterNativesUTitleUserWidget()
 {
 	UClass* Class = UTitleUserWidget::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
+		{ "ClientTravelToWorld", &UTitleUserWidget::execClientTravelToWorld },
 		{ "Connect", &UTitleUserWidget::execConnect },
 		{ "CreateChildWidget", &UTitleUserWidget::execCreateChildWidget },
 		{ "GetMainWidget", &UTitleUserWidget::execGetMainWidget },
 		{ "MainWidgetInit", &UTitleUserWidget::execMainWidgetInit },
 		{ "ServerTravelToWorld", &UTitleUserWidget::execServerTravelToWorld },
+		{ "SetConnection", &UTitleUserWidget::execSetConnection },
 		{ "SetZOrder", &UTitleUserWidget::execSetZOrder },
 		{ "StartServer", &UTitleUserWidget::execStartServer },
 		{ "VisibleChangeUI", &UTitleUserWidget::execVisibleChangeUI },
@@ -424,13 +484,15 @@ struct Z_Construct_UClass_UTitleUserWidget_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_UTitleUserWidget_ClientTravelToWorld, "ClientTravelToWorld" }, // 4128886900
 		{ &Z_Construct_UFunction_UTitleUserWidget_Connect, "Connect" }, // 1540575513
 		{ &Z_Construct_UFunction_UTitleUserWidget_CreateChildWidget, "CreateChildWidget" }, // 3079873092
 		{ &Z_Construct_UFunction_UTitleUserWidget_GetMainWidget, "GetMainWidget" }, // 1374386805
 		{ &Z_Construct_UFunction_UTitleUserWidget_MainWidgetInit, "MainWidgetInit" }, // 2092694660
 		{ &Z_Construct_UFunction_UTitleUserWidget_ServerTravelToWorld, "ServerTravelToWorld" }, // 549849521
+		{ &Z_Construct_UFunction_UTitleUserWidget_SetConnection, "SetConnection" }, // 1313017689
 		{ &Z_Construct_UFunction_UTitleUserWidget_SetZOrder, "SetZOrder" }, // 3633553385
-		{ &Z_Construct_UFunction_UTitleUserWidget_StartServer, "StartServer" }, // 3726001706
+		{ &Z_Construct_UFunction_UTitleUserWidget_StartServer, "StartServer" }, // 1763632162
 		{ &Z_Construct_UFunction_UTitleUserWidget_VisibleChangeUI, "VisibleChangeUI" }, // 3999810845
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -493,10 +555,10 @@ UTitleUserWidget::~UTitleUserWidget() {}
 struct Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleUserWidget_h__Script_UlsanXRLibrary_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UTitleUserWidget, UTitleUserWidget::StaticClass, TEXT("UTitleUserWidget"), &Z_Registration_Info_UClass_UTitleUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UTitleUserWidget), 3224869036U) },
+		{ Z_Construct_UClass_UTitleUserWidget, UTitleUserWidget::StaticClass, TEXT("UTitleUserWidget"), &Z_Registration_Info_UClass_UTitleUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UTitleUserWidget), 2848921759U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleUserWidget_h__Script_UlsanXRLibrary_4198757322(TEXT("/Script/UlsanXRLibrary"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleUserWidget_h__Script_UlsanXRLibrary_1363134702(TEXT("/Script/UlsanXRLibrary"),
 	Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleUserWidget_h__Script_UlsanXRLibrary_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleUserWidget_h__Script_UlsanXRLibrary_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

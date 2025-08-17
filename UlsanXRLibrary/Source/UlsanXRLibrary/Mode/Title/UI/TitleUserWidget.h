@@ -41,15 +41,23 @@ public:
 	void VisibleChangeUI(ETitleUIType _Type, ESlateVisibility _Value);
 
 	// 서버 연결 함수
+
+
 	UFUNCTION(BlueprintCallable)
-	void StartServer();
+	virtual void StartServer();
 
 	UFUNCTION(BlueprintCallable)
 	virtual void Connect();
 
 	UFUNCTION(BlueprintCallable)
 	void ServerTravelToWorld();
-	//
+
+	UFUNCTION(BlueprintCallable)
+	void ClientTravelToWorld();
+
+	UFUNCTION(BlueprintCallable)
+	void SetConnection();
+
 
 	// 애니메이션 재생 함수
 	void PlayAnim(EUMGSequencePlayMode::Type _mode);
@@ -77,6 +85,8 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Server", meta = (AllowPrivateAccess = "true"))
 	FString Port = TEXT("30000");
+
+
 
 	UWidgetAnimation* CurPlayAnim = nullptr;
 };

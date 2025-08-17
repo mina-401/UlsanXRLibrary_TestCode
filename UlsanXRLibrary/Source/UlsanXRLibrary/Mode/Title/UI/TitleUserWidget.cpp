@@ -107,7 +107,7 @@ void UTitleUserWidget::StartServer()
 void UTitleUserWidget::Connect()
 {
 	
-	class UBaseGameInstance* GameInstance = GetGameInstance<UBaseGameInstance>();;
+	class UBaseGameInstance* GameInstance = GetGameInstance<UBaseGameInstance>();
 
 	if (GameInstance == nullptr) return;
 
@@ -115,11 +115,28 @@ void UTitleUserWidget::Connect()
 }
 void UTitleUserWidget::ServerTravelToWorld()
 {
-	class UBaseGameInstance* GameInstance = GetGameInstance<UBaseGameInstance>();;
+	class UBaseGameInstance* GameInstance = GetGameInstance<UBaseGameInstance>();
 
 	if (GameInstance == nullptr) return;
 
 	GameInstance->WorldServerTravel(GetWorld());
+}
+void UTitleUserWidget::ClientTravelToWorld()
+{
+	class UBaseGameInstance* GameInstance = GetGameInstance<UBaseGameInstance>();
+
+	if (GameInstance == nullptr) return;
+
+	GameInstance->WorldClientTravel(GetWorld());
+}
+void UTitleUserWidget::SetConnection()
+{
+	class UBaseGameInstance* GameInstance = GetGameInstance<UBaseGameInstance>();
+
+	if (GameInstance == nullptr) return;
+
+	GameInstance->SetIP(IP);
+	GameInstance->SetPort(Port);
 }
 void UTitleUserWidget::PlayAnim(EUMGSequencePlayMode::Type _mode)
 {

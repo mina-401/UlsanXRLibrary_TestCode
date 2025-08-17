@@ -21,6 +21,11 @@ void UTitleRobby::NativeConstruct()
 }
 
 
+void UTitleRobby::Connect()
+{
+	Super::Connect();
+
+}
 
 
 void UTitleRobby::CheckServer(const FString& _IP, const FString& _Port)
@@ -79,36 +84,4 @@ void UTitleRobby::CheckInput(const FString& _IP)
 	bIPIsValid = true;
 
 }
-
-void UTitleRobby::Connect()
-{
-	CheckInput(IP);
-	CheckServer(IP, Port);
-
-	int a = 0;
-
-
-	if (false == bIPIsValid)
-	{
-		CurPlayAnim = IPIsNotValid;
-		PlayAnim(EUMGSequencePlayMode::Forward);
-		return;
-	}
-
-	else if (false == bIsServerAlive)
-	{
-		CurPlayAnim = RoomIsNotValid;
-		PlayAnim(EUMGSequencePlayMode::Forward);
-		return;
-	}
-	else
-	{
-		//CurPlayAnim = RoomIsNotValid;
-		Super::Connect();
-	}
-}
-
-
-
-
 

@@ -12,6 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <None Include="..\..\.gitignore" />
+    <None Include="..\..\.vsconfig" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
     </Filter>
@@ -99,9 +100,6 @@
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\Data\GlobalDataTable.h">
       <Filter>Source\UlsanXRLibrary\Global\Data</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\Data\GobalDataTable.cpp">
-      <Filter>Source\UlsanXRLibrary\Global\Data</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\Data\LevelData.cpp">
       <Filter>Source\UlsanXRLibrary\Global\Data</Filter>
     </ClCompile>
@@ -123,6 +121,15 @@
     <Filter Include="Source\UlsanXRLibrary\Mode">
       <UniqueIdentifier>{A9B3760F-DF65-3A14-A0F8-1C5F68FD5B28}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\UlsanXRLibrary\Mode\Lobby">
+      <UniqueIdentifier>{FE022A67-45BF-3F1C-ADAE-84C98A19B725}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Lobby\LobbyGameMode.cpp">
+      <Filter>Source\UlsanXRLibrary\Mode\Lobby</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Lobby\LobbyGameMode.h">
+      <Filter>Source\UlsanXRLibrary\Mode\Lobby</Filter>
+    </ClInclude>
     <Filter Include="Source\UlsanXRLibrary\Mode\Play">
       <UniqueIdentifier>{198BABC2-D5A9-34AC-BE5C-B6DEFA6BFA4B}</UniqueIdentifier>
     </Filter>

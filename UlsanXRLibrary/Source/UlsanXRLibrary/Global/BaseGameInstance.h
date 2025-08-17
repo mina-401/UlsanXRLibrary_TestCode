@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
 
@@ -38,8 +38,38 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void WorldServerTravel(UWorld* _World);
 
+	UFUNCTION(BlueprintCallable)
+	void WorldClientTravel(UWorld* _World);
+
 	void SetCurWidget(class UTitleUserWidget* InWidget) { CurWidget = InWidget; }
 
+	void SetIP(FString& _IP)
+	{
+		IP = _IP;
+	}
+
+	void SetPort(FString& _Port)
+	{
+		Port = _Port;
+	}
+
+	FString GetIP()
+	{
+		return IP;
+	}
+
+	FString GetPort()
+	{
+		return Port;
+	}
+
+
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Server", meta = (AllowPrivateAccess = "true"))
+	FString IP = TEXT("127.0.0.1");
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Server", meta = (AllowPrivateAccess = "true"))
+	FString Port = TEXT("30000");
 private:
 	class UTitleUserWidget* CurWidget = nullptr;
 
@@ -49,4 +79,6 @@ private:
 	class UDataTable* LevelDataTable = nullptr;
 	class UDataTable* BookItemDataTable = nullptr;
 	class UDataTable* ActorDataTable = nullptr;
+
+
 };

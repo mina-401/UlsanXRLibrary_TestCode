@@ -1,7 +1,7 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Global/BaseGameInstance.h"
-#include "Engine/Engine.h"             // GEngine Á¢±Ù
+#include "Engine/Engine.h"             // GEngine ì ‘ê·¼
 #include "Engine/NetDriver.h"          // UNetDriver
 #include "Engine/World.h"              // UWorld
 #include "Engine/NetworkDelegates.h"   // FNetworkFailureSignature
@@ -62,7 +62,7 @@ void UBaseGameInstance::HandleTravelFailure(UWorld* World, ETravelFailure::Type 
 {
 	//if (Reason.Contains(TEXT("ServerFull")))
 	//{
-	//	ShowJoinFailedPopup();  // ¾Ö´Ï¸ÞÀÌ¼Ç UI Ç¥½Ã
+	//	ShowJoinFailedPopup();  // ì• ë‹ˆë©”ì´ì…˜ UI í‘œì‹œ
 	//}
 }
 void UBaseGameInstance::HandleNetworkFailure(UWorld* World, UNetDriver* NetDriver, ENetworkFailure::Type FailureType, const FString& ErrorString)
@@ -112,6 +112,9 @@ void UBaseGameInstance::StartServer(FString& _IP, FString& _Port)
 }
 void UBaseGameInstance::Connect(FString& _IP, FString& _Port)
 {
+	/*SetIP(_IP);
+	SetPort(_Port);
+	*/
 
 	FString ConnectLevelName = FString::Printf(TEXT("%s:%s"), *_IP, *_Port);
 	// 127.0.0.1:30000
@@ -132,5 +135,22 @@ void UBaseGameInstance::WorldServerTravel(UWorld* _World)
 
 	_World->ServerTravel(LevelPath + TEXT("?listen"));
 
+
+}
+
+void UBaseGameInstance::WorldClientTravel(UWorld* _World)
+{
+	FString OpenLevel;
+	FString LevelPath = TEXT("");
+	FString LevelName = UULXRConst::Level::EndLevelName;
+
+	UGlobalDataTable::GetLevelDataName(GetWorld(), LevelName);
+
+	UULXRGlobal::AssetPackagePath(UWorld::StaticClass(), LevelName, LevelPath);
+	//OpenLevel = FString::Printf(TEXT("%s:%s%s"),*IP, *Port, *LevelPath);
+	OpenLevel = FString::Printf(TEXT("%s%s"),*Port, *LevelPath);
+
+
+	_World->GetFirstPlayerController()->ClientTravel(OpenLevel, TRAVEL_Absolute);
 
 }
