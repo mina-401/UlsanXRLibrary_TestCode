@@ -12,6 +12,7 @@
 #include "Kismet/GameplayStatics.h"
 #include <ULXRConst.h>
 #include "Net/UnrealNetwork.h"
+#include "GameFramework/PlayerState.h"
 
 
 APlayCharacter::APlayCharacter()
@@ -77,6 +78,24 @@ void APlayCharacter::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor*
 {
 
 }
+
+bool APlayCharacter::GetIsLeaderPawn()
+{
+    ATravelBook* Book = Cast<ATravelBook>(BookActor);
+
+    if( nullptr != Book && nullptr != Book->GetItem())
+    {
+        if (GetPlayerState() == Book->GetItem()->LeaderState)
+        {
+            return true;
+        }
+	}
+
+    
+
+    return false;
+
+}
 void APlayCharacter::InterectUpdate(class AItem* _Item,float _DeltaTime)
 {
 }
@@ -92,6 +111,8 @@ void APlayCharacter::InterectStart(class AItem* _Item)
         FString Name = _Item->GetData()->Name;
 
 
+    
+
         if (nullptr != BookActor)
         {
             BookActor->SetActorHiddenInGame(true);
@@ -101,14 +122,16 @@ void APlayCharacter::InterectStart(class AItem* _Item)
             Book->GetWidgetComponent()->SetCollisionProfileName(UCollisionProfile::NoCollision_ProfileName);
             if (GetController() && GetController()->IsLocalController())
             {
-      
+
                 Book->GetWidgetComponent()->SetCollisionProfileName(UULXRConst::Collision::ProfileName_WidgetInter);
                 Book->SetName(Name);
                 BookActor->SetActorHiddenInGame(false);
 
             }
 
-
+            
+            CheckLeader(BookActor);
+           
         }
        
  
@@ -125,6 +148,9 @@ void APlayCharacter::InterectEnd(class AItem* _Item)
         Book->GetWidgetComponent()->SetCollisionProfileName(UCollisionProfile::NoCollision_ProfileName);
 
 
+
+
+
         if (GetController() && GetController()->IsLocalController())
         {
             Book->SetName("");
@@ -132,15 +158,84 @@ void APlayCharacter::InterectEnd(class AItem* _Item)
 
         BookActor->SetActorHiddenInGame(true);
 
+       // CheckOutMember(BookActor);
+     
     }
 
 
 
 }
 
+//void APlayCharacter::CheckOutMember(class AActor* _Actor)
+//{
+//    CheckOutMember_Implementation(_Actor);
+//}
+void APlayCharacter::CheckOutMember_Implementation(class AActor* _Actor)
+{
+    ATravelBook* Book = Cast<ATravelBook>(_Actor);
+
+    if (Book == nullptr || Book->GetItem() == nullptr) return;
+
+    if (Book->GetItem()->LeaderState == GetPlayerState())
+    {
+
+        if (Book->GetItem()->MemberStates.Num() > 0)
+        {
+            APlayerState* NewLeader = Book->GetItem()->MemberStates[0];
+            Book->GetItem()->LeaderState = NewLeader;
+            Book->GetItem()->MemberStates.RemoveAt(0);
+        }
+        else
+        {
+            // 아무도 안 남았으면 리더 해제
+            Book->GetItem()->LeaderState = nullptr;
+            Book->GetItem()->bIsLeader = false;
+
+        }
+    }
+
+    else {
+
+        if (Book->GetItem()->MemberStates.Contains(GetPlayerState()))
+        {
+            Book->GetItem()->MemberStates.Remove(GetPlayerState());
+
+            int a = 0;
+        }
+    }
+}
+void APlayCharacter::CheckLeader(AActor* _Actor)
+{
+    ATravelBook* Book = Cast<ATravelBook>(_Actor);
+    if (Book == nullptr || Book->GetItem() == nullptr) return;
+    if (true == Book->GetItem()->bIsLeader)
+    {
+
+        if (Book->GetItem()->LeaderState != GetPlayerState() && !(Book->GetItem()->MemberStates.Contains(GetPlayerState())))
+        {
+            Book->GetItem()->MemberStates.Add(GetPlayerState());
+
+            int a = 0;
+        }
+
+    }
+
+    else {
+        Book->GetItem()->bIsLeader = true;
+        Book->GetItem()->SetOwner(this);
+
+
+        Book->GetItem()->LeaderState = GetPlayerState();
+
+    }
+}
+
 void APlayCharacter::OpenStreamingLevel_Multi_Implementation()
 {
     ATravelBook* Book = Cast<ATravelBook>(BookActor);
+
+	if (Book == nullptr || Book->GetItem() == nullptr) return;
+
     const TSoftObjectPtr<UWorld> NextLevel = Book->GetItem()->GetNextLevel();
 
 
@@ -154,8 +249,51 @@ void APlayCharacter::OpenStreamingLevel_Multi_Implementation()
 
         if (true == bIsLevelVisible)
         {
+
+            if (Book->GetItem() == nullptr) return;
+            
             FVector SpawnPoint = Book->GetItem()->GetSpawnPoint();
-            SetActorLocation(SpawnPoint);
+
+            if (Book->GetItem()->MemberStates.Num() > 0)
+            {
+                //MemberStates 리스트에 있는 플레이어들 이동
+                for (APlayerState* PS : Book->GetItem()->MemberStates)
+                {
+                    if (!PS) continue;
+
+                    if (AController* PC = PS->GetOwner<AController>())
+                    {
+                        if (APawn* Pawn = PC->GetPawn())
+                        {
+                            Pawn->SetActorLocation(SpawnPoint);
+
+
+                            Cast<APlayCharacter>(Pawn)->VisibleChangeUIFromAllWidget(ETitleUIType::Ready, ESlateVisibility::Collapsed);
+                        }
+                    }
+                }
+            }
+            
+            //LeaderState도 포함시키려면 Leader도 먼저 이동
+            if (Book->GetItem()->LeaderState)
+            {
+                if (AController* PC = Book->GetItem()->LeaderState->GetOwner<AController>())
+                {
+                    if (APawn* Pawn = PC->GetPawn())
+                    {
+                        Pawn->SetActorLocation(SpawnPoint);
+
+                        Cast<APlayCharacter>(Pawn)->VisibleChangeUIFromAllWidget(ETitleUIType::Ready, ESlateVisibility::Collapsed);
+                    }
+                }
+            }
+
+
+
+            
+
+
+
         }
 
             
@@ -235,4 +373,5 @@ void APlayCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLi
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
     DOREPLIFETIME(APlayCharacter, BookActor);
+    DOREPLIFETIME(APlayCharacter, bIsServer);
 }

@@ -47,6 +47,28 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void CloseStreamingLevel();
 
+
+	//이동시키는 북
+
+	UFUNCTION(BlueprintCallable)
+	class ATravelBook* GetTravelBook()
+	{
+		return Cast<ATravelBook>(BookActor);
+	}
+
+	UFUNCTION(BlueprintCallable)
+	bool GetIsLeaderPawn();
+
+	UFUNCTION(BlueprintCallable)
+	void CheckLeader(class AActor* _Actor);
+
+	UFUNCTION(BlueprintCallable, Reliable,Server)
+	void CheckOutMember(class AActor* _Actor);
+	void CheckOutMember_Implementation(class AActor* _Actor);
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+	void VisibleChangeUIFromAllWidget(ETitleUIType _Type, ESlateVisibility _Value);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -56,6 +78,7 @@ protected:
 
 	void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 	
+
 
 	// IItemInterface
 	void InterectUpdate(class AItem* _Item, float _DeltaTime);
@@ -68,10 +91,11 @@ protected:
 private:
 	
 
+
 	//ServerTravel
 	// 트래블용 서버 북을 소유하는 방장
+	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	bool bIsServer = false;
-	bool bIsLocal = false;
 
 	// 책 정보 나타나는 위젯
 

@@ -14,4 +14,7 @@ class ULSANXRLIBRARY_API UPlayBook : public UTitleUserWidget
 {
 	GENERATED_BODY()
 	
+public:
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+	void VisibleChangeUIFromAllWidget(ETitleUIType _Type, ESlateVisibility _Value);
 };
