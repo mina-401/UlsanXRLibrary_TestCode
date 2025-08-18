@@ -50,7 +50,7 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Play", meta = (AllowPrivateAccess = "true"))
 	class UWidgetComponent* WidgetComponent;
 
-	UPROPERTY(VisibleAnywhere,Replicated, BlueprintReadWrite, Category = "Play", meta = (AllowPrivateAccess = "true")
+	UPROPERTY(VisibleAnywhere,Replicated, BlueprintReadWrite, Category = "Play", meta = (AllowPrivateAccess = "true"))
 	class AItem* Item;
 
 };

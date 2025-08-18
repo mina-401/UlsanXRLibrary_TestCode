@@ -61,11 +61,15 @@ void APlayCharacter::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
 
-    if (BookActor != nullptr )
+    if (GetController() && GetController()->IsLocalController()) {
+       if (BookActor != nullptr )
 
-    {
-        ActorLookAtCamera(BookActor);
+        {
+            ActorLookAtCamera(BookActor);
+        }
     }
+
+    
 }
 
 void APlayCharacter::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex,
