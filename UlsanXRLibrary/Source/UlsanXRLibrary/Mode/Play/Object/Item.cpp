@@ -72,7 +72,10 @@ void AItem::OnOverlapBegin(
 	{
 
 		OtherPlayer = OtherActor;
+	/*	if (OtherActor->GetLocalRole() == ROLE_AutonomousProxy)
+		{
 
+		}*/
 		IItemInterface* ItemInterface = Cast<IItemInterface>(OtherActor);
 		if (ItemInterface)
 		{

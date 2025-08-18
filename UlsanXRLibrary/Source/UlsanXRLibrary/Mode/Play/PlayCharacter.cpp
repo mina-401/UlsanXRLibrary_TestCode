@@ -87,11 +87,15 @@ void APlayCharacter::InterectStart(class AItem* _Item)
         //책 정보 전달하고
         //위젯 키기
 
+    if (nullptr == _Item) return;
+
         FString Name = _Item->GetData()->Name;
+
 
         if (nullptr != BookActor)
         {
-           
+            BookActor->SetActorHiddenInGame(true);
+
             ATravelBook* Book = Cast<ATravelBook>(BookActor);
             Book->SetItem(_Item);
             Book->GetWidgetComponent()->SetCollisionProfileName(UCollisionProfile::NoCollision_ProfileName);
@@ -104,14 +108,14 @@ void APlayCharacter::InterectStart(class AItem* _Item)
 
             }
 
-             
+
         }
        
  
 }
 void APlayCharacter::InterectEnd(class AItem* _Item)
 {
-
+    if (nullptr == _Item) return;
     if (nullptr != BookActor)
     {
 
