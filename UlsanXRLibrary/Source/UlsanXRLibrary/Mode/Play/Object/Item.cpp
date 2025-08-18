@@ -12,7 +12,7 @@
 AItem::AItem()
 {
 	PrimaryActorTick.bCanEverTick = true;
-	//bReplicates = true;
+	bReplicates = true;
 
 	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
 	StaticMeshComponent->SetCollisionProfileName(UULXRConst::Collision::ProfileName_Item);
@@ -21,6 +21,20 @@ AItem::AItem()
 
 	RootComponent = StaticMeshComponent;
 	
+}
+
+TSoftObjectPtr<UWorld> AItem::GetNextLevel()
+{
+	const FLevelDataRow* FindData = UGlobalDataTable::GetLevelData(GetWorld(), DataKey);
+
+	return FindData->Level;
+}
+
+FVector AItem::GetSpawnPoint()
+{
+	const FLevelDataRow* FindData = UGlobalDataTable::GetLevelData(GetWorld(), DataKey);
+
+	return FindData->SpawnPoint;
 }
 
 // Called when the game starts or when spawned
@@ -38,6 +52,8 @@ void AItem::BeginPlay()
 	StaticMeshComponent->SetStaticMesh(Data->ItemData.Mesh );
 	StaticMeshComponent->SetMaterial(0, Data->ItemData.MaterialInst);
 
+	
+
 	StaticMeshComponent->OnComponentBeginOverlap.AddDynamic(this, &AItem::OnOverlapBegin);
 	StaticMeshComponent->OnComponentEndOverlap.AddDynamic(this, &AItem::OnOverlapEnd);
 
@@ -54,6 +70,9 @@ void AItem::OnOverlapBegin(
 {
 	if (nullptr != OtherActor && OtherActor->GetClass()->ImplementsInterface(UItemInterface::StaticClass()))
 	{
+
+		OtherPlayer = OtherActor;
+
 		IItemInterface* ItemInterface = Cast<IItemInterface>(OtherActor);
 		if (ItemInterface)
 		{
@@ -71,6 +90,7 @@ void AItem::OnOverlapEnd(
 {
 	if (nullptr != OtherActor && OtherActor->GetClass()->ImplementsInterface(UItemInterface::StaticClass()))
 	{
+		OtherPlayer = nullptr;
 		IItemInterface* ItemInterface = Cast<IItemInterface>(OtherActor);
 		if (ItemInterface)
 		{
@@ -83,6 +103,15 @@ void AItem::OnOverlapEnd(
 void AItem::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	//if (nullptr != OtherPlayer && OtherPlayer->GetClass()->ImplementsInterface(UItemInterface::StaticClass()))
+	//{
+	//	IItemInterface* ItemInterface = Cast<IItemInterface>(OtherPlayer);
+	//	if (ItemInterface)
+	//	{
+	//		ItemInterface->InterectEnd(this); // 아이템 정보를 캐릭터에 전달
+	//	}
+	//}
 
 }
 

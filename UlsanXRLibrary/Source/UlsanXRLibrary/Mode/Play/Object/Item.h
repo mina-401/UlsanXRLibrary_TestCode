@@ -17,16 +17,21 @@ public:
 	// Sets default values for this actor's properties
 	AItem();
 
+	//UFUNCTION(BlueprintCallable)
 	const FBookItemDataRow* GetData()
 	{
 		return Data;
-	}
+	};
 
 	void SetDataKey(const FString& _ItemDataKey)
 	{
 		DataKey = _ItemDataKey;
-	}
+	};
 
+	UFUNCTION(BlueprintCallable)
+	TSoftObjectPtr<UWorld> GetNextLevel();
+
+	FVector GetSpawnPoint();
 
 protected:
 	// Called when the game starts or when spawned
@@ -49,20 +54,18 @@ protected:
 	);
 
 	UFUNCTION()
-	void OnOverlapEnd(
-		UPrimitiveComponent* OverlappedComp,
-		AActor* OtherActor,
-		UPrimitiveComponent* OtherComp,
-		int32 OtherBodyIndex
-	);
+	void OnOverlapEnd(UPrimitiveComponent* OverlappedComp,AActor* OtherActor,UPrimitiveComponent* OtherComp,int32 OtherBodyIndex);
 
 private:
 	UPROPERTY(EditAnywhere, Replicated, BlueprintReadWrite, Category = "Item", meta = (AllowPrivateAccess = "true"))
 	FString DataKey = "";
 
+	//UPROPERTY(Category = "Item", EditAnywhere, meta = (AllowPrivateAccess = "true"))
 	const FBookItemDataRow* Data = nullptr;
 
 	UPROPERTY(Category = "Item", EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class UStaticMeshComponent* StaticMeshComponent;
+
+	class AActor* OtherPlayer = nullptr;
 
 };

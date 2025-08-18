@@ -15,7 +15,6 @@ struct FItemData
 	FItemData() {}
 	~FItemData() {}
 public:
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
 	UStaticMesh* Mesh = nullptr;
 
@@ -39,10 +38,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
 	FString Name = TEXT("None");
 
-	// 레벨
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
-	TSoftObjectPtr<UWorld> Level = nullptr;
-
 
 };
 USTRUCT(BlueprintType)
@@ -59,12 +54,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
 	TSoftObjectPtr<UWorld> Level = nullptr;
 
-	// 레벨 이름
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Data")
-	FString Name = TEXT("");
-
-
-
+	FVector SpawnPoint = FVector(0, 0, 0);
 };
 UCLASS()
 class ULSANXRLIBRARY_API ULevelData : public UObject

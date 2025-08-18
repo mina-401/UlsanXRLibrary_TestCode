@@ -9,7 +9,9 @@
 #include "Mode/Play/Object/TravelBook.h"
 #include "Global/Data/GlobalDataTable.h"
 #include "Components/WidgetComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include <ULXRConst.h>
+#include "Net/UnrealNetwork.h"
 
 
 APlayCharacter::APlayCharacter()
@@ -87,13 +89,13 @@ void APlayCharacter::InterectStart(class AItem* _Item)
         {
            
             ATravelBook* Book = Cast<ATravelBook>(BookActor);
+            Book->SetItem(_Item);
             Book->GetWidgetComponent()->SetCollisionProfileName(UCollisionProfile::NoCollision_ProfileName);
             if (GetController() && GetController()->IsLocalController())
             {
       
                 Book->GetWidgetComponent()->SetCollisionProfileName(UULXRConst::Collision::ProfileName_WidgetInter);
                 Book->SetName(Name);
-                Book->SetPlayBookNameEvent();
                 BookActor->SetActorHiddenInGame(false);
 
             }
@@ -103,7 +105,6 @@ void APlayCharacter::InterectStart(class AItem* _Item)
        
  
 }
-
 void APlayCharacter::InterectEnd(class AItem* _Item)
 {
 
@@ -111,19 +112,95 @@ void APlayCharacter::InterectEnd(class AItem* _Item)
     {
 
         ATravelBook* Book = Cast<ATravelBook>(BookActor);
+        Book->SetItem(nullptr);
+
         Book->GetWidgetComponent()->SetCollisionProfileName(UCollisionProfile::NoCollision_ProfileName);
+
+
         if (GetController() && GetController()->IsLocalController())
         {
- 
-
-                Book->SetName("");
-                Book->SetPlayBookNameEvent();
+            Book->SetName("");
         }
 
         BookActor->SetActorHiddenInGame(true);
 
     }
 
-        
-       
+
+
+}
+
+void APlayCharacter::OpenStreamingLevel_Multi_Implementation()
+{
+    ATravelBook* Book = Cast<ATravelBook>(BookActor);
+    const TSoftObjectPtr<UWorld> NextLevel = Book->GetItem()->GetNextLevel();
+
+
+    ULevelStreaming* StreamingLevel = UGameplayStatics::GetStreamingLevel(GetWorld(), *NextLevel.GetAssetName());
+
+    if (StreamingLevel && StreamingLevel->IsLevelLoaded())
+    {
+        int a = 0;
+
+        FVector SpawnPoint = Book->GetItem()->GetSpawnPoint();
+
+
+        SetActorLocation(SpawnPoint);
+
+    }
+
+    else
+    {
+        UGameplayStatics::LoadStreamLevelBySoftObjectPtr(
+            GetWorld(),
+            NextLevel,
+            true,                    // bMakeVisibleAfterLoad (로드 후 보이게 할지)
+            true,                    // bShouldBlockOnLoad (true면 로드 완료까지 대기)
+            FLatentActionInfo()      // Latent Info (비동기 처리용)
+        );
+    }
+
+    if (nullptr != Book->GetItem())
+    {
+        FVector SpawnPoint = Book->GetItem()->GetSpawnPoint();
+
+        SetActorLocation(SpawnPoint);
+    }
+
+  
+}
+
+//void APlayCharacter::Teleport_Implementation(FVector _Point)
+//{
+//    SetActorLocation(_Point);
+//}
+//void APlayCharacter::OpenStreamingLevel()
+//{
+//
+//
+//}
+void APlayCharacter::OpenStreamingLevel_Implementation()
+{
+    OpenStreamingLevel_Multi();
+}
+
+
+void APlayCharacter::CloseStreamingLevel()
+{
+    ATravelBook* Book = Cast<ATravelBook>(BookActor);
+    const TSoftObjectPtr<UWorld> NextLevel = Book->GetItem()->GetNextLevel();
+
+    UGameplayStatics::UnloadStreamLevelBySoftObjectPtr(
+        GetWorld(),
+        NextLevel,
+        FLatentActionInfo(),                  
+        true                    // bShouldBlockOnLoad (true면 로드 완료까지 대기)        
+    );
+}
+
+void APlayCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+    Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+    DOREPLIFETIME(APlayCharacter, BookActor);
 }

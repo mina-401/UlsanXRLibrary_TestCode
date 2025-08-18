@@ -343,6 +343,10 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\Object\Item\Book.h"/>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\UI\PlayBook.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\UI\PlayBook.h"/>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\UI\PlayMain.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>

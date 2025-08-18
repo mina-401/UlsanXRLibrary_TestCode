@@ -208,6 +208,41 @@ DEFINE_FUNCTION(UTitleUserWidget::execMainWidgetInit)
 }
 // ********** End Class UTitleUserWidget Function MainWidgetInit ***********************************
 
+// ********** Begin Class UTitleUserWidget Function OpenStreamingLevel *****************************
+struct Z_Construct_UFunction_UTitleUserWidget_OpenStreamingLevel_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//\xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd \xef\xbf\xbd\xef\xbf\xbd\xc6\xae\xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd\n" },
+#endif
+		{ "ModuleRelativePath", "Mode/Title/UI/TitleUserWidget.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "\xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd \xef\xbf\xbd\xef\xbf\xbd\xc6\xae\xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd\xef\xbf\xbd" },
+#endif
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UTitleUserWidget_OpenStreamingLevel_Statics::FuncParams = { { (UObject*(*)())Z_Construct_UClass_UTitleUserWidget, nullptr, "OpenStreamingLevel", nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UTitleUserWidget_OpenStreamingLevel_Statics::Function_MetaDataParams), Z_Construct_UFunction_UTitleUserWidget_OpenStreamingLevel_Statics::Function_MetaDataParams)},  };
+UFunction* Z_Construct_UFunction_UTitleUserWidget_OpenStreamingLevel()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UTitleUserWidget_OpenStreamingLevel_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UTitleUserWidget::execOpenStreamingLevel)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->OpenStreamingLevel();
+	P_NATIVE_END;
+}
+// ********** End Class UTitleUserWidget Function OpenStreamingLevel *******************************
+
 // ********** Begin Class UTitleUserWidget Function ServerTravelToWorld ****************************
 struct Z_Construct_UFunction_UTitleUserWidget_ServerTravelToWorld_Statics
 {
@@ -406,6 +441,7 @@ void UTitleUserWidget::StaticRegisterNativesUTitleUserWidget()
 		{ "CreateChildWidget", &UTitleUserWidget::execCreateChildWidget },
 		{ "GetMainWidget", &UTitleUserWidget::execGetMainWidget },
 		{ "MainWidgetInit", &UTitleUserWidget::execMainWidgetInit },
+		{ "OpenStreamingLevel", &UTitleUserWidget::execOpenStreamingLevel },
 		{ "ServerTravelToWorld", &UTitleUserWidget::execServerTravelToWorld },
 		{ "SetConnection", &UTitleUserWidget::execSetConnection },
 		{ "SetZOrder", &UTitleUserWidget::execSetZOrder },
@@ -489,6 +525,7 @@ struct Z_Construct_UClass_UTitleUserWidget_Statics
 		{ &Z_Construct_UFunction_UTitleUserWidget_CreateChildWidget, "CreateChildWidget" }, // 3079873092
 		{ &Z_Construct_UFunction_UTitleUserWidget_GetMainWidget, "GetMainWidget" }, // 1374386805
 		{ &Z_Construct_UFunction_UTitleUserWidget_MainWidgetInit, "MainWidgetInit" }, // 2092694660
+		{ &Z_Construct_UFunction_UTitleUserWidget_OpenStreamingLevel, "OpenStreamingLevel" }, // 778647150
 		{ &Z_Construct_UFunction_UTitleUserWidget_ServerTravelToWorld, "ServerTravelToWorld" }, // 549849521
 		{ &Z_Construct_UFunction_UTitleUserWidget_SetConnection, "SetConnection" }, // 1313017689
 		{ &Z_Construct_UFunction_UTitleUserWidget_SetZOrder, "SetZOrder" }, // 3633553385
@@ -555,10 +592,10 @@ UTitleUserWidget::~UTitleUserWidget() {}
 struct Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleUserWidget_h__Script_UlsanXRLibrary_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UTitleUserWidget, UTitleUserWidget::StaticClass, TEXT("UTitleUserWidget"), &Z_Registration_Info_UClass_UTitleUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UTitleUserWidget), 2848921759U) },
+		{ Z_Construct_UClass_UTitleUserWidget, UTitleUserWidget::StaticClass, TEXT("UTitleUserWidget"), &Z_Registration_Info_UClass_UTitleUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UTitleUserWidget), 3371165554U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleUserWidget_h__Script_UlsanXRLibrary_1363134702(TEXT("/Script/UlsanXRLibrary"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleUserWidget_h__Script_UlsanXRLibrary_2856587121(TEXT("/Script/UlsanXRLibrary"),
 	Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleUserWidget_h__Script_UlsanXRLibrary_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleUserWidget_h__Script_UlsanXRLibrary_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

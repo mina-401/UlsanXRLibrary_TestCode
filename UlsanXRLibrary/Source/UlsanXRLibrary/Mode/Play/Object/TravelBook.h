@@ -17,9 +17,6 @@ public:
 
 	void SetName(FString _Name) { Name = _Name; };
 
-	UFUNCTION(BlueprintImplementableEvent,BlueprintCallable)
-	void SetPlayBookNameEvent();
-
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable)
 	void SetVisible(bool _True);
 
@@ -28,11 +25,23 @@ public:
 		return WidgetComponent;
 	};
 
+	void SetItem(class AItem* _Item)
+	{
+		Item = _Item;
+	}
+
+	class AItem* GetItem()
+	{
+		return Item;
+	}
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const;
 
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Play", meta = (AllowPrivateAccess = "true"))
@@ -40,5 +49,8 @@ private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Play", meta = (AllowPrivateAccess = "true"))
 	class UWidgetComponent* WidgetComponent;
+
+	UPROPERTY(VisibleAnywhere,Replicated, BlueprintReadWrite, Category = "Play", meta = (AllowPrivateAccess = "true")
+	class AItem* Item;
 
 };

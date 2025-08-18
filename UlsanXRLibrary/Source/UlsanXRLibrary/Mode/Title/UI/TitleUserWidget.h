@@ -41,8 +41,6 @@ public:
 	void VisibleChangeUI(ETitleUIType _Type, ESlateVisibility _Value);
 
 	// 서버 연결 함수
-
-
 	UFUNCTION(BlueprintCallable)
 	virtual void StartServer();
 
@@ -57,6 +55,10 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void SetConnection();
+
+	//레벨 스트리밍
+	UFUNCTION(BlueprintCallable)
+	void OpenStreamingLevel();
 
 
 	// 애니메이션 재생 함수

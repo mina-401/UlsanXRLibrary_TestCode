@@ -190,6 +190,12 @@
     <Filter Include="Source\UlsanXRLibrary\Mode\Play\UI">
       <UniqueIdentifier>{1960DD32-92C0-3C53-8A28-AA01BD7E8161}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\UI\PlayBook.cpp">
+      <Filter>Source\UlsanXRLibrary\Mode\Play\UI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\UI\PlayBook.h">
+      <Filter>Source\UlsanXRLibrary\Mode\Play\UI</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\UI\PlayMain.cpp">
       <Filter>Source\UlsanXRLibrary\Mode\Play\UI</Filter>
     </ClCompile>

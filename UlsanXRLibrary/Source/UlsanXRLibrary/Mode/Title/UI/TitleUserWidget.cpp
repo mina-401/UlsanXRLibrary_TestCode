@@ -141,6 +141,10 @@ void UTitleUserWidget::SetConnection()
 	GameInstance->SetIP(IP);
 	GameInstance->SetPort(Port);
 }
+void UTitleUserWidget::OpenStreamingLevel()
+{
+
+}
 void UTitleUserWidget::PlayAnim(EUMGSequencePlayMode::Type _mode)
 {
 	StopAnimation(CurPlayAnim);
