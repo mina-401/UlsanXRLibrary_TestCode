@@ -19,7 +19,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 // ********** Begin Class UULXREnum ****************************************************************
 ULSANXRLIBRARY_API UClass* Z_Construct_UClass_UULXREnum_NoRegister();
 
-#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_34_INCLASS_NO_PURE_DECLS \
+#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_35_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUULXREnum(); \
 	friend struct Z_Construct_UClass_UULXREnum_Statics; \
@@ -30,7 +30,7 @@ public: \
 	DECLARE_SERIALIZER(UULXREnum)
 
 
-#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_34_ENHANCED_CONSTRUCTORS \
+#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_35_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UULXREnum(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 	/** Deleted move- and copy-constructors, should never be used */ \
@@ -42,12 +42,12 @@ public: \
 	NO_API virtual ~UULXREnum();
 
 
-#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_31_PROLOG
-#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_34_GENERATED_BODY \
+#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_32_PROLOG
+#define FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_35_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_34_INCLASS_NO_PURE_DECLS \
-	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_34_ENHANCED_CONSTRUCTORS \
+	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_35_INCLASS_NO_PURE_DECLS \
+	FID_UlsanXRLibrary_Source_UlsanXRLibrary_Global_ULXREnum_h_35_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
@@ -73,7 +73,8 @@ template<> ULSANXRLIBRARY_API UEnum* StaticEnum<EPlayerAnimation>();
 #define FOREACH_ENUM_ETITLEUITYPE(op) \
 	op(ETitleUIType::TitleRoom) \
 	op(ETitleUIType::TitleMain) \
-	op(ETitleUIType::TitleServer) 
+	op(ETitleUIType::TitleServer) \
+	op(ETitleUIType::Ready) 
 
 enum class ETitleUIType : uint8;
 template<> struct TIsUEnumClass<ETitleUIType> { enum { Value = true }; };

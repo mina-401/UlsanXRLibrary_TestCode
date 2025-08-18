@@ -115,7 +115,7 @@ void APlayCharacter::InterectStart(class AItem* _Item)
 }
 void APlayCharacter::InterectEnd(class AItem* _Item)
 {
-    if (nullptr == _Item) return;
+   // if (nullptr == _Item) return;
     if (nullptr != BookActor)
     {
 
@@ -148,25 +148,30 @@ void APlayCharacter::OpenStreamingLevel_Multi_Implementation()
 
     if (StreamingLevel && StreamingLevel->IsLevelLoaded())
     {
-        int a = 0;
 
-        FVector SpawnPoint = Book->GetItem()->GetSpawnPoint();
+        bool bIsLevelVisible = StreamingLevel->GetLoadedLevel()->bIsVisible;
 
 
-        SetActorLocation(SpawnPoint);
+        if (true == bIsLevelVisible)
+        {
+            FVector SpawnPoint = Book->GetItem()->GetSpawnPoint();
+            SetActorLocation(SpawnPoint);
+        }
+
+            
 
     }
 
-    else
-    {
-        UGameplayStatics::LoadStreamLevelBySoftObjectPtr(
-            GetWorld(),
-            NextLevel,
-            true,                    // bMakeVisibleAfterLoad (로드 후 보이게 할지)
-            true,                    // bShouldBlockOnLoad (true면 로드 완료까지 대기)
-            FLatentActionInfo()      // Latent Info (비동기 처리용)
-        );
-    }
+    //else
+    //{
+    //    UGameplayStatics::LoadStreamLevelBySoftObjectPtr(
+    //        GetWorld(),
+    //        NextLevel,
+    //        true,                    // bMakeVisibleAfterLoad (로드 후 보이게 할지)
+    //        true,                    // bShouldBlockOnLoad (true면 로드 완료까지 대기)
+    //        FLatentActionInfo()      // Latent Info (비동기 처리용)
+    //    );
+    //}
 
     if (nullptr != Book->GetItem())
     {
@@ -189,6 +194,25 @@ void APlayCharacter::OpenStreamingLevel_Multi_Implementation()
 //}
 void APlayCharacter::OpenStreamingLevel_Implementation()
 {
+    ATravelBook* Book = Cast<ATravelBook>(BookActor);
+    const TSoftObjectPtr<UWorld> NextLevel = Book->GetItem()->GetNextLevel();
+
+
+    ULevelStreaming* StreamingLevel = UGameplayStatics::GetStreamingLevel(GetWorld(), *NextLevel.GetAssetName());
+
+
+   // StreamingLevel->SetShouldBeVisible(true);
+    StreamingLevel->GetLoadedLevel()->bIsVisible = true;
+    
+    bool bIsLevelVisible = StreamingLevel->GetLoadedLevel()->bIsVisible;
+
+
+#ifdef WITH_EDITOR
+   // StreamingLevel->SetShouldBeVisibleInEditor(true);
+
+#endif
+
+
     OpenStreamingLevel_Multi();
 }
 

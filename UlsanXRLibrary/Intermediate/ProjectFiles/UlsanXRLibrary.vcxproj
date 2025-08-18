@@ -351,6 +351,10 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\UI\PlayMain.h"/>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\UI\Ready.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\UI\Ready.h"/>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Title\TitleGameMode.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>

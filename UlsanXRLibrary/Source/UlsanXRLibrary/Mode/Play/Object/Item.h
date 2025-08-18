@@ -68,4 +68,5 @@ private:
 
 	class AActor* OtherPlayer = nullptr;
 
+	
 };

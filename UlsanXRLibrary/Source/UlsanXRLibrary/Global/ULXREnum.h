@@ -23,6 +23,7 @@ enum class ETitleUIType : uint8
 	TitleRoom UMETA(DisplayName = "방입장"),
 	TitleMain UMETA(DisplayName = "메인화면"),
 	TitleServer UMETA(DisplayName = "서버오픈"),
+	Ready UMETA(DisplayName = "대기화면"),
 	
 	MAX UMETA(DisplayName = "MAX"),
 };

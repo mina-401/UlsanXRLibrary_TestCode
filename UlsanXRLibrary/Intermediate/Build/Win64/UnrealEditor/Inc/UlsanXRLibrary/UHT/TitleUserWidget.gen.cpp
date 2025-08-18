@@ -102,7 +102,7 @@ struct Z_Construct_UFunction_UTitleUserWidget_CreateChildWidget_Statics
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
 const UECodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UTitleUserWidget_CreateChildWidget_Statics::NewProp__Type_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FEnumPropertyParams Z_Construct_UFunction_UTitleUserWidget_CreateChildWidget_Statics::NewProp__Type = { "_Type", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TitleUserWidget_eventCreateChildWidget_Parms, _Type), Z_Construct_UEnum_UlsanXRLibrary_ETitleUIType, METADATA_PARAMS(0, nullptr) }; // 3115851734
+const UECodeGen_Private::FEnumPropertyParams Z_Construct_UFunction_UTitleUserWidget_CreateChildWidget_Statics::NewProp__Type = { "_Type", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TitleUserWidget_eventCreateChildWidget_Parms, _Type), Z_Construct_UEnum_UlsanXRLibrary_ETitleUIType, METADATA_PARAMS(0, nullptr) }; // 2935973918
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UFunction_UTitleUserWidget_CreateChildWidget_Statics::NewProp__Widget = { "_Widget", nullptr, (EPropertyFlags)0x0014000000000080, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TitleUserWidget_eventCreateChildWidget_Parms, _Widget), Z_Construct_UClass_UClass, Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FIntPropertyParams Z_Construct_UFunction_UTitleUserWidget_CreateChildWidget_Statics::NewProp__ZOrder = { "_ZOrder", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TitleUserWidget_eventCreateChildWidget_Parms, _ZOrder), METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UTitleUserWidget_CreateChildWidget_Statics::PropPointers[] = {
@@ -399,7 +399,7 @@ struct Z_Construct_UFunction_UTitleUserWidget_VisibleChangeUI_Statics
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
 const UECodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UTitleUserWidget_VisibleChangeUI_Statics::NewProp__Type_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FEnumPropertyParams Z_Construct_UFunction_UTitleUserWidget_VisibleChangeUI_Statics::NewProp__Type = { "_Type", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TitleUserWidget_eventVisibleChangeUI_Parms, _Type), Z_Construct_UEnum_UlsanXRLibrary_ETitleUIType, METADATA_PARAMS(0, nullptr) }; // 3115851734
+const UECodeGen_Private::FEnumPropertyParams Z_Construct_UFunction_UTitleUserWidget_VisibleChangeUI_Statics::NewProp__Type = { "_Type", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TitleUserWidget_eventVisibleChangeUI_Parms, _Type), Z_Construct_UEnum_UlsanXRLibrary_ETitleUIType, METADATA_PARAMS(0, nullptr) }; // 2935973918
 const UECodeGen_Private::FBytePropertyParams Z_Construct_UFunction_UTitleUserWidget_VisibleChangeUI_Statics::NewProp__Value_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FEnumPropertyParams Z_Construct_UFunction_UTitleUserWidget_VisibleChangeUI_Statics::NewProp__Value = { "_Value", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(TitleUserWidget_eventVisibleChangeUI_Parms, _Value), Z_Construct_UEnum_UMG_ESlateVisibility, METADATA_PARAMS(0, nullptr) }; // 2974316103
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UTitleUserWidget_VisibleChangeUI_Statics::PropPointers[] = {
@@ -522,7 +522,7 @@ struct Z_Construct_UClass_UTitleUserWidget_Statics
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_UTitleUserWidget_ClientTravelToWorld, "ClientTravelToWorld" }, // 4128886900
 		{ &Z_Construct_UFunction_UTitleUserWidget_Connect, "Connect" }, // 1540575513
-		{ &Z_Construct_UFunction_UTitleUserWidget_CreateChildWidget, "CreateChildWidget" }, // 3079873092
+		{ &Z_Construct_UFunction_UTitleUserWidget_CreateChildWidget, "CreateChildWidget" }, // 3083372797
 		{ &Z_Construct_UFunction_UTitleUserWidget_GetMainWidget, "GetMainWidget" }, // 1374386805
 		{ &Z_Construct_UFunction_UTitleUserWidget_MainWidgetInit, "MainWidgetInit" }, // 2092694660
 		{ &Z_Construct_UFunction_UTitleUserWidget_OpenStreamingLevel, "OpenStreamingLevel" }, // 778647150
@@ -530,7 +530,7 @@ struct Z_Construct_UClass_UTitleUserWidget_Statics
 		{ &Z_Construct_UFunction_UTitleUserWidget_SetConnection, "SetConnection" }, // 1313017689
 		{ &Z_Construct_UFunction_UTitleUserWidget_SetZOrder, "SetZOrder" }, // 3633553385
 		{ &Z_Construct_UFunction_UTitleUserWidget_StartServer, "StartServer" }, // 1763632162
-		{ &Z_Construct_UFunction_UTitleUserWidget_VisibleChangeUI, "VisibleChangeUI" }, // 3999810845
+		{ &Z_Construct_UFunction_UTitleUserWidget_VisibleChangeUI, "VisibleChangeUI" }, // 3596267930
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -541,8 +541,8 @@ struct Z_Construct_UClass_UTitleUserWidget_Statics
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UTitleUserWidget_Statics::NewProp_MainWidget = { "MainWidget", nullptr, (EPropertyFlags)0x004000000008001d, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTitleUserWidget, MainWidget), Z_Construct_UClass_UTitleUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainWidget_MetaData), NewProp_MainWidget_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UTitleUserWidget_Statics::NewProp_Wigets_ValueProp = { "Wigets", nullptr, (EPropertyFlags)0x0000000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UClass_UTitleUserWidget_NoRegister, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FBytePropertyParams Z_Construct_UClass_UTitleUserWidget_Statics::NewProp_Wigets_Key_KeyProp_Underlying = { "UnderlyingType", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Byte, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, nullptr, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_UTitleUserWidget_Statics::NewProp_Wigets_Key_KeyProp = { "Wigets_Key", nullptr, (EPropertyFlags)0x0000000000080008, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UEnum_UlsanXRLibrary_ETitleUIType, METADATA_PARAMS(0, nullptr) }; // 3115851734
-const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UTitleUserWidget_Statics::NewProp_Wigets = { "Wigets", nullptr, (EPropertyFlags)0x0040008000000008, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTitleUserWidget, Wigets), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Wigets_MetaData), NewProp_Wigets_MetaData) }; // 3115851734
+const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_UTitleUserWidget_Statics::NewProp_Wigets_Key_KeyProp = { "Wigets_Key", nullptr, (EPropertyFlags)0x0000000000080008, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UEnum_UlsanXRLibrary_ETitleUIType, METADATA_PARAMS(0, nullptr) }; // 2935973918
+const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_UTitleUserWidget_Statics::NewProp_Wigets = { "Wigets", nullptr, (EPropertyFlags)0x0040008000000008, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTitleUserWidget, Wigets), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Wigets_MetaData), NewProp_Wigets_MetaData) }; // 2935973918
 const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_UTitleUserWidget_Statics::NewProp_IP = { "IP", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTitleUserWidget, IP), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_IP_MetaData), NewProp_IP_MetaData) };
 const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_UTitleUserWidget_Statics::NewProp_Port = { "Port", nullptr, (EPropertyFlags)0x0020080000000005, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTitleUserWidget, Port), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Port_MetaData), NewProp_Port_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UTitleUserWidget_Statics::PropPointers[] = {
@@ -592,10 +592,10 @@ UTitleUserWidget::~UTitleUserWidget() {}
 struct Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleUserWidget_h__Script_UlsanXRLibrary_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UTitleUserWidget, UTitleUserWidget::StaticClass, TEXT("UTitleUserWidget"), &Z_Registration_Info_UClass_UTitleUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UTitleUserWidget), 3371165554U) },
+		{ Z_Construct_UClass_UTitleUserWidget, UTitleUserWidget::StaticClass, TEXT("UTitleUserWidget"), &Z_Registration_Info_UClass_UTitleUserWidget, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UTitleUserWidget), 2569223405U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleUserWidget_h__Script_UlsanXRLibrary_2856587121(TEXT("/Script/UlsanXRLibrary"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleUserWidget_h__Script_UlsanXRLibrary_4253802883(TEXT("/Script/UlsanXRLibrary"),
 	Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleUserWidget_h__Script_UlsanXRLibrary_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_UlsanXRLibrary_Source_UlsanXRLibrary_Mode_Title_UI_TitleUserWidget_h__Script_UlsanXRLibrary_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

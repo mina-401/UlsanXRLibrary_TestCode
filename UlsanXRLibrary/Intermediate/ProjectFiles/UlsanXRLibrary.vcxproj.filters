@@ -202,6 +202,12 @@
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\UI\PlayMain.h">
       <Filter>Source\UlsanXRLibrary\Mode\Play\UI</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\UI\Ready.cpp">
+      <Filter>Source\UlsanXRLibrary\Mode\Play\UI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\UI\Ready.h">
+      <Filter>Source\UlsanXRLibrary\Mode\Play\UI</Filter>
+    </ClInclude>
     <Filter Include="Source\UlsanXRLibrary\Mode\Title">
       <UniqueIdentifier>{9F084394-DD82-3F40-A451-256B1D59E509}</UniqueIdentifier>
     </Filter>
