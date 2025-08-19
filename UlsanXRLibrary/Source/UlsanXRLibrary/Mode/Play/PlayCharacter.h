@@ -44,27 +44,48 @@ public:
 	//void Teleport(FVector _Point);
 	//void Teleport_Implementation(FVector _Point);
 
+
+
 	UFUNCTION(BlueprintCallable)
 	void CloseStreamingLevel();
 
 
 	//이동시키는 북
 
+	//UFUNCTION(BlueprintCallable)
+	//class ATravelBook* GetTravelBook()
+	//{
+	//	return Cast<ATravelBook>(BookActor);
+	//}
+
 	UFUNCTION(BlueprintCallable)
-	class ATravelBook* GetTravelBook()
-	{
-		return Cast<ATravelBook>(BookActor);
-	}
+	void ClearBookActor(class AActor* _BookActor);
 
 	UFUNCTION(BlueprintCallable)
 	bool GetIsLeaderPawn();
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Reliable, Server)
 	void CheckLeader(class AActor* _Actor);
+	void CheckLeader_Implementation(class AActor* _Actor);
+
+
+	UFUNCTION(BlueprintCallable,Reliable,NetMulticast)
+	void CheckLeader_Multi(class AActor* _Actor);
+	void CheckLeader_Multi_Implementation(class AActor* _Actor);
 
 	UFUNCTION(BlueprintCallable, Reliable,Server)
 	void CheckOutMember(class AActor* _Actor);
 	void CheckOutMember_Implementation(class AActor* _Actor);
+
+	UFUNCTION(Server, Reliable)
+	void SetBookItem(AItem* NewItem);
+	void SetBookItem_Implementation(AItem* NewItem);
+
+	UFUNCTION(Server, Reliable)
+	void SetBookItem_Multi(AItem* NewItem);
+	void SetBookItem_Multi_Implementation(AItem* NewItem);
+
+
 
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
 	void VisibleChangeUIFromAllWidget(ETitleUIType _Type, ESlateVisibility _Value);
@@ -72,6 +93,7 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	
 	virtual void Tick(float DeltaTime) override;
 	// Network replication
 	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const;
@@ -80,12 +102,12 @@ protected:
 	
 
 
-	// IItemInterface
-	void InterectUpdate(class AItem* _Item, float _DeltaTime);
-	void InterectStart(class AItem* _Item);
+	//// IItemInterface
+	//void InterectUpdate(class AItem* _Item, float _DeltaTime);
+	//void InterectStart(class AItem* _Item);
 
-	UFUNCTION(BlueprintCallable)
-	void InterectEnd(class AItem* _Item);
+	//UFUNCTION(BlueprintCallable)
+	//void InterectEnd(class AItem* _Item);
 
 
 private:
@@ -99,7 +121,88 @@ private:
 
 	// 책 정보 나타나는 위젯
 
-	UPROPERTY(VisibleAnywhere,Replicated, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere,Replicated, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class AActor* BookActor = nullptr;
 	
+
+private:
+	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	class AActor* HitActor = nullptr;
+
+	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	class AItem* CurItem = nullptr;
+
+	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	class AItem* SelectItem = nullptr;
+
+
+
+public:
+	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadWrite)
+	bool bIsInParty = false;
+
+
+	UFUNCTION(BlueprintCallable)
+	void SetBookVisible(class AActor* _Actor, bool _b);
+
+
+	//UFUNCTION(BlueprintCallable, Server, Reliable)
+	//void S2C_SetIsInParty(bool _b);
+	//void S2C_SetIsInParty_Implementation(bool _b);
+
+	//UFUNCTION(BlueprintCallable, NetMulticast, Reliable)
+	//void C2S_SetIsInParty(bool _b);
+	//void C2S_SetIsInParty_Implementation(bool _b);
+
+
+	UFUNCTION(Server, Reliable)
+	void C2S_HitActor(AActor* NewHitActor);
+	void C2S_HitActor_Implementation(AActor* NewHitActor);
+
+	UFUNCTION(BlueprintCallable,Server, Reliable)
+	void C2S_CurItem(AItem* NewHitActor);
+	void C2S_CurItem_Implementation(AItem* NewHitActor);
+
+	UFUNCTION(BlueprintCallable,NetMulticast, Reliable)
+	void S2C_CurItem(AItem* NewHitActor);
+	void S2C_CurItem_Implementation(AItem* NewHitActor);
+
+
+
+
+	UFUNCTION(BlueprintCallable, Reliable, Server)
+	void C2S_CheckIn(AActor* _Actor);
+	void C2S_CheckIn_Implementation(AActor* _Actor);
+
+
+	UFUNCTION(BlueprintCallable, Reliable, NetMulticast)
+	void S2C_CheckIn(AActor* _Actor);
+	void S2C_CheckIn_Implementation(AActor* _Actor);
+
+
+	UFUNCTION(BlueprintCallable, Reliable, Server)
+	void C2S_CheckKick(AActor* _Actor);
+	void C2S_CheckKick_Implementation(AActor* _Actor);
+
+	
+	UFUNCTION(BlueprintCallable, Reliable, NetMulticast)
+	void S2C_CheckKick(AActor* _Actor);
+	void S2C_CheckKick_Implementation(AActor* _Actor);
+	//void CheckKickMember_Implementation(class AActor* _Actor);
+
+	UFUNCTION(BlueprintCallable)
+	void InterectObject(AActor* _Actor);
+
+
+	void CloseBook();
+
+	UFUNCTION(BlueprintCallable)
+	void InterectObjectEnd();
+
+	UFUNCTION(BlueprintCallable)
+	void OpenBook();
+
+
+
+	//class 
 };

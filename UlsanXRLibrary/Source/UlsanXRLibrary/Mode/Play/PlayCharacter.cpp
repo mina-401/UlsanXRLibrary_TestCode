@@ -46,16 +46,25 @@ void APlayCharacter::BeginPlay()
 
     int a = 0;
 
-    BookActor = CreateItem(TEXT("BP_TravelBook"));
-
-    if (BookActor != nullptr)
+    if (HasAuthority())
     {
+        BookActor = CreateItem(TEXT("BP_TravelBook"));
         BookActor->SetActorHiddenInGame(true);
-
     }
 
     
 
+}
+
+
+void APlayCharacter::SetBookVisible(class AActor* _Actor, bool _b)
+{
+
+    if (_Actor != nullptr)
+    {
+        _Actor->SetActorHiddenInGame(!_b);
+
+    }
 }
 
 void APlayCharacter::Tick(float DeltaTime)
@@ -69,6 +78,17 @@ void APlayCharacter::Tick(float DeltaTime)
             ActorLookAtCamera(BookActor);
         }
     }
+    else {
+        if (BookActor != nullptr)
+
+        {
+            BookActor->SetActorHiddenInGame(true);
+        }
+       
+    }
+
+
+
 
     
 }
@@ -79,13 +99,19 @@ void APlayCharacter::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor*
 
 }
 
+void APlayCharacter::ClearBookActor(AActor* _BookActor)
+{
+
+
+}
+
 bool APlayCharacter::GetIsLeaderPawn()
 {
-    ATravelBook* Book = Cast<ATravelBook>(BookActor);
+  
 
-    if( nullptr != Book && nullptr != Book->GetItem())
+    if (nullptr != CurItem)
     {
-        if (GetPlayerState() == Book->GetItem()->LeaderState)
+        if (GetPlayerState() == CurItem->LeaderState)
         {
             return true;
         }
@@ -96,80 +122,222 @@ bool APlayCharacter::GetIsLeaderPawn()
     return false;
 
 }
-void APlayCharacter::InterectUpdate(class AItem* _Item,float _DeltaTime)
+//
+// //
+// //
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+//------------------------------------------------------------------
+//void APlayCharacter::C2S_SetIsInParty_Implementation(bool _b)
+//{
+//    bIsInParty = _b;
+//    S2C_SetIsInParty_Implementation(_b);
+//}
+//void APlayCharacter::S2C_SetIsInParty_Implementation(bool _b)
+//{
+//    bIsInParty = _b;
+//}
+void APlayCharacter::C2S_HitActor_Implementation(AActor* NewHitActor)
 {
+    HitActor = NewHitActor;
 }
-void APlayCharacter::InterectStart(class AItem* _Item)
+
+void APlayCharacter::C2S_CurItem_Implementation(AItem* NewHitActor)
 {
- 
+    CurItem = NewHitActor;
 
-        //책 정보 전달하고
-        //위젯 키기
+    S2C_CurItem(NewHitActor);
+}
 
-    if (nullptr == _Item) return;
+void APlayCharacter::S2C_CurItem_Implementation(AItem* NewHitActor)
+{
+    CurItem = NewHitActor;
+}
 
-        FString Name = _Item->GetData()->Name;
+void APlayCharacter::C2S_CheckIn_Implementation(AActor* _Actor)
+{
+    S2C_CheckIn_Implementation(_Actor);
+}
+
+void APlayCharacter::S2C_CheckIn_Implementation(AActor* _Actor)
+{
+    if (CurItem == nullptr) return;
+
+    bIsInParty = true;
+
+    if (true == CurItem->bIsLeader)
+    {
+
+        if (CurItem->LeaderState != GetPlayerState() && !(CurItem->MemberStates.Contains(GetPlayerState())))
+        {
+            CurItem->MemberStates.Add(GetPlayerState());
+
+            int a = 0;
+        }
+
+    }
+
+    else {
+        CurItem->bIsLeader = true;
+        CurItem->SetOwner(this);
+        CurItem->LeaderState = GetPlayerState();
+
+    }
+}
+
+void APlayCharacter::C2S_CheckKick_Implementation(AActor* _Actor)
+{
+	S2C_CheckKick_Implementation(_Actor);
+}
+
+void APlayCharacter::S2C_CheckKick_Implementation(AActor* _Actor)
+{
+   
+
+    if(CurItem == nullptr) return;
+
+    bIsInParty = false;
+
+    if (CurItem->LeaderState == GetPlayerState())
+    {
+
+        if (CurItem->MemberStates.Num() > 0)
+        {
+            APlayerState* NewLeader = CurItem->MemberStates[0];
+            CurItem->LeaderState = NewLeader;
+            CurItem->MemberStates.RemoveAt(0);
+        }
+        else
+        {
+            // 아무도 안 남았으면 리더 해제
+            CurItem->LeaderState = nullptr;
+            CurItem->bIsLeader = false;
+
+        }
+    }
+
+    else {
+
+        if (CurItem->MemberStates.Contains(GetPlayerState()))
+        {
+            CurItem->MemberStates.Remove(GetPlayerState());
+
+            int a = 0;
+        }
+    }
+
+    /*if (CurItem->MemberStates.Num() <= 0)
+    {
+        CurItem->S2C_SetItem(nullptr);
+    }*/
+}
 
 
-    
+
+
+void APlayCharacter::InterectObject(class AActor* _Actor)
+{
+    if (_Actor == nullptr) return;
+    SelectItem = Cast<AItem>(_Actor);
+
+    // 아직 선택하지않음
+    if (CurItem == nullptr)
+    {
+
+
 
         if (nullptr != BookActor)
         {
-            BookActor->SetActorHiddenInGame(true);
-
-            ATravelBook* Book = Cast<ATravelBook>(BookActor);
-            Book->SetItem(_Item);
-            Book->GetWidgetComponent()->SetCollisionProfileName(UCollisionProfile::NoCollision_ProfileName);
-            if (GetController() && GetController()->IsLocalController())
-            {
-
-                Book->GetWidgetComponent()->SetCollisionProfileName(UULXRConst::Collision::ProfileName_WidgetInter);
-                Book->SetName(Name);
-                BookActor->SetActorHiddenInGame(false);
-
-            }
-
-            
-            CheckLeader(BookActor);
-           
+            OpenBook();
+         
         }
-       
- 
-}
-void APlayCharacter::InterectEnd(class AItem* _Item)
-{
-   // if (nullptr == _Item) return;
-    if (nullptr != BookActor)
-    {
-
-        ATravelBook* Book = Cast<ATravelBook>(BookActor);
-        Book->SetItem(nullptr);
-
-        Book->GetWidgetComponent()->SetCollisionProfileName(UCollisionProfile::NoCollision_ProfileName);
-
-
-
-
-
-        if (GetController() && GetController()->IsLocalController())
-        {
-            Book->SetName("");
-        }
-
-        BookActor->SetActorHiddenInGame(true);
-
-       // CheckOutMember(BookActor);
      
     }
+    else
+    {
+        // 같은 걸 다시 누름?  
+        if (SelectItem == CurItem)
+        {
+            return;
+        }
+        else
+        {
+            //C2S_CheckKick(CurItem);
+
+            //C2S_CurItem(SelectItem);
+            //CurItem = SelectItem;
+            //return;
+            int a = 0;
+        }
+    }
+
+    
+    FString Name = SelectItem->GetData()->Name;
 
 
+    if (BookActor != nullptr)
+    {
+        ATravelBook* Book = Cast<ATravelBook>(BookActor);
 
+        //Book->SetItem(CurItem);
+
+        Book->SetName(SelectItem->GetData()->Name);
+     
+    }
+}
+void APlayCharacter::OpenBook()
+{
+    BookActor->SetActorHiddenInGame(false);
+
+    ATravelBook* Book = Cast<ATravelBook>(BookActor);
+    Book->GetWidgetComponent()->SetCollisionProfileName(UCollisionProfile::NoCollision_ProfileName);
+
+    if (GetController() && GetController()->IsLocalController()) {
+
+        Book->GetWidgetComponent()->SetCollisionProfileName(UULXRConst::Collision::ProfileName_WidgetInter);
+    }
 }
 
-//void APlayCharacter::CheckOutMember(class AActor* _Actor)
-//{
-//    CheckOutMember_Implementation(_Actor);
-//}
+void APlayCharacter::CloseBook()
+{
+    BookActor->SetActorHiddenInGame(true);
+
+    ATravelBook* Book = Cast<ATravelBook>(BookActor);
+    Book->GetWidgetComponent()->SetCollisionProfileName(UCollisionProfile::NoCollision_ProfileName);
+
+}
+void APlayCharacter::InterectObjectEnd()
+{
+
+    if (nullptr == BookActor) return;
+
+    if (BookActor != nullptr)
+    {
+        ATravelBook* Book = Cast<ATravelBook>(BookActor);
+
+        //Book->SetItem(CurItem);
+
+        Book->SetName("");
+
+    }
+
+}
+//
+// 
+// 
+// 
+// 
+// 
+//----------------------------------------
+
+
+
+
 void APlayCharacter::CheckOutMember_Implementation(class AActor* _Actor)
 {
     ATravelBook* Book = Cast<ATravelBook>(_Actor);
@@ -203,8 +371,58 @@ void APlayCharacter::CheckOutMember_Implementation(class AActor* _Actor)
             int a = 0;
         }
     }
+
+   /* if (Book->GetItem()->MemberStates.Num() <= 0)
+    {
+        Book->S2C_SetItem(nullptr);
+    }*/
 }
-void APlayCharacter::CheckLeader(AActor* _Actor)
+void APlayCharacter::SetBookItem_Implementation(AItem* NewItem)
+{
+    SetBookItem_Multi(NewItem);
+}
+
+void APlayCharacter::SetBookItem_Multi_Implementation(AItem* NewItem)
+{
+   
+    ATravelBook* Book = Cast<ATravelBook>(BookActor);
+    Book->GetWidgetComponent()->SetCollisionProfileName(UCollisionProfile::NoCollision_ProfileName);
+}
+
+
+
+
+void APlayCharacter::CheckLeader_Implementation(AActor* _Actor)
+{
+    ATravelBook* Book = Cast<ATravelBook>(_Actor);
+
+   
+
+    if (Book == nullptr || Book->GetItem() == nullptr) return;
+    if (true == Book->GetItem()->bIsLeader)
+    {
+
+        if (Book->GetItem()->LeaderState != GetPlayerState() && !(Book->GetItem()->MemberStates.Contains(GetPlayerState())))
+        {
+            Book->GetItem()->MemberStates.Add(GetPlayerState());
+
+            int a = 0;
+        }
+
+    }
+
+    else {
+        Book->GetItem()->bIsLeader = true;
+        Book->GetItem()->SetOwner(this);
+        Book->GetItem()->LeaderState = GetPlayerState();
+
+    }
+    //CheckLeader_Multi(_Actor);
+}
+
+
+
+void APlayCharacter::CheckLeader_Multi_Implementation(AActor* _Actor)
 {
     ATravelBook* Book = Cast<ATravelBook>(_Actor);
     if (Book == nullptr || Book->GetItem() == nullptr) return;
@@ -232,11 +450,11 @@ void APlayCharacter::CheckLeader(AActor* _Actor)
 
 void APlayCharacter::OpenStreamingLevel_Multi_Implementation()
 {
-    ATravelBook* Book = Cast<ATravelBook>(BookActor);
+    //ATravelBook* Book = Cast<ATravelBook>(BookActor);
 
-	if (Book == nullptr || Book->GetItem() == nullptr) return;
+	if (CurItem == nullptr) return;
 
-    const TSoftObjectPtr<UWorld> NextLevel = Book->GetItem()->GetNextLevel();
+    const TSoftObjectPtr<UWorld> NextLevel = CurItem->GetNextLevel();
 
 
     ULevelStreaming* StreamingLevel = UGameplayStatics::GetStreamingLevel(GetWorld(), *NextLevel.GetAssetName());
@@ -250,14 +468,14 @@ void APlayCharacter::OpenStreamingLevel_Multi_Implementation()
         if (true == bIsLevelVisible)
         {
 
-            if (Book->GetItem() == nullptr) return;
+            if (CurItem == nullptr) return;
             
-            FVector SpawnPoint = Book->GetItem()->GetSpawnPoint();
+            FVector SpawnPoint = CurItem->GetSpawnPoint();
 
-            if (Book->GetItem()->MemberStates.Num() > 0)
+            if (CurItem->MemberStates.Num() > 0)
             {
                 //MemberStates 리스트에 있는 플레이어들 이동
-                for (APlayerState* PS : Book->GetItem()->MemberStates)
+                for (APlayerState* PS : CurItem->MemberStates)
                 {
                     if (!PS) continue;
 
@@ -269,21 +487,25 @@ void APlayCharacter::OpenStreamingLevel_Multi_Implementation()
 
 
                             Cast<APlayCharacter>(Pawn)->VisibleChangeUIFromAllWidget(ETitleUIType::Ready, ESlateVisibility::Collapsed);
+                            
+                            Cast<APlayCharacter>(Pawn)->CloseBook();
                         }
                     }
                 }
             }
             
             //LeaderState도 포함시키려면 Leader도 먼저 이동
-            if (Book->GetItem()->LeaderState)
+            if (CurItem->LeaderState)
             {
-                if (AController* PC = Book->GetItem()->LeaderState->GetOwner<AController>())
+                if (AController* PC = CurItem->LeaderState->GetOwner<AController>())
                 {
                     if (APawn* Pawn = PC->GetPawn())
                     {
                         Pawn->SetActorLocation(SpawnPoint);
 
                         Cast<APlayCharacter>(Pawn)->VisibleChangeUIFromAllWidget(ETitleUIType::Ready, ESlateVisibility::Collapsed);
+                    
+                        Cast<APlayCharacter>(Pawn)->CloseBook();
                     }
                 }
             }
@@ -311,9 +533,9 @@ void APlayCharacter::OpenStreamingLevel_Multi_Implementation()
     //    );
     //}
 
-    if (nullptr != Book->GetItem())
+    if (nullptr != CurItem)
     {
-        FVector SpawnPoint = Book->GetItem()->GetSpawnPoint();
+        FVector SpawnPoint = CurItem->GetSpawnPoint();
 
         SetActorLocation(SpawnPoint);
     }
@@ -332,8 +554,8 @@ void APlayCharacter::OpenStreamingLevel_Multi_Implementation()
 //}
 void APlayCharacter::OpenStreamingLevel_Implementation()
 {
-    ATravelBook* Book = Cast<ATravelBook>(BookActor);
-    const TSoftObjectPtr<UWorld> NextLevel = Book->GetItem()->GetNextLevel();
+    //ATravelBook* Book = Cast<ATravelBook>(BookActor);
+    const TSoftObjectPtr<UWorld> NextLevel =CurItem->GetNextLevel();
 
 
     ULevelStreaming* StreamingLevel = UGameplayStatics::GetStreamingLevel(GetWorld(), *NextLevel.GetAssetName());
@@ -374,4 +596,6 @@ void APlayCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLi
 
     DOREPLIFETIME(APlayCharacter, BookActor);
     DOREPLIFETIME(APlayCharacter, bIsServer);
+    DOREPLIFETIME(APlayCharacter, HitActor);
+    DOREPLIFETIME(APlayCharacter, bIsInParty);
 }

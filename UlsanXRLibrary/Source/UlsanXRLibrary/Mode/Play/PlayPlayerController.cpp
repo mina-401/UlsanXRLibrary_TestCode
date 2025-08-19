@@ -3,6 +3,7 @@
 
 #include "Mode/Play/PlayPlayerController.h"
 #include "Components/WidgetInteractionComponent.h"
+#include "PlayCharacter.h"
 
 APlayPlayerController::APlayPlayerController()
 {
@@ -32,11 +33,55 @@ void APlayPlayerController::Tick(float DeltaTime)
     if (IsInputKeyDown(EKeys::LeftMouseButton))
     {
         WidgetInteraction->PressPointerKey(EKeys::LeftMouseButton);
+        ObjectRayCast();
     }
     else
     {
         WidgetInteraction->ReleasePointerKey(EKeys::LeftMouseButton);
     }
 
+    
 
+
+}
+void APlayPlayerController::ObjectRayCast()
+{
+    // 1. 마우스 위치 가져오기
+    float MouseX, MouseY;
+    if (!GetMousePosition(MouseX, MouseY))
+        return;
+
+    FVector WorldLocation, WorldDirection;
+    if (!DeprojectScreenPositionToWorld(MouseX, MouseY, WorldLocation, WorldDirection))
+        return;
+
+    // 2. 레이캐스트 시작점과 끝점 계산
+    FVector Start = WorldLocation;
+    FVector End = Start + WorldDirection * 20000.0f; // 10,000 유닛 앞으로 쏨
+
+    // 3. 레이캐스트 파라미터 설정
+    FHitResult HitResult;
+    FCollisionQueryParams Params;
+    Params.AddIgnoredActor(GetPawn()); // 자기 자신 제외
+
+    // 4. 레이캐스트 실행
+    bool bHit = GetWorld()->LineTraceSingleByChannel(HitResult, Start, End, ECC_Visibility, Params);
+
+    if (bHit && HitResult.GetActor())
+    {
+        UPrimitiveComponent* HitComp = HitResult.GetComponent();
+        if (HitComp && HitComp->GetCollisionObjectType() == ECC_GameTraceChannel2) // 예: Item용 커스텀 채널
+        {
+          /*  GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Green,
+                FString::Printf(TEXT("Hit Item Actor: %s"), *HitResult.GetActor()->GetName()));*/
+
+            APlayCharacter* MyPawn= Cast<APlayCharacter>(GetPawn());
+
+            MyPawn->C2S_HitActor(HitResult.GetActor());
+            MyPawn->InterectObject(HitResult.GetActor());
+        }
+    }
+
+    // 5. 디버그용 레이 그리기
+    DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, 0.1f, 0, 0.1f);
 }

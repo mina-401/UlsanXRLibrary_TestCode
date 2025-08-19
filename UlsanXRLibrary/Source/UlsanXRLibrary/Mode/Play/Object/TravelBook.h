@@ -26,10 +26,18 @@ public:
 		return WidgetComponent;
 	};
 
-	void SetItem(class AItem* _Item)
-	{
-		Item = _Item;
-	}
+	void SetItem(class AItem* _Item);
+
+
+	UFUNCTION(BlueprintCallable, Server, Reliable)
+	void S2C_SetItem(class AItem* _Item);
+	void S2C_SetItem_Implementation(class AItem* _Item);
+
+	UFUNCTION(BlueprintCallable,Reliable, NetMulticast)
+	void C2S_SetItem(class AItem* _Item);
+	void C2S_SetItem_Implementation(class AItem* _Item);
+
+
 
 	class AItem* GetItem()
 	{

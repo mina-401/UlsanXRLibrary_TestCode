@@ -48,6 +48,20 @@ void ATravelBook::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifet
 
     DOREPLIFETIME(ATravelBook, Item);
 }
+void ATravelBook::SetItem(AItem* _Item)
+{
+    Item = _Item;
+}
+void ATravelBook::S2C_SetItem_Implementation(AItem* _Item)
+{
+    {
+        Item = _Item;
+    }
+}
+void ATravelBook::C2S_SetItem_Implementation(AItem* _Item)
+{
+    Item = _Item;
+}
 // Called when the game starts or when spawned
 void ATravelBook::BeginPlay()
 {
