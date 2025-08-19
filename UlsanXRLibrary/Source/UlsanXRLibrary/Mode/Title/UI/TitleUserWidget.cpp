@@ -104,6 +104,15 @@ void UTitleUserWidget::StartServer()
 	GameInstance->StartServer(IP, Port);
 }
 
+void UTitleUserWidget::StartOnlineServer()
+{
+	class UBaseGameInstance* GameInstance = GetGameInstance<UBaseGameInstance>();
+
+	if (GameInstance == nullptr) return;
+
+	GameInstance->CreateSession("ULXR", 99);
+}
+
 void UTitleUserWidget::Connect()
 {
 	

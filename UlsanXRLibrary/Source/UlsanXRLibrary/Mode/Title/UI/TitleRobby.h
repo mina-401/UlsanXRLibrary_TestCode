@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Mode/Title/UI/TitleUserWidget.h"
-
+#include "Components/Button.h"
 #include <Components/EditableTextBox.h>
 #include <Components/TextBlock.h>
 #include "TitleRobby.generated.h"
@@ -35,9 +35,20 @@ public:
 
 
 
+protected:
+	void StartOnlineServer() override;
 
+	UPROPERTY(meta = (BindWidget))
+	UButton* Btn_OpenRoom;
 
 private:
+
+	//UFUNCTION()
+	//void OnOpenRoomClicked();
+
+	bool IsOnceClicked = false;
+
+
 	bool bIPIsValid = false;
 	bool bIsServerAlive = false;
 	bool bConnecting = false;

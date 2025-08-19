@@ -5,7 +5,14 @@
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
 #include "Engine/NetDriver.h"
+
+#include "OnlineSubsystem.h"
+#include "Interfaces/OnlineSessionInterface.h"
+#include "OnlineSessionSettings.h"
 #include "BaseGameInstance.generated.h"
+
+
+
 
 /**
  * 
@@ -17,6 +24,26 @@ class ULSANXRLIBRARY_API UBaseGameInstance : public UGameInstance
 
 	friend class UGlobalDataTable;
 	friend class UFallGlobal;
+
+public:
+	UPROPERTY()
+	FString BaseSessionName = TEXT("UXLR");
+
+
+	IOnlineSessionPtr SessionInterface;
+	TSharedPtr<class FOnlineSessionSearch> SessionSearch;
+
+	UFUNCTION(BlueprintCallable)
+	FString GetPlayWorldLevel();
+
+	void CreateSession(FString roomName, int32 playerCount);
+
+
+	void OnCreateSessionComplete(FName sessionName, bool bWasSuccessful);
+	void OnDestroySessionComplete(FName SessionName, bool bWasSuccessful);
+	void OnFindSessionsComplete(bool bWasSuccessful);
+	void OnJoinSessionComplete(FName sessionName, EOnJoinSessionCompleteResult::Type result);
+
 
 public:
 	UBaseGameInstance();

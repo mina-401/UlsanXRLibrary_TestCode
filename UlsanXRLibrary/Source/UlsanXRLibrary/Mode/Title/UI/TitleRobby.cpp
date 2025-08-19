@@ -27,6 +27,34 @@ void UTitleRobby::Connect()
 
 }
 
+//void UTitleRobby::OnOpenRoomClicked()
+//{
+//	
+//
+//	if (!IsOnceClicked) { // 한번만 로그인 클릭할 수 있게 처리
+//		
+//		
+//	}
+//}
+
+void UTitleRobby::StartOnlineServer()
+{
+	// 한번 클릭이면
+	if (false == IsOnceClicked)
+	{
+
+		IsOnceClicked = true;
+		class UBaseGameInstance* GameInstance = GetGameInstance<UBaseGameInstance>();
+
+
+
+		if (GameInstance == nullptr) return;
+
+		GameInstance->CreateSession("ULXR", 99);
+	}
+	else return;
+
+}
 
 void UTitleRobby::CheckServer(const FString& _IP, const FString& _Port)
 {

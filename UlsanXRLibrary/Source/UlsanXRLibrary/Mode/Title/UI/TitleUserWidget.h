@@ -44,6 +44,10 @@ public:
 	UFUNCTION(BlueprintCallable)
 	virtual void StartServer();
 
+	// 서버 연결 함수
+	UFUNCTION(BlueprintCallable)
+	virtual void StartOnlineServer();
+
 	UFUNCTION(BlueprintCallable)
 	virtual void Connect();
 
