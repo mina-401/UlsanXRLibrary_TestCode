@@ -88,7 +88,12 @@ void APlayCharacter::Tick(float DeltaTime)
     }
 
 
+    if (nullptr != CurItem) {
 
+        PartyPlayerCount = CurItem->MemberStates.Num() + int(CurItem->LeaderState !=nullptr) > 0 ? CurItem->MemberStates.Num() + int(CurItem->LeaderState != nullptr) : 0;
+
+        
+    }
 
     
 }
@@ -206,6 +211,7 @@ void APlayCharacter::S2C_CheckIn_Implementation(AActor* _Actor)
         CurItem->LeaderState = GetPlayerState();
 
     }
+
 
     S2C_CloseBook();
 
@@ -623,4 +629,5 @@ void APlayCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLi
     DOREPLIFETIME(APlayCharacter, bIsServer);
     DOREPLIFETIME(APlayCharacter, HitActor);
     DOREPLIFETIME(APlayCharacter, bIsInParty);
+    DOREPLIFETIME(APlayCharacter, CurWidget);
 }

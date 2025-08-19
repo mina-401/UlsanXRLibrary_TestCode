@@ -79,6 +79,11 @@ public:
 	}
 
 
+	//메인 위젯에서 ui 가져오기
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+	void GetWidgetFromMain(ETitleUIType _Type);
+
+
 private:
 	UPROPERTY(Category = "UI", EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class UTitleUserWidget* MainWidget;

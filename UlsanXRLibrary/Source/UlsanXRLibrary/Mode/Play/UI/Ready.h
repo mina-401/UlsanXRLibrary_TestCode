@@ -17,5 +17,8 @@ class ULSANXRLIBRARY_API UReady : public UTitleUserWidget
 public:
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
 	void CreateFriendData(const FString& _Name);
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+	void DeleteFriendData(const FString& _Name);
 	
 };

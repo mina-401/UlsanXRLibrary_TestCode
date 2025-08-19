@@ -90,6 +90,9 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
 	void VisibleChangeUIFromAllWidget(ETitleUIType _Type, ESlateVisibility _Value);
 
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+	void GetWidgetFromMain(ETitleUIType _Type);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -136,11 +139,14 @@ private:
 	class AItem* SelectItem = nullptr;
 
 
-
+	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	class UTitleUserWidget* CurWidget = nullptr;
 public:
 	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadWrite)
 	bool bIsInParty = false;
 
+	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadWrite)
+	int PartyPlayerCount = 0;
 
 	UFUNCTION(BlueprintCallable)
 	void SetBookVisible(class AActor* _Actor, bool _b);

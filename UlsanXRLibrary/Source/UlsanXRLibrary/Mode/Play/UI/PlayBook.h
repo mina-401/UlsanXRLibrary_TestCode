@@ -18,6 +18,8 @@ public:
 	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
 	void VisibleChangeUIFromAllWidget(ETitleUIType _Type, ESlateVisibility _Value);
 
-	UFUNCTION(BlueprintCallable,BlueprintImplementableEvent)
-	void GetWidgetFromMain(ETitleUIType _Type);
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+	void CreateFriendObject();
+
 };
