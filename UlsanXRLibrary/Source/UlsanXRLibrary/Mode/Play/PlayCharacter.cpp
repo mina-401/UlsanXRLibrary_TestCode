@@ -167,6 +167,9 @@ void APlayCharacter::S2C_CurItem_Implementation(AItem* NewHitActor)
 void APlayCharacter::C2S_CheckIn_Implementation(AActor* _Actor)
 {
     S2C_CheckIn_Implementation(_Actor);
+
+    S2C_CloseBook();
+
 }
 
 void APlayCharacter::S2C_CheckIn_Implementation(AActor* _Actor)
@@ -213,7 +216,6 @@ void APlayCharacter::S2C_CheckIn_Implementation(AActor* _Actor)
     }
 
 
-    S2C_CloseBook();
 
     //C2S_CloseBook();
 }
