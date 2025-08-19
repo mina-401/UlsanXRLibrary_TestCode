@@ -32,7 +32,8 @@ void UBaseGameInstance::CreateSession(FString roomName, int32 playerCount)
 
 	// 1. LAN 연결인지 DEDICATED 연결인지 설정한다.
 	sessionSettings.bIsDedicated = false;
-	sessionSettings.bIsLANMatch = IOnlineSubsystem::Get()->GetSubsystemName() == FName("NULL");
+	//sessionSettings.bIsLANMatch = IOnlineSubsystem::Get()->GetSubsystemName() == FName("NULL");
+	sessionSettings.bIsLANMatch = false;
 
 	// 2. 검색 가능한 방으로 설정한다.
 	sessionSettings.bShouldAdvertise = true;

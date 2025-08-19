@@ -199,6 +199,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void InterectObject(AActor* _Actor);
 
+	UFUNCTION(BlueprintCallable)
+	void SoloCloseBook();
+
 	UFUNCTION(BlueprintCallable, Reliable, Server)
 	void C2S_CloseBook();
 	void C2S_CloseBook_Implementation();

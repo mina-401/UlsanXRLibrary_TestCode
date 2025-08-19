@@ -275,6 +275,18 @@ void APlayCharacter::InterectObject(class AActor* _Actor)
     if (_Actor == nullptr) return;
     SelectItem = Cast<AItem>(_Actor);
 
+    FString Name = SelectItem->GetData()->Name;
+
+
+    if (BookActor != nullptr)
+    {
+        ATravelBook* Book = Cast<ATravelBook>(BookActor);
+
+        //Book->SetItem(CurItem);
+
+        Book->SetName(SelectItem->GetData()->Name);
+
+    }
     // 아직 선택하지않음
     if (CurItem == nullptr)
     {
@@ -306,19 +318,16 @@ void APlayCharacter::InterectObject(class AActor* _Actor)
         }
     }
 
-    
-    FString Name = SelectItem->GetData()->Name;
+ 
+}
+void APlayCharacter::SoloCloseBook()
+{
+   
+        BookActor->SetActorHiddenInGame(true);
 
-
-    if (BookActor != nullptr)
-    {
         ATravelBook* Book = Cast<ATravelBook>(BookActor);
-
-        //Book->SetItem(CurItem);
-
-        Book->SetName(SelectItem->GetData()->Name);
-     
-    }
+        Book->GetWidgetComponent()->SetCollisionProfileName(UCollisionProfile::NoCollision_ProfileName);
+  
 }
 void APlayCharacter::OpenBook()
 {
@@ -334,11 +343,16 @@ void APlayCharacter::OpenBook()
 }
 
 void APlayCharacter::S2C_CloseBook_Implementation()
-{
-    BookActor->SetActorHiddenInGame(true);
+{ 
+    if (CurItem==SelectItem && GetController() && GetController()->IsLocalPlayerController())
+    {
+        BookActor->SetActorHiddenInGame(true);
 
-    ATravelBook* Book = Cast<ATravelBook>(BookActor);
-    Book->GetWidgetComponent()->SetCollisionProfileName(UCollisionProfile::NoCollision_ProfileName);
+        ATravelBook* Book = Cast<ATravelBook>(BookActor);
+        Book->GetWidgetComponent()->SetCollisionProfileName(UCollisionProfile::NoCollision_ProfileName);
+    }
+
+   
 }
 void APlayCharacter::C2S_CloseBook_Implementation()
 {
@@ -521,7 +535,7 @@ void APlayCharacter::OpenStreamingLevel_Multi_Implementation()
 
                             Cast<APlayCharacter>(Pawn)->VisibleChangeUIFromAllWidget(ETitleUIType::Ready, ESlateVisibility::Collapsed);
                             
-                            Cast<APlayCharacter>(Pawn)->C2S_CloseBook();
+                            Cast<APlayCharacter>(Pawn)->SoloCloseBook();
                         }
                     }
                 }
@@ -538,7 +552,7 @@ void APlayCharacter::OpenStreamingLevel_Multi_Implementation()
 
                         Cast<APlayCharacter>(Pawn)->VisibleChangeUIFromAllWidget(ETitleUIType::Ready, ESlateVisibility::Collapsed);
                     
-                        Cast<APlayCharacter>(Pawn)->C2S_CloseBook();
+                        Cast<APlayCharacter>(Pawn)->SoloCloseBook();
                     }
                 }
             }
