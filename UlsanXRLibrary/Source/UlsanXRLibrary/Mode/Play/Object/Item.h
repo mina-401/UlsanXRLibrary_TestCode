@@ -34,20 +34,21 @@ public:
 	FVector GetSpawnPoint();
 
 
+	
+
 	//
+	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadWrite, Category = "Item")
+	int CurPlayerCount = 0;
+
 	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadWrite, Category = "Item")
 	bool bIsLeader = false;
 
-	// 예: PlayerState를 이용
 	UPROPERTY(Replicated, VisibleAnywhere, BlueprintReadOnly)
 	APlayerState* LeaderState = nullptr;
 
 	UPROPERTY(Replicated, VisibleAnywhere, BlueprintReadOnly)
 	TArray<APlayerState*> MemberStates;
 
-	// 팀 관리 함수
-	UFUNCTION()
-	void RegisterPlayer(APlayerController* Player);
 
 protected:
 	// Called when the game starts or when spawned
@@ -57,7 +58,7 @@ protected:
 	// Network replication
 	void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const;
 
-
+	 
 	//
 	UFUNCTION()
 	void OnOverlapBegin(

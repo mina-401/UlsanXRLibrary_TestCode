@@ -37,29 +37,6 @@ FVector AItem::GetSpawnPoint()
 	return FindData->SpawnPoint;
 }
 
-void AItem::RegisterPlayer(APlayerController* Player)
-{
-	//if (!Player) return;
-
-	//if (!Leader)
-	//{
-	//	// 방장이 없으면 선택한 플레이어가 방장
-	//	Leader = Player;
-	//	
-	//}
-	//else
-	//{
-	//	// 이미 방장이 있으면 팀원으로 등록
-
-	//	if (Leader == Player) return;
-
-	//	if (!Members.Contains(Player))
-	//	{
-	//		Members.Add(Player);
-	//		
-	//	}
-	//}
-}
 
 // Called when the game starts or when spawned
 void AItem::BeginPlay()
@@ -131,13 +108,9 @@ void AItem::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	//if (nullptr != OtherPlayer && OtherPlayer->GetClass()->ImplementsInterface(UItemInterface::StaticClass()))
+	//if (MemberStates.Num() > 0)
 	//{
-	//	IItemInterface* ItemInterface = Cast<IItemInterface>(OtherPlayer);
-	//	if (ItemInterface)
-	//	{
-	//		ItemInterface->InterectEnd(this); // 아이템 정보를 캐릭터에 전달
-	//	}
+	//	CurPlayerCount
 	//}
 
 }
@@ -151,4 +124,5 @@ void AItem::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimePro
 
 	DOREPLIFETIME(AItem, LeaderState);
 	DOREPLIFETIME(AItem, MemberStates);
+	DOREPLIFETIME(AItem, CurPlayerCount);
 }

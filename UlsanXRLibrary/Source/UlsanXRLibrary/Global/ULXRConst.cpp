@@ -22,6 +22,6 @@ FName UULXRConst::Collision::ProfileName_WidgetInter = TEXT("WidgetInter");
 FString UULXRConst::Path::GlobalDataTablePath =TEXT("/Game/BP/Global/Data/DT_GlobalDataTable.DT_GlobalDataTable");
 
 // Title -> Play ¿Ãµø 
-int UULXRConst::Title::MaxPlayer = 2
+int UULXRConst::Title::MaxPlayer = 2;
 
 ;

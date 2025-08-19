@@ -10,9 +10,9 @@
 #include "Global/Data/GlobalDataTable.h"
 #include "Components/WidgetComponent.h"
 #include "Kismet/GameplayStatics.h"
-#include <ULXRConst.h>
 #include "Net/UnrealNetwork.h"
 #include "GameFramework/PlayerState.h"
+#include "Global/ULXRConst.h"
 
 
 APlayCharacter::APlayCharacter()
@@ -168,11 +168,23 @@ void APlayCharacter::S2C_CheckIn_Implementation(AActor* _Actor)
 {
     if (CurItem == nullptr) return;
 
-    bIsInParty = true;
+    
+
+
+
+    
 
     if (true == CurItem->bIsLeader)
     {
 
+        if (CurItem->MemberStates.Num() > 0)
+        {
+            if (UULXRConst::Title::MaxPlayer <= CurItem->MemberStates.Num()+1)
+            {
+                return;
+            }
+        }
+        
         if (CurItem->LeaderState != GetPlayerState() && !(CurItem->MemberStates.Contains(GetPlayerState())))
         {
             CurItem->MemberStates.Add(GetPlayerState());
@@ -180,14 +192,24 @@ void APlayCharacter::S2C_CheckIn_Implementation(AActor* _Actor)
             int a = 0;
         }
 
+        bIsInParty = true;
+
     }
 
     else {
+
+       
+        
+        bIsInParty = true;
         CurItem->bIsLeader = true;
         CurItem->SetOwner(this);
         CurItem->LeaderState = GetPlayerState();
 
     }
+
+    S2C_CloseBook();
+
+    //C2S_CloseBook();
 }
 
 void APlayCharacter::C2S_CheckKick_Implementation(AActor* _Actor)
@@ -230,7 +252,7 @@ void APlayCharacter::S2C_CheckKick_Implementation(AActor* _Actor)
             int a = 0;
         }
     }
-
+    //C2S_CloseBook();
     /*if (CurItem->MemberStates.Num() <= 0)
     {
         CurItem->S2C_SetItem(nullptr);
@@ -303,13 +325,16 @@ void APlayCharacter::OpenBook()
     }
 }
 
-void APlayCharacter::CloseBook()
+void APlayCharacter::S2C_CloseBook_Implementation()
 {
     BookActor->SetActorHiddenInGame(true);
 
     ATravelBook* Book = Cast<ATravelBook>(BookActor);
     Book->GetWidgetComponent()->SetCollisionProfileName(UCollisionProfile::NoCollision_ProfileName);
-
+}
+void APlayCharacter::C2S_CloseBook_Implementation()
+{
+    S2C_CloseBook_Implementation();
 }
 void APlayCharacter::InterectObjectEnd()
 {
@@ -488,7 +513,7 @@ void APlayCharacter::OpenStreamingLevel_Multi_Implementation()
 
                             Cast<APlayCharacter>(Pawn)->VisibleChangeUIFromAllWidget(ETitleUIType::Ready, ESlateVisibility::Collapsed);
                             
-                            Cast<APlayCharacter>(Pawn)->CloseBook();
+                            Cast<APlayCharacter>(Pawn)->C2S_CloseBook();
                         }
                     }
                 }
@@ -505,7 +530,7 @@ void APlayCharacter::OpenStreamingLevel_Multi_Implementation()
 
                         Cast<APlayCharacter>(Pawn)->VisibleChangeUIFromAllWidget(ETitleUIType::Ready, ESlateVisibility::Collapsed);
                     
-                        Cast<APlayCharacter>(Pawn)->CloseBook();
+                        Cast<APlayCharacter>(Pawn)->C2S_CloseBook();
                     }
                 }
             }
