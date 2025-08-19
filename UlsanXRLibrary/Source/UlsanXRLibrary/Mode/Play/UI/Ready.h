@@ -13,5 +13,9 @@ UCLASS()
 class ULSANXRLIBRARY_API UReady : public UTitleUserWidget
 {
 	GENERATED_BODY()
+
+public:
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+	void CreateFriendData(const FString& _Name);
 	
 };

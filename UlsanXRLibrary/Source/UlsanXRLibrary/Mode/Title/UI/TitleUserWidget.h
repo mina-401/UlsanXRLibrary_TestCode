@@ -33,6 +33,11 @@ public:
 	{
 		return MainWidget;
 	}
+	UFUNCTION(BlueprintCallable)
+	class UTitleUserWidget* GetWidget(ETitleUIType _Tpye)
+	{
+		return Wigets[_Tpye];
+	}
 
 	UFUNCTION(BlueprintCallable)
 	void SetZOrder(int _Order);

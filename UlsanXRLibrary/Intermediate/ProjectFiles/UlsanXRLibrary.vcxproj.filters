@@ -12,6 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <None Include="..\..\.gitignore" />
+    <None Include="..\..\.vsconfig" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
     </Filter>
@@ -411,6 +412,12 @@
     <Filter Include="Source\UlsanXRLibrary\Mode\Play\Object">
       <UniqueIdentifier>{D7B89D7D-3C05-35E8-B276-A155CC8835BD}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\Object\FriendData.cpp">
+      <Filter>Source\UlsanXRLibrary\Mode\Play\Object</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\Object\FriendData.h">
+      <Filter>Source\UlsanXRLibrary\Mode\Play\Object</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\Object\Item.cpp">
       <Filter>Source\UlsanXRLibrary\Mode\Play\Object</Filter>
     </ClCompile>
@@ -435,6 +442,12 @@
     <Filter Include="Source\UlsanXRLibrary\Mode\Play\UI">
       <UniqueIdentifier>{1960DD32-92C0-3C53-8A28-AA01BD7E8161}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\UI\PartyFriendItem.cpp">
+      <Filter>Source\UlsanXRLibrary\Mode\Play\UI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Play\UI\PartyFriendItem.h">
+      <Filter>Source\UlsanXRLibrary\Mode\Play\UI</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Play\UI\PlayBook.cpp">
       <Filter>Source\UlsanXRLibrary\Mode\Play\UI</Filter>
     </ClCompile>
