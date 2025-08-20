@@ -319,6 +319,12 @@
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\BasePlayerController.h">
       <Filter>Source\UlsanXRLibrary\Global</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\TimeEventComponent.cpp">
+      <Filter>Source\UlsanXRLibrary\Global</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\TimeEventComponent.h">
+      <Filter>Source\UlsanXRLibrary\Global</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\ULXRConst.cpp">
       <Filter>Source\UlsanXRLibrary\Global</Filter>
     </ClCompile>

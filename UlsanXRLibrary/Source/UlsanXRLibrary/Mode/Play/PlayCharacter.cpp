@@ -15,10 +15,12 @@
 #include "Global/ULXRConst.h"
 #include "Mode/Play/PlayPlayerController.h"
 #include "Mode/Title/UI/TitleUserWidget.h"
+#include <TimeEventComponent.h>
 
 
 APlayCharacter::APlayCharacter()
 {
+    TimeEventComponent = CreateDefaultSubobject<UTimeEventComponent>(TEXT("TimeEventComponent"));
     /*WidgetChildActorComponent = CreateDefaultSubobject<UChildActorComponent>(TEXT("WidgetActor"));
     WidgetChildActorComponent->SetupAttachment(RootComponent);
     WidgetChildActorComponent->SetChildActorClass(AActor::StaticClass());*/
@@ -106,12 +108,6 @@ void APlayCharacter::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor*
 
 }
 
-void APlayCharacter::ClearBookActor(AActor* _BookActor)
-{
-
-
-}
-
 bool APlayCharacter::GetIsLeaderPawn()
 {
   
@@ -130,25 +126,13 @@ bool APlayCharacter::GetIsLeaderPawn()
 
 }
 //
-// //
-// //
-// 
-// 
-// 
+
 // 
 // 
 // 
 // 
 //------------------------------------------------------------------
-//void APlayCharacter::C2S_SetIsInParty_Implementation(bool _b)
-//{
-//    bIsInParty = _b;
-//    S2C_SetIsInParty_Implementation(_b);
-//}
-//void APlayCharacter::S2C_SetIsInParty_Implementation(bool _b)
-//{
-//    bIsInParty = _b;
-//}
+
 void APlayCharacter::C2S_HitActor_Implementation(AActor* NewHitActor)
 {
     HitActor = NewHitActor;
@@ -386,19 +370,32 @@ void APlayCharacter::BookTravel()
             if (nullptr == PC) return;
 
             DestUrl = PC->GetPlayerIP();
-            DestUrl.Append(":30000");
+            //DestUrl.Append(":30000");
         }
 
         APlayPlayerController* PC = Cast<APlayPlayerController>(GetController());
         if (PC)
         {
-            // 여기서 서버 RPC 호출 (클라 → 서버)
             PC->C2S_PartyTravel(DestUrl);
         }
-
-
         GetWidgetFromMain(ETitleUIType::Ready);
         CurWidget->StartBookTravel(DestUrl);
+       /* TimeEventComponent->AddEndEvent(
+            0.5f,
+            [this, DestUrl]()
+            {
+
+                GetWidgetFromMain(ETitleUIType::Ready);
+                CurWidget->StartBookTravel(DestUrl);
+       
+            },
+            false
+        );*/
+   
+        
+        
+
+       
     }
 }
 void APlayCharacter::S2C_BookTravel_Implementation()

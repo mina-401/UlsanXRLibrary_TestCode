@@ -67,6 +67,8 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void StartBookTravel(const FString& _IP, const FString& _Port);
 
+	void LeaderStartBookTravel(const FString& _URL);
+
 	UFUNCTION(BlueprintCallable)
 	void Connect(const FString& _IP, const FString& _Port);
 

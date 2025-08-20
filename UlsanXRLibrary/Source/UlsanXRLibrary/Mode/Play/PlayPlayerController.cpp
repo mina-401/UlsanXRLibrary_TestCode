@@ -2,10 +2,13 @@
 
 
 #include "Mode/Play/PlayPlayerController.h"
+#include <Kismet/GameplayStatics.h>
 #include "Components/WidgetInteractionComponent.h"
 #include "PlayCharacter.h"
 #include "Mode/Play/Object/Item.h"
 #include "GameFramework/PlayerState.h"
+#include "Global/BaseGameInstance.h"
+#include <SocketSubsystem.h>
 
 APlayPlayerController::APlayPlayerController()
 {
@@ -19,15 +22,19 @@ APlayPlayerController::APlayPlayerController()
     WidgetInteraction->TraceChannel = ECollisionChannel::ECC_Visibility;
     WidgetInteraction->InteractionSource = EWidgetInteractionSource::Mouse;
 }
+void APlayPlayerController::C2S_PartyMemberTravel_Implementation(const FString& _URL)
+{
+
+    S2C_PartyTravel_Implementation(_URL);
+}
 FString APlayPlayerController::GetPlayerIP() const
 {
-    if (UNetConnection* Conn = GetNetConnection())
-    {
-        return Conn->LowLevelGetRemoteAddress(false);
-        // 예: "172.30.1.23:7777"
-    }
-    return "";
+	bool bIsLocalHost = false;
+    TSharedRef<FInternetAddr> LocalAddr = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->GetLocalHostAddr(*GLog, bIsLocalHost);
+    return LocalAddr->ToString(false); // false = 포트 제외
+
 }
+    
 
 void APlayPlayerController::C2S_PartyTravel_Implementation(const FString& _URL)
 {
@@ -48,6 +55,17 @@ void APlayPlayerController::C2S_PartyTravel_Implementation(const FString& _URL)
 
 void APlayPlayerController::S2C_PartyTravel_Implementation(const FString& _URL)
 {
+ #if WITH_EDITOR
+    ENetMode NetMode = GetWorld()->GetNetMode();
+
+    int a = 0;
+
+    //UGameplayStatics::OpenLevel(GetWorld(), *_URL, true);
+    //Standalone_StartBookTravel(const FString & _URL);
+    //UGameplayStatics::OpenLevel(this, FName("TestLevel"));
+    //return;
+        
+#endif
     ClientTravel(_URL, TRAVEL_Absolute);
 }
 

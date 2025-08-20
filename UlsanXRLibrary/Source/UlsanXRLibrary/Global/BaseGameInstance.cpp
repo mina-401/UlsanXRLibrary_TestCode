@@ -295,10 +295,28 @@ void UBaseGameInstance::StartBookTravel(const FString& _IP, const FString& _Port
 
 
 	UULXRGlobal::AssetPackagePath(UWorld::StaticClass(), LevelName, LevelPath);
-	FString OpenLevel = FString::Printf(TEXT(":%s%s"), *_Port, *LevelPath);
+	//FString OpenLevel = FString::Printf(TEXT("%s"), *_Port, *LevelPath);
 
 
-	UGameplayStatics::OpenLevel(GetWorld(), *OpenLevel, true, TEXT("listen"));
+	UGameplayStatics::OpenLevel(GetWorld(), *LevelPath, true, TEXT("listen"));
+
+}
+void UBaseGameInstance::LeaderStartBookTravel(const FString& _URL)
+{
+
+	FString LevelPath = TEXT("");
+	FString LevelName = UULXRConst::Level::EndLevelName;
+
+
+	UGlobalDataTable::GetLevelDataName(GetWorld(), LevelName);
+
+
+
+	UULXRGlobal::AssetPackagePath(UWorld::StaticClass(), LevelName, LevelPath);
+	//FString OpenLevel = FString::Printf(TEXT(":%s%s"), *_Port,);
+
+
+	UGameplayStatics::OpenLevel(GetWorld(), *_URL, true);
 
 }
 void UBaseGameInstance::Connect(const FString& _IP, const FString& _Port)

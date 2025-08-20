@@ -24,9 +24,13 @@ public:
 	void C2S_PartyTravel(const FString& _URL);
 	void C2S_PartyTravel_Implementation(const FString& _URL);
 
-	UFUNCTION(Client, Reliable)
+	UFUNCTION(NetMulticast, Reliable)
 	void S2C_PartyTravel(const FString& _URL);
 	void S2C_PartyTravel_Implementation(const FString& _URL);
+
+	UFUNCTION(Server, Reliable)
+	void C2S_PartyMemberTravel(const FString& _URL);
+	void C2S_PartyMemberTravel_Implementation(const FString& _URL);
 
 	FString GetPlayerIP() const;
 

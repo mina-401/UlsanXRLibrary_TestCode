@@ -58,8 +58,6 @@ public:
 	//	return Cast<ATravelBook>(BookActor);
 	//}
 
-	UFUNCTION(BlueprintCallable)
-	void ClearBookActor(class AActor* _BookActor);
 
 	UFUNCTION(BlueprintCallable)
 	bool GetIsLeaderPawn();
@@ -115,37 +113,38 @@ protected:
 
 private:
 	
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Event", meta = (AllowPrivateAccess = "true"))
+	class UTimeEventComponent* TimeEventComponent = nullptr;
 
 	//ServerTravel
 	// 트래블용 서버 북을 소유하는 방장
-	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadOnly, Category = "Server", meta = (AllowPrivateAccess = "true"))
 	bool bIsServer = false;
 
 	// 책 정보 나타나는 위젯
 
-	UPROPERTY(VisibleAnywhere,Replicated, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere,Replicated, BlueprintReadOnly, Category = "Play", meta = (AllowPrivateAccess = "true"))
 	class AActor* BookActor = nullptr;
 	
 
 private:
-	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadOnly, Category = "Play", meta = (AllowPrivateAccess = "true"))
 	class AActor* HitActor = nullptr;
 
-	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadOnly, Category = "Play", meta = (AllowPrivateAccess = "true"))
 	class AItem* CurItem = nullptr;
 
-	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadOnly, Category = "Play",meta = (AllowPrivateAccess = "true"))
 	class AItem* SelectItem = nullptr;
 
 
 	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	class UTitleUserWidget* CurWidget = nullptr;
 public:
-	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadWrite)
+	UPROPERTY(VisibleAnywhere, Category = "Play", Replicated, BlueprintReadWrite)
 	bool bIsInParty = false;
 
-	UPROPERTY(VisibleAnywhere, Replicated, BlueprintReadWrite)
+	UPROPERTY(VisibleAnywhere, Category = "Play", Replicated, BlueprintReadWrite)
 	int PartyPlayerCount = 0;
 
 	UFUNCTION(BlueprintCallable)
