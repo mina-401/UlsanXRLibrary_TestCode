@@ -850,6 +850,11 @@
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles_2)</ForcedIncludeFiles>
     </ClCompile>
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Title\TitlePlayerController.h"/>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Title\UI\TitleHUB.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories_2)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles_2)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Title\UI\TitleHUB.h"/>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Title\UI\TitleMain.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories_2)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ClCompile_ForcedIncludeFiles_2)</ForcedIncludeFiles>

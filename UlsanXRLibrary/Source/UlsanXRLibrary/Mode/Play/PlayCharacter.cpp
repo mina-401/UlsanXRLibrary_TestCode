@@ -13,6 +13,8 @@
 #include "Net/UnrealNetwork.h"
 #include "GameFramework/PlayerState.h"
 #include "Global/ULXRConst.h"
+#include "Mode/Play/PlayPlayerController.h"
+#include "Mode/Title/UI/TitleUserWidget.h"
 
 
 APlayCharacter::APlayCharacter()
@@ -225,6 +227,20 @@ void APlayCharacter::C2S_CheckKick_Implementation(AActor* _Actor)
 	S2C_CheckKick_Implementation(_Actor);
 }
 
+
+void APlayCharacter::C2S_ClearItem_Implementation()
+{
+    if (CurItem != nullptr)
+    {
+        CurItem->bIsLeader = false;
+        CurItem->LeaderState = nullptr;
+        CurItem->MemberStates.Empty();
+
+    }
+
+    S2C_ClearItem_Implementation();
+}
+
 void APlayCharacter::S2C_CheckKick_Implementation(AActor* _Actor)
 {
    
@@ -269,6 +285,11 @@ void APlayCharacter::S2C_CheckKick_Implementation(AActor* _Actor)
 
 
 
+
+
+void APlayCharacter::S2C_ClearItem_Implementation()
+{
+}
 
 void APlayCharacter::InterectObject(class AActor* _Actor)
 {
@@ -353,6 +374,42 @@ void APlayCharacter::S2C_CloseBook_Implementation()
     }
 
    
+}
+
+void APlayCharacter::BookTravel()
+{
+    if (CurItem->LeaderState == GetPlayerState())
+    {
+        FString DestUrl = "";
+        {
+            APlayPlayerController* PC = Cast<APlayPlayerController>(GetController());
+            if (nullptr == PC) return;
+
+            DestUrl = PC->GetPlayerIP();
+            DestUrl.Append(":30000");
+        }
+
+        APlayPlayerController* PC = Cast<APlayPlayerController>(GetController());
+        if (PC)
+        {
+            // 여기서 서버 RPC 호출 (클라 → 서버)
+            PC->C2S_PartyTravel(DestUrl);
+        }
+
+
+        GetWidgetFromMain(ETitleUIType::Ready);
+        CurWidget->StartBookTravel(DestUrl);
+    }
+}
+void APlayCharacter::S2C_BookTravel_Implementation()
+{
+
+    
+}
+void APlayCharacter::C2S_BookTravel_Implementation()
+{
+
+    S2C_BookTravel_Implementation();
 }
 void APlayCharacter::C2S_CloseBook_Implementation()
 {
@@ -533,7 +590,7 @@ void APlayCharacter::OpenStreamingLevel_Multi_Implementation()
                             Pawn->SetActorLocation(SpawnPoint);
 
 
-                            Cast<APlayCharacter>(Pawn)->VisibleChangeUIFromAllWidget(ETitleUIType::Ready, ESlateVisibility::Collapsed);
+                            //Cast<APlayCharacter>(Pawn)->VisibleChangeUIFromAllWidget(ETitleUIType::Ready, ESlateVisibility::Collapsed);
                             
                             Cast<APlayCharacter>(Pawn)->SoloCloseBook();
                         }
@@ -550,7 +607,7 @@ void APlayCharacter::OpenStreamingLevel_Multi_Implementation()
                     {
                         Pawn->SetActorLocation(SpawnPoint);
 
-                        Cast<APlayCharacter>(Pawn)->VisibleChangeUIFromAllWidget(ETitleUIType::Ready, ESlateVisibility::Collapsed);
+                        //Cast<APlayCharacter>(Pawn)->VisibleChangeUIFromAllWidget(ETitleUIType::Ready, ESlateVisibility::Collapsed);
                     
                         Cast<APlayCharacter>(Pawn)->SoloCloseBook();
                     }

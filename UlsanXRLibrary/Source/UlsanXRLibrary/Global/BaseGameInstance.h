@@ -59,23 +59,33 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void StartServer(FString& _IP, FString& _Port);
 
+
+
 	UFUNCTION(BlueprintCallable)
-	void Connect(FString& _IP, FString& _Port);
+	void ConnectBookTravel(const FString& _IP, const FString& _Port);
+
+	UFUNCTION(BlueprintCallable)
+	void StartBookTravel(const FString& _IP, const FString& _Port);
+
+	UFUNCTION(BlueprintCallable)
+	void Connect(const FString& _IP, const FString& _Port);
 
 	UFUNCTION(BlueprintCallable)
 	void WorldServerTravel(UWorld* _World);
+
+
 
 	UFUNCTION(BlueprintCallable)
 	void WorldClientTravel(UWorld* _World);
 
 	void SetCurWidget(class UTitleUserWidget* InWidget) { CurWidget = InWidget; }
 
-	void SetIP(FString& _IP)
+	void SetIP(const FString& _IP)
 	{
 		IP = _IP;
 	}
 
-	void SetPort(FString& _Port)
+	void SetPort(const FString& _Port)
 	{
 		Port = _Port;
 	}

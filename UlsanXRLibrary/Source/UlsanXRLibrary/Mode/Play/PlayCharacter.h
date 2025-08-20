@@ -151,6 +151,10 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void SetBookVisible(class AActor* _Actor, bool _b);
 
+	class AItem* GetItem()
+	{
+		return CurItem;
+	}
 
 	//UFUNCTION(BlueprintCallable, Server, Reliable)
 	//void S2C_SetIsInParty(bool _b);
@@ -196,6 +200,14 @@ public:
 	void S2C_CheckKick_Implementation(AActor* _Actor);
 	//void CheckKickMember_Implementation(class AActor* _Actor);
 
+	UFUNCTION(BlueprintCallable, Reliable, Server)
+	void C2S_ClearItem();
+	void C2S_ClearItem_Implementation();
+
+	UFUNCTION(BlueprintCallable, Reliable, NetMulticast)
+	void S2C_ClearItem();
+	void S2C_ClearItem_Implementation();
+
 	UFUNCTION(BlueprintCallable)
 	void InterectObject(AActor* _Actor);
 
@@ -217,6 +229,16 @@ public:
 	void OpenBook();
 
 
+	UFUNCTION(BlueprintCallable)
+	void BookTravel();
 
+	UFUNCTION(BlueprintCallable, Reliable, Server)
+	void C2S_BookTravel();
+	void C2S_BookTravel_Implementation();
+
+
+	UFUNCTION(BlueprintCallable, Reliable, NetMulticast)
+	void S2C_BookTravel();
+	void S2C_BookTravel_Implementation();
 	//class 
 };

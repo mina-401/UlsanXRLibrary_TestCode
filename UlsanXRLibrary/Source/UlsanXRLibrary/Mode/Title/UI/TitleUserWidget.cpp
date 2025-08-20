@@ -11,7 +11,10 @@
 #include "Global/ULXRGlobal.h"
 #include <Kismet/GameplayStatics.h>
 #include "Global/BaseGameInstance.h"
-
+#include <Sockets.h>
+#include <SocketSubsystem.h>
+#include <IPAddress.h>
+#include <Interfaces/IPv4/IPv4Address.h>
 
 void UTitleUserWidget::NativeConstruct()
 {
@@ -38,7 +41,45 @@ void UTitleUserWidget::MainWidgetInit()
 		return;
 	}
 }
+bool UTitleUserWidget::IsChild(UTitleUserWidget* _Top)
+{
+	TArray<ETitleUIType> AllEnum = UULXREnum::GetAllEnum<ETitleUIType>();
 
+	for (size_t i = 0; i < AllEnum.Num(); i++)
+	{
+		ETitleUIType Type = AllEnum[i];
+
+		if (Wigets[Type] == _Top)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+void UTitleUserWidget::WidgetTopView(UTitleUserWidget* _Top)
+{
+	if (false == IsChild(_Top))
+	{
+		return;
+	}
+
+	TArray<ETitleUIType> AllEnum = UULXREnum::GetAllEnum<ETitleUIType>();
+
+	for (size_t i = 0; i < AllEnum.Num(); i++)
+	{
+		ETitleUIType Type = AllEnum[i];
+
+		if (UCanvasPanelSlot* CanvasSlot = Cast<UCanvasPanelSlot>(Wigets[Type]->Slot))
+		{
+			CanvasSlot->SetZOrder(-1);
+		}
+	}
+
+	if (UCanvasPanelSlot* CanvasSlot = Cast<UCanvasPanelSlot>(_Top->Slot))
+	{
+		CanvasSlot->SetZOrder(100);
+	}
+}
 void UTitleUserWidget::CreateChildWidget(ETitleUIType _Type, TSubclassOf<UUserWidget> _Widget, int _ZOrder)
 {
 	UTitleUserWidget* Widget = CreateWidget<UTitleUserWidget>(CanvasPanel, _Widget);
@@ -102,6 +143,20 @@ void UTitleUserWidget::StartServer()
 	if (GameInstance == nullptr) return;
 
 	GameInstance->StartServer(IP, Port);
+
+	int a = 0;
+}
+void UTitleUserWidget::StartBookTravel(const FString& _IP)
+{
+
+
+
+	class UBaseGameInstance* GameInstance = GetGameInstance<UBaseGameInstance>();
+
+	if (GameInstance == nullptr) return;
+
+	GameInstance->StartBookTravel(_IP, Port);
+
 }
 
 void UTitleUserWidget::StartOnlineServer()
@@ -111,6 +166,15 @@ void UTitleUserWidget::StartOnlineServer()
 	if (GameInstance == nullptr) return;
 
 	GameInstance->CreateSession("ULXR", 99);
+}
+void UTitleUserWidget::ConnectBookTravel(const FString& _IP, const FString& _Port)
+{
+
+	class UBaseGameInstance* GameInstance = GetGameInstance<UBaseGameInstance>();
+
+	if (GameInstance == nullptr) return;
+
+	GameInstance->Connect(_IP, Port);
 }
 
 void UTitleUserWidget::Connect()
@@ -158,4 +222,86 @@ void UTitleUserWidget::PlayAnim(EUMGSequencePlayMode::Type _mode)
 {
 	StopAnimation(CurPlayAnim);
 	PlayAnimation(CurPlayAnim, 0.f, 1, _mode, 1.f);
+}
+//void UTitleUserWidget::CheckServer(const FString& _IP, const FString& _Port)
+//{
+//
+//
+//	ISocketSubsystem* SocketSubsystem = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM);
+//	if (!SocketSubsystem) return;
+//
+//	TSharedRef<FInternetAddr> Addr = SocketSubsystem->CreateInternetAddr();
+//	bool bIsValid;
+//	Addr->SetIp(*_IP, bIsValid);
+//
+//	int32 PortNum = FCString::Atoi(*_Port);
+//	Addr->SetPort(PortNum);
+//
+//	if (!bIsValid) return;
+//
+//	Socket = SocketSubsystem->CreateSocket(NAME_Stream, TEXT("TestSocket"), false);
+//	if (Socket)
+//	{
+//		Socket->SetNonBlocking(true);
+//
+//		//bConnecting = true;
+//		//ConnectElapsed = 0.0f;
+//		Socket->Connect(*Addr);
+//
+//		//SocketSubsystem->DestroySocket(Socket);
+//	}
+//}
+
+
+void UTitleUserWidget::CheckInput(const FString& _IP)
+{
+
+	// 주소 생성
+	TSharedRef<FInternetAddr> Addr = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateInternetAddr();
+	FSocket* TestSocket = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateSocket(NAME_Stream, TEXT("Test"), false);
+
+	// IP 유효성 검사
+	bool ValidIP = false;
+	Addr->SetIp(*_IP, ValidIP);
+
+	// Port 유효성 검사
+	int32 PortNum = FCString::Atoi(*Port);
+	Addr->SetPort(PortNum);
+
+	if (!ValidIP || !Port.IsNumeric() || PortNum <= 0 || PortNum > 65535)
+	{
+		bIPIsValid = false;
+
+
+		return;
+	}
+
+	bIPIsValid = true;
+
+	
+
+
+	int a = 0;
+}
+
+void UTitleUserWidget::CreateServer()
+{
+	//CheckInput(IP);
+
+	if (false == bIPIsValid)
+	{
+		int a = 0;
+		//CurPlayAnim = IPIsNotValid;
+		//PlayAnim(EUMGSequencePlayMode::Forward);
+		return;
+	}
+
+	//else
+	{
+		//CurPlayAnim = RoomIsNotValid;
+
+		//SetConnection();
+
+		StartServer();
+	}
 }

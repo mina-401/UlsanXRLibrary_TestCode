@@ -496,6 +496,12 @@
     <Filter Include="Source\UlsanXRLibrary\Mode\Title\UI">
       <UniqueIdentifier>{CC27F06C-8C4D-34E7-929A-72D166C3B992}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Title\UI\TitleHUB.cpp">
+      <Filter>Source\UlsanXRLibrary\Mode\Title\UI</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Mode\Title\UI\TitleHUB.h">
+      <Filter>Source\UlsanXRLibrary\Mode\Title\UI</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\UlsanXRLibrary\Mode\Title\UI\TitleMain.cpp">
       <Filter>Source\UlsanXRLibrary\Mode\Title\UI</Filter>
     </ClCompile>

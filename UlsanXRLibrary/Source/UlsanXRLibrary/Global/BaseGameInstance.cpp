@@ -218,10 +218,10 @@ void UBaseGameInstance::Init()
 }
 void UBaseGameInstance::HandleTravelFailure(UWorld* World, ETravelFailure::Type FailureType, const FString& Reason)
 {
-	//if (Reason.Contains(TEXT("ServerFull")))
-	//{
-	//	ShowJoinFailedPopup();  // 애니메이션 UI 표시
-	//}
+	if (Reason.Contains(TEXT("ServerFull")))
+	{
+		ShowJoinFailedPopup();  // 애니메이션 UI 표시
+	}
 }
 void UBaseGameInstance::HandleNetworkFailure(UWorld* World, UNetDriver* NetDriver, ENetworkFailure::Type FailureType, const FString& ErrorString)
 {
@@ -258,6 +258,9 @@ void UBaseGameInstance::StartServer(FString& _IP, FString& _Port)
 	FString LevelName = UULXRConst::Level::PlayLevelName;
 
 
+	SetIP(_IP);
+	SetPort(_Port);
+
 	UGlobalDataTable::GetLevelDataName(GetWorld(), LevelName);
 
 
@@ -270,12 +273,41 @@ void UBaseGameInstance::StartServer(FString& _IP, FString& _Port)
 	UGameplayStatics::OpenLevel(GetWorld(), *OpenLevel, true, TEXT("listen"));
 
 }
-void UBaseGameInstance::Connect(FString& _IP, FString& _Port)
+
+void UBaseGameInstance::ConnectBookTravel(const FString& _IP, const FString& _Port)
+{
+
+
+	FString ConnectLevelName = FString::Printf(TEXT("%s:%s"), *_IP, *_Port);
+	// 127.0.0.1:30000
+	UGameplayStatics::OpenLevel(GetWorld(), FName(*ConnectLevelName));
+}
+
+void UBaseGameInstance::StartBookTravel(const FString& _IP, const FString& _Port)
+{
+
+	FString LevelPath = TEXT("");
+	FString LevelName = UULXRConst::Level::EndLevelName;
+
+
+	UGlobalDataTable::GetLevelDataName(GetWorld(), LevelName);
+
+
+
+	UULXRGlobal::AssetPackagePath(UWorld::StaticClass(), LevelName, LevelPath);
+	FString OpenLevel = FString::Printf(TEXT(":%s%s"), *_Port, *LevelPath);
+
+
+	UGameplayStatics::OpenLevel(GetWorld(), *OpenLevel, true, TEXT("listen"));
+
+}
+void UBaseGameInstance::Connect(const FString& _IP, const FString& _Port)
 {
 	/*SetIP(_IP);
 	SetPort(_Port);
 	*/
-	
+	SetIP(_IP);	
+	SetPort(_Port);
 
 	FString ConnectLevelName = FString::Printf(TEXT("%s:%s"), *_IP, *_Port);
 	// 127.0.0.1:30000

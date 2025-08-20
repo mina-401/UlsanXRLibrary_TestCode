@@ -21,6 +21,11 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void MainWidgetInit();
 
+	bool IsChild(UTitleUserWidget* _Top);
+
+	UFUNCTION(BlueprintCallable)
+	void WidgetTopView(UTitleUserWidget* _Top);
+
 	UFUNCTION(BlueprintCallable)
 	void CreateChildWidget(ETitleUIType _Type, TSubclassOf<UUserWidget> _Widget, int _ZOrder);
 
@@ -49,6 +54,12 @@ public:
 	UFUNCTION(BlueprintCallable)
 	virtual void StartServer();
 
+	UFUNCTION(BlueprintCallable)
+	void ConnectBookTravel(const FString& _IP, const FString& _Port);
+
+	UFUNCTION(BlueprintCallable)
+	void StartBookTravel(const FString& _IP);
+
 	// 서버 연결 함수
 	UFUNCTION(BlueprintCallable)
 	virtual void StartOnlineServer();
@@ -64,13 +75,40 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void SetConnection();
+	
+
+
+
+	UFUNCTION(BlueprintCallable)
+	virtual void CheckInput(const FString& _IP);
+
+	UFUNCTION(BlueprintCallable)
+	void CreateServer();
+
+
+
+
+
 
 	//레벨 스트리밍
 	UFUNCTION(BlueprintCallable)
 	void OpenStreamingLevel();
 
 
+	//UFUNCTION(BlueprintCallable)
+	//void CheckServer(const FString& _IP, const FString& _Port);
+
+	//class UWidgetAnimation* CurPlayAnim = nullptr;
+
+
+	//class UWidgetAnimation* CurPlayAnim = nullptr;
+
+
+
+
 	// 애니메이션 재생 함수
+
+	UFUNCTION(BlueprintCallable)
 	void PlayAnim(EUMGSequencePlayMode::Type _mode);
 
 	UWidgetAnimation* GetCurAnimation()
@@ -95,7 +133,21 @@ private:
 	TMap<ETitleUIType, UTitleUserWidget*> Wigets;
 
 
+	// 입장시 ip 체크 관련
+
+
+
+	//UPROPERTY(meta = (BindWidgetAnim), Transient)
+	//UWidgetAnimation* IPIsNotValid;
+
+
+	FSocket* Socket;
 protected:
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Server", meta = (AllowPrivateAccess = "true"))
+	bool bIPIsValid = false;
+
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Server", meta = (AllowPrivateAccess = "true"))
 	FString IP = TEXT("127.0.0.1");
 

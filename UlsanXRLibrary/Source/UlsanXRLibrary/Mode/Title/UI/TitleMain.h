@@ -16,4 +16,8 @@ class ULSANXRLIBRARY_API UTitleMain : public UTitleUserWidget
 public:
 	void NativeConstruct();
 
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidgetAnim), Transient)
+	UWidgetAnimation* IPIsNotValid;
+
+	void CheckInput(const FString& _IP);
 };

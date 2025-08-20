@@ -4,6 +4,8 @@
 #include "Mode/Play/PlayPlayerController.h"
 #include "Components/WidgetInteractionComponent.h"
 #include "PlayCharacter.h"
+#include "Mode/Play/Object/Item.h"
+#include "GameFramework/PlayerState.h"
 
 APlayPlayerController::APlayPlayerController()
 {
@@ -17,6 +19,41 @@ APlayPlayerController::APlayPlayerController()
     WidgetInteraction->TraceChannel = ECollisionChannel::ECC_Visibility;
     WidgetInteraction->InteractionSource = EWidgetInteractionSource::Mouse;
 }
+FString APlayPlayerController::GetPlayerIP() const
+{
+    if (UNetConnection* Conn = GetNetConnection())
+    {
+        return Conn->LowLevelGetRemoteAddress(false);
+        // 예: "172.30.1.23:7777"
+    }
+    return "";
+}
+
+void APlayPlayerController::C2S_PartyTravel_Implementation(const FString& _URL)
+{
+    for (APlayerState* MemberState : Cast<APlayCharacter>(GetPawn())->GetItem()->MemberStates)
+    {
+        if (MemberState)
+        {
+            // PlayerState -> Owner 가 Controller
+            APlayPlayerController* PC = Cast<APlayPlayerController>(MemberState->GetOwner());
+            if (PC)
+            {
+                PC->S2C_PartyTravel(_URL); // 서버 → 해당 멤버 클라만 이동
+            }
+        }
+    }
+
+}
+
+void APlayPlayerController::S2C_PartyTravel_Implementation(const FString& _URL)
+{
+    ClientTravel(_URL, TRAVEL_Absolute);
+}
+
+//void APlayPlayerController::PartyTravel(const FString& Host, int32 Port, const TArray<APlayerState*>& PartyMembers)
+//{
+//}
 
 // Called when the game starts or when spawned
 void APlayPlayerController::BeginPlay()

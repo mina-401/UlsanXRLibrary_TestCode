@@ -13,7 +13,11 @@ UCLASS()
 class ULSANXRLIBRARY_API ATitleGameMode : public ABaseGameMode
 {
 	GENERATED_BODY()
-	
+public:
+
+
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category = "Level")
+	bool bIsSessionLevel = true;
 protected:
 
 
