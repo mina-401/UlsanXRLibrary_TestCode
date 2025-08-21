@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "Global/ULXRGlobal.h"
@@ -14,7 +14,7 @@ void UULXRGlobal::AssetPackagePath(UClass* _Class, const FString& _AssetName, FS
 	{
 		if (AssetData.AssetName == CheckName)
 		{
-			// ÆĞÅ°Â¡ µÆÀ»¶§µµ »ç¿ëÇÒ¼ö 
+			// íŒ¨í‚¤ì§• ëì„ë•Œë„ ì‚¬ìš©í• ìˆ˜ 
 			_Path = AssetData.PackageName.ToString();
 			return;
 		}
@@ -23,7 +23,7 @@ void UULXRGlobal::AssetPackagePath(UClass* _Class, const FString& _AssetName, FS
 
 TArray<FAssetData> UULXRGlobal::AssetsPath(UClass* _Class)
 {
-	// ¾ğ¸®¾ó¿¡ Á¸ÀçÇÏ´Â ¸ğµâµéÀ» °ü¸®ÇØÁÖ´Â ½ºÆ®·°Æ®
+	// ì–¸ë¦¬ì–¼ì— ì¡´ì¬í•˜ëŠ” ëª¨ë“ˆë“¤ì„ ê´€ë¦¬í•´ì£¼ëŠ” ìŠ¤íŠ¸ëŸ­íŠ¸
 	// FModuleManager
 	TArray<FAssetData> MapList;
 	// "Engine"
@@ -34,7 +34,7 @@ TArray<FAssetData> UULXRGlobal::AssetsPath(UClass* _Class)
 
 	IAssetRegistry& AssetRegistry = FModuleManager::Get().LoadModuleChecked<FAssetRegistryModule>("AssetRegistry").Get();
 
-	// ¿¡¼ÂÀÌ ·ÎµùÁßÀÌ´Ï?
+	// ì—ì…‹ì´ ë¡œë”©ì¤‘ì´ë‹ˆ?
 	if (AssetRegistry.IsLoadingAssets())
 	{
 		return MapList;

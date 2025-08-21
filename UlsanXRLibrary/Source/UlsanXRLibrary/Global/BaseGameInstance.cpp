@@ -266,17 +266,28 @@ void UBaseGameInstance::StartServer(FString& _IP, FString& _Port)
 
 
 	UULXRGlobal::AssetPackagePath(UWorld::StaticClass(), LevelName, LevelPath);
+
+	//FString OpenLevel = FString::Printf(TEXT("%s:%s?listen"), *_IP, *_Port);
+	//UGameplayStatics::OpenLevel(GetWorld(), FName(*LevelPath), true, *OpenLevel);
+
+
+	// GameInstance 같은 곳에서 실행
+	//
+	//FString Options = TEXT("?listen?port=3000");  // listen + 포트 지정
+	//UGameplayStatics::OpenLevel(GetWorld(), FName(*LevelPath), true, Options);
+
+
 	FString OpenLevel = FString::Printf(TEXT(":%s%s"), *_Port, *LevelPath);
 	//FString URLString = FString::Printf(TEXT("%s:%s%s"), *_IP, *_Port,TEXT("listen"));
 
 		
 	UGameplayStatics::OpenLevel(GetWorld(), *OpenLevel, true, TEXT("listen"));
 
+	int a = 0;
 }
 
 void UBaseGameInstance::ConnectBookTravel(const FString& _IP, const FString& _Port)
 {
-
 
 	FString ConnectLevelName = FString::Printf(TEXT("%s:%s"), *_IP, *_Port);
 	// 127.0.0.1:30000
@@ -328,9 +339,21 @@ void UBaseGameInstance::Connect(const FString& _IP, const FString& _Port)
 	SetPort(_Port);
 
 	FString ConnectLevelName = FString::Printf(TEXT("%s:%s"), *_IP, *_Port);
-	// 127.0.0.1:30000
+	//// 127.0.0.1:30000
 	UGameplayStatics::OpenLevel(GetWorld(), FName(*ConnectLevelName));
-	//UGameplayStatics::OpenLevel(GetWorld(), TEXT("8.8.8.8:30000"));
+
+	//const FString Url = FString::Printf(TEXT("%s:%s"), *_IP, *_Port);
+	//if (APlayerController* PC = UGameplayStatics::GetPlayerController(this, 0))
+	//{
+	//	PC->ClientTravel(Url, TRAVEL_Absolute); // 권장
+	//}
+	/*if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+	{
+		PC->ClientTravel(ConnectLevelName, ETravelType::TRAVEL_Absolute);
+
+		int a = 0;
+	}*/
+
 }
 
 void UBaseGameInstance::WorldServerTravel(UWorld* _World)

@@ -13,5 +13,8 @@ UCLASS()
 class ULSANXRLIBRARY_API ABaseGameMode : public AGameMode
 {
 	GENERATED_BODY()
+
+protected:
+	virtual void PostLogin(APlayerController* NewPlayer);
 	
 };

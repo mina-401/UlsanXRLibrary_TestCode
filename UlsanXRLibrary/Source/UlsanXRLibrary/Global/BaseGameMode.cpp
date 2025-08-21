@@ -3,3 +3,8 @@
 
 #include "Global/BaseGameMode.h"
 
+void ABaseGameMode::PostLogin(APlayerController* NewPlayer)
+{
+    Super::PostLogin(NewPlayer);
+    RestartPlayer(NewPlayer);
+}

@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+Ôªø// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "Mode/Title/UI/TitleUserWidget.h"
@@ -90,11 +90,11 @@ void UTitleUserWidget::CreateChildWidget(ETitleUIType _Type, TSubclassOf<UUserWi
 
 	FString WidgetName = Widget->GetClass()->GetName();
 
-	// title user widget ¿ª ∏ﬁ¿Œ ∫Œ∏¿ß¡¨¿∏∑Œ «‘
+	// title user widget ÏùÑ Î©îÏù∏ Î∂ÄÎ™®ÏúÑÏ†ØÏúºÎ°ú Ìï®
 	Widget->SetMainWidget(this);
 
 	//Widget->SetFocus();
-	// ¿ß¡¨ ¿⁄Ωƒ¿∏∑Œ µ“
+	// ÏúÑÏ†Ø ÏûêÏãùÏúºÎ°ú Îë†
 	CanvasPanel->AddChild(Widget);
 
 	Wigets.Add(_Type, Widget);
@@ -174,7 +174,7 @@ void UTitleUserWidget::ConnectBookTravel(const FString& _IP, const FString& _Por
 
 	if (GameInstance == nullptr) return;
 
-	GameInstance->Connect(_IP, Port);
+	GameInstance->ConnectBookTravel(_IP, Port);
 }
 
 void UTitleUserWidget::Connect()
@@ -256,15 +256,15 @@ void UTitleUserWidget::PlayAnim(EUMGSequencePlayMode::Type _mode)
 void UTitleUserWidget::CheckInput(const FString& _IP)
 {
 
-	// ¡÷º“ ª˝º∫
+	// Ï£ºÏÜå ÏÉùÏÑ±
 	TSharedRef<FInternetAddr> Addr = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateInternetAddr();
 	FSocket* TestSocket = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateSocket(NAME_Stream, TEXT("Test"), false);
 
-	// IP ¿Ø»øº∫ ∞ÀªÁ
+	// IP Ïú†Ìö®ÏÑ± Í≤ÄÏÇ¨
 	bool ValidIP = false;
 	Addr->SetIp(*_IP, ValidIP);
 
-	// Port ¿Ø»øº∫ ∞ÀªÁ
+	// Port Ïú†Ìö®ÏÑ± Í≤ÄÏÇ¨
 	int32 PortNum = FCString::Atoi(*Port);
 	Addr->SetPort(PortNum);
 
