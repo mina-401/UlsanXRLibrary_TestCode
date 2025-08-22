@@ -343,6 +343,21 @@
     <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\ULXRGlobal.h">
       <Filter>Source\UlsanXRLibrary\Global</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\VOIPLIB.cpp">
+      <Filter>Source\UlsanXRLibrary\Global</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\VOIPLIB.h">
+      <Filter>Source\UlsanXRLibrary\Global</Filter>
+    </ClInclude>
+    <Filter Include="Source\UlsanXRLibrary\Global\Component">
+      <UniqueIdentifier>{185EC1D0-3BD2-3C09-92EC-95052AAA8A33}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\UlsanXRLibrary\Global\Component\VoiceCaptureComponent.cpp">
+      <Filter>Source\UlsanXRLibrary\Global\Component</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\UlsanXRLibrary\Global\Component\VoiceCaptureComponent.h">
+      <Filter>Source\UlsanXRLibrary\Global\Component</Filter>
+    </ClInclude>
     <Filter Include="Source\UlsanXRLibrary\Global\Data">
       <UniqueIdentifier>{1FC5F0EC-D3F1-31E8-8CCC-561D0B884B6A}</UniqueIdentifier>
     </Filter>
