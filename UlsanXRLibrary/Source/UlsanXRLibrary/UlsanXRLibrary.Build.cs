@@ -17,7 +17,7 @@ public class UlsanXRLibrary : ModuleRules
 
 		PublicDependencyModuleNames.AddRange(new string[] { 
 			
-			"Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "Sockets","Networking","OnlineSubsystem","VoiceChat","OnlineSubsystemUtils","OnlineServicesInterface","OnlineServicesCommon","OnlineSubsystemEOS"
+			"Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "Sockets","Networking","OnlineSubsystem","VoiceChat","OnlineSubsystemUtils","OnlineServicesInterface","OnlineServicesCommon"
 
         });
 

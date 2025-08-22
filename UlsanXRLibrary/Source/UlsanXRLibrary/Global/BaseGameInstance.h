@@ -11,8 +11,8 @@
 
 #include "OnlineSubsystem.h"
 #include "Interfaces/OnlineIdentityInterface.h"
-#include "Online/OnlineServices.h"
-#include "Online/Lobbies.h"
+//#include "Online/OnlineServices.h"
+//#include "Online/Lobbies.h"
 #include "BaseGameInstance.generated.h"
 
 using namespace UE::Online;
@@ -33,7 +33,7 @@ public:
 
 	// Get the Online Subsystem Interface
 
-	inline IOnlineSubsystem* GetOSS() { return IOnlineSubsystem::Get(); }
+	/*inline IOnlineSubsystem* GetOSS() { return IOnlineSubsystem::Get(); }
 
 	inline FUniqueNetIdPtr GetLocalUserId(int32 LocalUserNum = 0)
 	{
@@ -48,7 +48,7 @@ public:
 		if (TSharedPtr<IOnlineServices> Services = UE::Online::GetServices())
 			return Services->GetLobbiesInterface();
 		return nullptr;
-	}
+	}*/
 
 
 
@@ -58,16 +58,16 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Lobby")
 	void HostLobby(const FString& Addr);
 
-	static FString MakeJoinCode(int32 Len = 7)
-	{
-		static const TCHAR* Alphabet = TEXT("ABCDEFGHJKLMNPQRSTUVWXYZ23456789"); // 32자(헷갈리는 O/0,I/1 제외)
-		FString Code; Code.Reserve(Len);
-		for (int32 i = 0; i < Len; ++i)
-		{
-			Code += Alphabet[FMath::RandRange(0, 31)];
-		}
-		return Code;
-	}
+	//static FString MakeJoinCode(int32 Len = 7)
+	//{
+	//	static const TCHAR* Alphabet = TEXT("ABCDEFGHJKLMNPQRSTUVWXYZ23456789"); // 32자(헷갈리는 O/0,I/1 제외)
+	//	FString Code; Code.Reserve(Len);
+	//	for (int32 i = 0; i < Len; ++i)
+	//	{
+	//		Code += Alphabet[FMath::RandRange(0, 31)];
+	//	}
+	//	return Code;
+	//}
 
 	//void WriteHostWithLobby(const FString& MapPath, int32 ListenPort, const FString& AdvertiseAddr);
 
