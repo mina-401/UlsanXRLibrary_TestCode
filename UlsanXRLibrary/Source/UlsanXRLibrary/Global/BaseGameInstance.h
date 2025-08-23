@@ -28,9 +28,7 @@ class ULSANXRLIBRARY_API UBaseGameInstance : public UGameInstance
 	friend class UFallGlobal;
 
 public:
-	virtual void OnStart() override;
-	void StartLogin();
-	virtual void Shutdown() override;
+
 
 	UFUNCTION(BlueprintCallable)
 	void HostLobby(const FString& Addr);          // 버킷ID = Addr
@@ -40,11 +38,7 @@ public:
 
 private:
 	// 로그인 완료 후 셋업
-	void OnAuthLoginOk(const UE::Online::FAccountId& AccountId);
 
-	// VoiceChat
-	void InitAndConnectVoice();
-	void LoginVoice(const UE::Online::FAccountId& AccountId);
 
 private:
 	// OSS v2

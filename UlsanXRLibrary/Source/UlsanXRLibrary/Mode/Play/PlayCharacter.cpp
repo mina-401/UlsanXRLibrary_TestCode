@@ -346,17 +346,48 @@ void APlayCharacter::OpenBook()
         Book->GetWidgetComponent()->SetCollisionProfileName(UULXRConst::Collision::ProfileName_WidgetInter);
     }
 }
-
-void APlayCharacter::S2C_CloseBook_Implementation()
-{ 
-    if (CurItem==SelectItem && GetController() && GetController()->IsLocalPlayerController())
+void APlayCharacter::Client_CloseBook_Implementation()
+{
+    if (CurItem == nullptr)
     {
-        BookActor->SetActorHiddenInGame(true);
+        if (GetController()->IsLocalPlayerController())
+        {
+            BookActor->SetActorHiddenInGame(true);
 
-        ATravelBook* Book = Cast<ATravelBook>(BookActor);
-        Book->GetWidgetComponent()->SetCollisionProfileName(UCollisionProfile::NoCollision_ProfileName);
+            ATravelBook* Book = Cast<ATravelBook>(BookActor);
+            Book->GetWidgetComponent()->SetCollisionProfileName(UCollisionProfile::NoCollision_ProfileName);
+        }
+
     }
+}
+void APlayCharacter::S2C_CloseBook_Implementation()
+{
+   
+    if (CurItem==SelectItem )
+    {
+       
+        if (GetController() && GetController()->IsLocalPlayerController())
+        {
+            BookActor->SetActorHiddenInGame(true);
 
+            ATravelBook* Book = Cast<ATravelBook>(BookActor);
+            Book->GetWidgetComponent()->SetCollisionProfileName(UCollisionProfile::NoCollision_ProfileName);
+        }
+        
+    }
+    else {
+        if (CurItem == nullptr)
+        {
+            if (GetController()->IsLocalPlayerController())
+            {
+                BookActor->SetActorHiddenInGame(true);
+
+                ATravelBook* Book = Cast<ATravelBook>(BookActor);
+                Book->GetWidgetComponent()->SetCollisionProfileName(UCollisionProfile::NoCollision_ProfileName);
+            }
+
+        }
+    }
    
 }
 
@@ -410,6 +441,9 @@ void APlayCharacter::C2S_BookTravel_Implementation()
 }
 void APlayCharacter::C2S_CloseBook_Implementation()
 {
+
+ 
+
     S2C_CloseBook_Implementation();
 }
 void APlayCharacter::InterectObjectEnd()

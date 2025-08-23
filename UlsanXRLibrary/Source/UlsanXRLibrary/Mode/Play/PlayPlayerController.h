@@ -40,6 +40,7 @@ public:
 	void C2S_PartyMemberTravel(const FString& _URL);
 	void C2S_PartyMemberTravel_Implementation(const FString& _URL);
 
+	UFUNCTION(BlueprintCallable)
 	FString GetPlayerIP() const;
 
 private:

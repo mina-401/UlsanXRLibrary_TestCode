@@ -19,7 +19,7 @@ public class UlsanXRLibrary : ModuleRules
             "Core", "CoreUObject", "Engine",
             "InputCore", "EnhancedInput",
             "UMG",
-            "Sockets", "Networking","OnlineSubsystem","OnlineSubsystemNull"
+            "Sockets", "Networking","OnlineSubsystem","OnlineSubsystemNull","OnlineSubsystemUtils"
         });
 
 /*        // 여기는 네가 실제로 #include 하는 v2 헤더 기준으로만 추가!
