@@ -12,38 +12,332 @@
 #include <Mode/Title/UI/TitleUserWidget.h>
 #include <Mode/Title/UI/TitleRobby.h>
 #include <Data/GlobalDataTable.h>
-#include "OnlineSubsystem.h"
-#include "OnlineSessionSettings.h"
+
 
 // UE::Online
-#include "Online/OnlineServices.h"
-#include "Online/OnlineServicesEngineUtils.h"   // GetServices(GetWorld())
-#include "Online/OnlineAsyncOpHandle.h"         // Async 핸들/리절트
-#include "Online/Lobbies.h"
+
 
 #include "Modules/ModuleManager.h"
+//#include "VoiceChat.h"
+//#include "VoiceChatResult.h"
 
-//#include "VoiceModule.h"
 
 using namespace UE::Online;
 
+void UBaseGameInstance::OnStart()
+{
+	Super::OnStart();
+	// 1) Services/Interfaces
+
+    // 아래와 같이 수정
+   /* FModuleManager::Get().LoadModuleChecked<IModuleInterface>("OnlineServices");
+    FModuleManager::Get().LoadModuleChecked<IModuleInterface>("OnlineServicesEOS");*/
+
+	//if (!GetWorld() || !GetWorld()->IsValidLowLevel()) return;
+
+	//FModuleManager::Get().LoadModule("OnlineServicesInterface");
+
+	//if (GetWorld() &&FModuleManager::Get().IsModuleLoaded("OnlineServicesInterface"))
+	//{
+	//	//FModuleManager::Get().LoadModuleChecked<IModuleInterface>("OnlineServices");
+	//	GetWorld()->GetTimerManager().SetTimerForNextTick(FTimerDelegate::CreateUObject(this, &UBaseGameInstance::StartLogin));
+	//}
+
+	
+}
+void UBaseGameInstance::StartLogin()
+{
+	// 2) Online Services 초기화
+
+	//IOnlineServicesPtr Services =UE::Online::GetServices();
+	//if (!Services.IsValid())
+	//{
+	//	UE_LOG(LogTemp, Error, TEXT("OnlineServices not available (check DefaultServices=EOS)"));
+	//	return;
+	//}
+
+	//ServicesWeak = Services;
+	//IAuthPtr Auth = Services->GetAuthInterface();       AuthWeak = Auth;
+	//ILobbiesPtr Lobbies = Services->GetLobbiesInterface(); LobbiesWeak = Lobbies;
+
+	//// 2) Auth 로그인 (간단: AccountPortal. DevAuth/DeviceCode 쓰면 타입만 교체)
+	//ULocalPlayer* LP = GetFirstGamePlayer();
+	//if (!LP) { UE_LOG(LogTemp, Error, TEXT("No LocalPlayer")); return; }
+
+
+	//FAuthLogin::Params P;
+	//P.PlatformUserId = LP->GetPlatformUserId();
+	//P.CredentialsType = LoginCredentialsType::AccountPortal;  // ← 필요시 DevTool/DeviceCode 등으로 변경
+	//// P.CredentialsToken = TEXT("..."); // 방식에 따라 필요
+
+	//Auth->Login(MoveTemp(P)).OnComplete([this, Services](const TOnlineResult<FAuthLogin>& R)
+	//{
+	//	if (!R.IsOk())
+	//	{
+	//		UE_LOG(LogTemp, Error, TEXT("Auth Login failed")); return;
+	//	}
+	//	FAccountId AccountId = R.GetOkValue().AccountInfo->AccountId;
+	//	OnAuthLoginOk(AccountId);
+	//});
+}
+void UBaseGameInstance::OnAuthLoginOk(const FAccountId& AccountId)
+{
+	//MyAccountId = AccountId;
+
+	//// 3) Voice 초기화/연결/로그인 (Provider=EOS)
+	//InitAndConnectVoice();
+
+}
+
+void UBaseGameInstance::InitAndConnectVoice()
+{
+//
+//
+//	Voice = IVoiceChat::Get();
+//	if (!Voice)
+//	{
+//		UE_LOG(LogTemp, Error, TEXT("IVoiceChat not found (check VoiceChat plugin/provider)"));
+//		return;
+//	}
+//
+//	if (!Voice->IsInitialized())
+//	{
+//		Voice->Initialize();
+//	}
+//
+//	if (!Voice->IsConnected())
+//	{
+//		Voice->Connect(
+//			FOnVoiceChatConnectCompleteDelegate::CreateLambda(
+//				[this](const FVoiceChatResult& Result)
+//		{
+//			if (Result.IsSuccess())
+//			{
+//				UE_LOG(LogTemp, Log, TEXT("Voice connected"));
+//				// 연결 성공 후 로그인 호출
+//				this->LoginVoice(MyAccountId);
+//			}
+//			else
+//			{
+//				UE_LOG(LogTemp, Error, TEXT("Voice connect failed: %s"), *LexToString(Result));
+//			}
+//		}
+//			)
+//		);
+//	}
+//	else
+//	{
+//		// 이미 연결되어 있으면 바로 로그인
+//		LoginVoice(MyAccountId);
+//	}
+}
+
+void UBaseGameInstance::LoginVoice(const FAccountId& AccountId)
+{
+	//if (!Voice) return;
+
+	//if (!Voice)
+	//{
+	//	UE_LOG(LogTemp, Error, TEXT("VoiceChat not ready"));
+	//	return;
+	//}
+
+	//// 로컬 플레이어의 PlatformUserId 필요 (UE5 표준)
+	//ULocalPlayer* LP = GetFirstGamePlayer();
+	//if (!LP)
+	//{
+	//	UE_LOG(LogTemp, Error, TEXT("No LocalPlayer"));
+	//	return;
+	//}
+
+	//const FPlatformUserId PlatformId = LP->GetPlatformUserId();
+	//const FString PlayerName = TEXT("Player");
+	//const FString Credentials = TEXT(""); // 환경에 따라 토큰 필요시 채워 넣기
+
+	//Voice->Login(
+	//	PlatformId,
+	//	PlayerName,
+	//	Credentials,
+	//	FOnVoiceChatLoginCompleteDelegate::CreateLambda(
+	//		[](const FString& InPlayerName, const FVoiceChatResult& Result)
+	//{
+	//	if (Result.IsSuccess())
+	//	{
+	//		UE_LOG(LogTemp, Log, TEXT("Voice Login OK: %s"), *InPlayerName);
+	//	}
+	//	else
+	//	{
+	//		UE_LOG(LogTemp, Error, TEXT("Voice Login FAIL: %s (%s)"),
+	//			*InPlayerName, *LexToString(Result));
+	//	}
+	//}
+	//	)
+	//);
+}
+
+void UBaseGameInstance::Shutdown()
+{
+	/*if (Voice)
+	{
+		if (Voice->IsLoggedIn())
+		{
+			Voice->Logout(
+				FOnVoiceChatLogoutCompleteDelegate::CreateLambda(
+					[](const FString& PlayerName, const FVoiceChatResult& Result)
+			{
+				UE_LOG(LogTemp, Log, TEXT("Voice Logout %s : %s"),
+					*PlayerName,
+					Result.IsSuccess() ? TEXT("OK") : TEXT("FAIL"));
+			}
+				)
+			);
+		}
+
+		if (Voice->IsConnected())
+		{
+			Voice->Disconnect(
+				FOnVoiceChatDisconnectCompleteDelegate::CreateLambda(
+					[](const FVoiceChatResult& Result)
+			{
+				UE_LOG(LogTemp, Log, TEXT("Voice Disconnect : %s"),
+					Result.IsSuccess() ? TEXT("OK") : TEXT("FAIL"));
+			}
+				)
+			);
+		}
+
+		if (Voice->IsInitialized())
+		{
+			Voice->Uninitialize();
+			UE_LOG(LogTemp, Log, TEXT("Voice Uninitialized"));
+		}
+
+		Voice = nullptr;
+	}
+
+	Super::Shutdown();*/
+}
+
+// ================== Lobby: Host ==================
+
+void UBaseGameInstance::HostLobby(const FString& Addr)
+{
+	//if (!MyAccountId.IsValid())
+	//{
+	//	UE_LOG(LogTemp, Warning, TEXT("Not logged in yet")); return;
+	//}
+	//ILobbiesPtr Lobbies = LobbiesWeak.Pin();
+	//if (!Lobbies.IsValid())
+	//{
+	//	UE_LOG(LogTemp, Error, TEXT("Lobbies interface not available")); return;
+	//}
+
+	//FCreateLobby::Params P;
+	//P.LocalAccountId = MyAccountId;
+	//P.MaxMembers = 50;
+	//P.JoinPolicy = ELobbyJoinPolicy::PublicAdvertised;
+	//P.bPresenceEnabled = true;
+	//P.SchemaId = TEXT("ulxr_voicechat"); // 기본 스키마 사용
+	//P.Attributes.Add(FSchemaAttributeId(TEXT("server_addr")), FSchemaVariant(Addr));
+
+
+	//Lobbies->CreateLobby(MoveTemp(P)).OnComplete([](const TOnlineResult<FCreateLobby>& R)
+	//{
+	//	if (!R.IsOk())
+	//	{
+	//		UE_LOG(LogTemp, Error, TEXT("CreateLobby FAIL"));
+	//		return;
+	//	}
+	//	const auto& Out = R.GetOkValue();
+
+	//	// 보통 이런 형태 중 하나입니다:
+	//	// const FString LobbyId = Out.Lobby->LobbyId;               // 경우 1
+	//	// const FString LobbyId = Out.Result->LobbyId;              // 경우 2
+	//	// const FString LobbyId = Out.LobbyId;                      // 경우 3
+	//	// 안전하게 로그로 구조를 찍어보고 맞는 멤버를 선택하세요.
+	//	FLobbyId LobbyId = Out.Lobby->LobbyId; // ← 프로젝트 브랜치에 맞게 조정
+
+	//	int a = 0;
+	//	//UE_LOG(LogTemp, Log, TEXT("Create OK, LobbyId = %s"), *LobbyId);
+	//});
+}
+
+// ================== Lobby: Join by Bucket ==================
+
+void UBaseGameInstance::JoinLobbyByAddr(const FString& Addr)
+{
+	//if (!MyAccountId.IsValid())
+	//{
+	//	UE_LOG(LogTemp, Warning, TEXT("Not logged in yet")); return;
+	//}
+	//ILobbiesPtr Lobbies = LobbiesWeak.Pin();
+	//if (!Lobbies.IsValid())
+	//{
+	//	UE_LOG(LogTemp, Error, TEXT("Lobbies interface not available")); return;
+	//}
+
+	//// 검색 파라미터
+
+	//
+	//FFindLobbies::Params P;  // 대체안: FLobbySearch::Params / FFindLobbies::Params
+	//P.LocalAccountId = MyAccountId; // 로컬 계정 ID
+	//P.MaxResults = 8; // 최대 검색 결과 수
+	//P.Filters.Emplace(
+	//	FSchemaAttributeId(TEXT("server_addr")), // 서버 주소 필터
+	//	ESchemaAttributeComparisonOp::Equals,     // 비교 연산자: Equals
+	//	FSchemaVariant(Addr)                      // 비교 값: Addr (버킷 ID)
+	//);
+
+	//Lobbies->FindLobbies(MoveTemp(P)).OnComplete(
+	//	[this, Lobbies](const auto& R)
+	//	{
+	//		if (!R.IsOk())
+	//		{
+	//			UE_LOG(LogTemp, Error, TEXT("FindLobbies FAIL"));
+	//			return;
+	//		}
+	//		const TArray<TSharedRef<const FLobby>>& Results = R.GetOkValue().Lobbies;
+	//		if (Results.Num() == 0)
+	//		{
+	//			UE_LOG(LogTemp, Warning, TEXT("No lobby for that IP"));
+	//			return;
+	//		}
+
+	//		const FLobby& Target = *Results[0];
+
+	//		FJoinLobby::Params JP;
+
+	//		JP.LocalAccountId = MyAccountId; // 로컬 계정 ID
+	//		JP.LobbyId = Target.LobbyId; // 조인할 로비 ID
+
+	//		JP.bPresenceEnabled = true; // Presence 활성화
+
+	//		Lobbies->JoinLobby(MoveTemp(JP)).OnComplete(
+	//			[](const auto& JR)
+	//		{
+	//			UE_LOG(LogTemp, Log, TEXT("JoinLobby: %s"),
+	//				JR.IsOk() ? TEXT("OK") : TEXT("FAIL"));
+	//		}
+	//		);
+	//	}
+	//);
+}
 void UBaseGameInstance::Init()
 {
 	Super::Init();
 
-	if (IOnlineSubsystem* subsys = IOnlineSubsystem::Get())
-	{
-		// Online Session Interface API 접근용 인스턴스 가져오기
-		SessionInterface = subsys->GetSessionInterface();
+	//if (IOnlineSubsystem* subsys = IOnlineSubsystem::Get())
+	//{
+	//	// Online Session Interface API 접근용 인스턴스 가져오기
+	//	SessionInterface = subsys->GetSessionInterface();
 
-		SessionInterface->OnCreateSessionCompleteDelegates.AddUObject(this, &UBaseGameInstance::OnCreateSessionComplete);
-		SessionInterface->OnDestroySessionCompleteDelegates.AddUObject(this, &UBaseGameInstance::OnDestroySessionComplete);
-		SessionInterface->OnFindSessionsCompleteDelegates.AddUObject(this, &UBaseGameInstance::OnFindSessionsComplete);
-		SessionInterface->OnJoinSessionCompleteDelegates.AddUObject(this, &UBaseGameInstance::OnJoinSessionComplete);
+	//	SessionInterface->OnCreateSessionCompleteDelegates.AddUObject(this, &UBaseGameInstance::OnCreateSessionComplete);
+	//	SessionInterface->OnDestroySessionCompleteDelegates.AddUObject(this, &UBaseGameInstance::OnDestroySessionComplete);
+	//	SessionInterface->OnFindSessionsCompleteDelegates.AddUObject(this, &UBaseGameInstance::OnFindSessionsComplete);
+	//	SessionInterface->OnJoinSessionCompleteDelegates.AddUObject(this, &UBaseGameInstance::OnJoinSessionComplete);
 
 
-	}
-	
+	//}
 
 	//FVoiceChatModule& VoiceModule = FModuleManager::LoadModuleChecked<FVoiceChatModule>("VoiceChat");
 	
@@ -60,113 +354,10 @@ void UBaseGameInstance::Init()
 	GEngine->OnTravelFailure().AddUObject(this, &UBaseGameInstance::HandleTravelFailure);
 	//IOnlineServicesPtr Services = GetServices(GetWorld());
 	//if (!Services) { UE_LOG(LogTemp, Error, TEXT("GetServices failed")); return; }
-}
-void UBaseGameInstance::JoinLobbyByAddr(const FString& _Addr)
-{
-	IOnlineServicesPtr Services = GetServices(GetWorld());
-	if (!Services) { UE_LOG(LogTemp, Error, TEXT("GetServices failed")); return; }
-	ILobbiesPtr Lobbies = Services->GetLobbiesInterface();
-	if (!Lobbies) { UE_LOG(LogTemp, Error, TEXT("GetLobbiesInterface failed")); return; }
 
-	ULocalPlayer* LP = GetWorld()->GetFirstLocalPlayerFromController();
-	if (!LP) { UE_LOG(LogTemp, Error, TEXT("No LocalPlayer")); return; }
-	const FAccountId Local = LP->GetPreferredUniqueNetId().GetV2();
-
-	// 1) server_addr == Addr 로 로비 검색
-	FFindLobbies::Params FP;
-	FP.LocalAccountId = Local;
-	FP.MaxResults = 20;
-	FP.Filters.Emplace(
-		FSchemaAttributeId(TEXT("server_addr")),
-		ESchemaAttributeComparisonOp::Equals,
-		FSchemaVariant(_Addr)  // INI에 Searchable 로 등록되어 있어야 함
-	);
-
-	Lobbies->FindLobbies(MoveTemp(FP)).OnComplete(
-		[this, Lobbies, Local, _Addr](const TOnlineResult<FFindLobbies>& R)
-	{
-		if (R.IsOk() && R.GetOkValue().Lobbies.Num() > 0)
-		{
-			// 2) 찾은 로비에 조인 (→ 자동 보이스 붙음)
-			const FLobbyId LobbyId = R.GetOkValue().Lobbies[0]->LobbyId;
-
-			FJoinLobby::Params JP;
-			JP.LocalAccountId = Local;
-			JP.LobbyId = LobbyId;
-
-			Lobbies->JoinLobby(MoveTemp(JP)).OnComplete(
-				[this, _Addr](const TOnlineResult<FJoinLobby>& JR)
-			{
-				if (!JR.IsOk()) { 
-					//UE_LOG(LogTemp, Error, TEXT("JoinLobby: %s"), *ToString(JR.GetErrorValue()));
-				}
-				if (APlayerController* PC = UGameplayStatics::GetPlayerController(GetWorld(), 0))
-					PC->ClientTravel(_Addr, TRAVEL_Absolute);
-			});
-		}
-		else
-		{
-			// 로비를 못 찾았어도 게임 접속만은 진행 (보이스는 없는 상태)
-			if (APlayerController* PC = UGameplayStatics::GetPlayerController(GetWorld(), 0))
-				PC->ClientTravel(_Addr, TRAVEL_Absolute);
-		}
-	});
+	
 }
 
-void UBaseGameInstance::HostLobby(const FString& Addr)
-{// 2) Lobbies 인터페이스
-	UE::Online::IOnlineServicesPtr Services = UE::Online::GetServices(GetWorld());
-	if (!Services) { UE_LOG(LogTemp, Error, TEXT("GetServices failed")); return; }
-
-	ILobbiesPtr Lobbies = Services->GetLobbiesInterface();
-	if (!Lobbies) { UE_LOG(LogTemp, Error, TEXT("GetLobbiesInterface failed")); return; }
-	ULocalPlayer* LP = GetWorld()->GetFirstLocalPlayerFromController();
-	if (!LP) { UE_LOG(LogTemp, Error, TEXT("No LocalPlayer")); return; }
-
-	//Services->GetAuthInterface()->GetLocalOnlineUserByOnlineAccountId();
-
-	//UE::Online::IIdentityInterfacePtr Identity = Services->GetIdentityInterface();
-
-	////const FAccountId Local = LP->GetPreferredUniqueNetId().GetV2Unsafe();
-
-	//const FAccountId Local = Services->GetLocalAccountId(*LP);
-
-
-
-
-
-	//FCreateLobby::Params P;
-	//P.LocalAccountId = Local;
-	//P.MaxMembers = 8;
-	//P.JoinPolicy = ELobbyJoinPolicy::PublicAdvertised; // LAN만 쓰면 Private로 바꿔도 OK
-
-	//Lobbies->CreateLobby(MoveTemp(P)).OnComplete(
-	//	[Lobbies, Local, Addr](const TOnlineResult<FCreateLobby>& R)
-	//{
-	//	if (!R.IsOk()) { 
-	//		//UE_LOG(LogTemp, Error, TEXT("CreateLobby: %s"), *ToString(R.GetErrorValue()));
-	//		return;
-	//	}
-
-	//	// UE5.6: UpdateLobby가 아니라 ModifyLobbyAttributes 사용
-	//	FModifyLobbyAttributes::Params Up;
-	//	Up.LocalAccountId = Local; // 리더 권한 필요
-	//	Up.LobbyId = R.GetOkValue().Lobby->LobbyId;
-
-	//	//Up.UpdatedAttributes.Add
-	//	// 최신 형태: Mutations 아래 AttributesToSet
-	//	Up.UpdatedAttributes.Add(
-	//		FSchemaAttributeId(TEXT("server_addr")), FSchemaVariant(Addr));
-
-
-	//	Lobbies->ModifyLobbyAttributes(MoveTemp(Up)).OnComplete(
-	//		[](const TOnlineResult<FModifyLobbyAttributes>& UR)
-	//	{
-	//		//UE_LOG(LogTemp, Log, TEXT("server_addr set: %s"),
-	//			//UR.IsOk() ? TEXT("OK") : *ToString(UR.GetErrorValue()));
-	//	});
-	//});
-}
 
 
 FString UBaseGameInstance::GetPlayWorldLevel()
@@ -181,35 +372,35 @@ FString UBaseGameInstance::GetPlayWorldLevel()
 	return LevelName;
 
 }
-void UBaseGameInstance::CreateSession(FString roomName, int32 playerCount)
-{
-	FOnlineSessionSettings sessionSettings;
-
-	// 1. LAN 연결인지 DEDICATED 연결인지 설정한다.
-	sessionSettings.bIsDedicated = false;
-	//sessionSettings.bIsLANMatch = IOnlineSubsystem::Get()->GetSubsystemName() == FName("NULL");
-	sessionSettings.bIsLANMatch = false;
-
-	// 2. 검색 가능한 방으로 설정한다.
-	sessionSettings.bShouldAdvertise = true;
-
-	// 3. 자기 정보를 전달될 수 있게 설정한다.
-	sessionSettings.bUsesPresence = true;
-
-	// 4. 다른 유저의 중간 입장을 허용한다.
-	sessionSettings.bAllowJoinInProgress = true;
-	sessionSettings.bAllowJoinViaPresence = true;
-
-	// 5. 입장 가능 인원을 설정한다.
-	sessionSettings.NumPublicConnections = playerCount;
-
-	//// 6. 세션에 추가 설정을 넣는다.
-	sessionSettings.Set(FName("ROOM_NAME"), roomName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
-	sessionSettings.Set(FName("HOST_NAME"), BaseSessionName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
-
-	bool isSuccess = SessionInterface->CreateSession(0, FName(roomName), sessionSettings);
-	UE_LOG(LogTemp, Warning, TEXT("Session Create Result: %s"), isSuccess ? *FString("Success") : *FString("Failed..."));
-}
+//void UBaseGameInstance::CreateSession(FString roomName, int32 playerCount)
+//{
+//	FOnlineSessionSettings sessionSettings;
+//
+//	// 1. LAN 연결인지 DEDICATED 연결인지 설정한다.
+//	sessionSettings.bIsDedicated = false;
+//	//sessionSettings.bIsLANMatch = IOnlineSubsystem::Get()->GetSubsystemName() == FName("NULL");
+//	sessionSettings.bIsLANMatch = false;
+//
+//	// 2. 검색 가능한 방으로 설정한다.
+//	sessionSettings.bShouldAdvertise = true;
+//
+//	// 3. 자기 정보를 전달될 수 있게 설정한다.
+//	sessionSettings.bUsesPresence = true;
+//
+//	// 4. 다른 유저의 중간 입장을 허용한다.
+//	sessionSettings.bAllowJoinInProgress = true;
+//	sessionSettings.bAllowJoinViaPresence = true;
+//
+//	// 5. 입장 가능 인원을 설정한다.
+//	sessionSettings.NumPublicConnections = playerCount;
+//
+//	//// 6. 세션에 추가 설정을 넣는다.
+//	sessionSettings.Set(FName("ROOM_NAME"), roomName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
+//	sessionSettings.Set(FName("HOST_NAME"), BaseSessionName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
+//
+//	bool isSuccess = SessionInterface->CreateSession(0, FName(roomName), sessionSettings);
+//	UE_LOG(LogTemp, Warning, TEXT("Session Create Result: %s"), isSuccess ? *FString("Success") : *FString("Failed..."));
+//}
 
 
 
@@ -248,104 +439,104 @@ UBaseGameInstance::UBaseGameInstance()
 
 	}
 }
-void UBaseGameInstance::OnCreateSessionComplete(FName sessionName, bool bWasSuccessful)
-{
-	if (bWasSuccessful)
-	{
-		FString LevelPath = TEXT("");
-		FString LevelName = UULXRConst::Level::PlayLevelName;
+//void UBaseGameInstance::OnCreateSessionComplete(FName sessionName, bool bWasSuccessful)
+//{
+//	if (bWasSuccessful)
+//	{
+//		FString LevelPath = TEXT("");
+//		FString LevelName = UULXRConst::Level::PlayLevelName;
+//
+//
+//		UGlobalDataTable::GetLevelDataName(GetWorld(), LevelName);
+//
+//
+//
+//		UULXRGlobal::AssetPackagePath(UWorld::StaticClass(), LevelName, LevelPath);
+//
+//		FString OpenLevel = FString::Printf(TEXT("%s?Listen"), *LevelPath);
+//		bool result = GetWorld()->ServerTravel(OpenLevel, true);
+//		UE_LOG(LogTemp, Warning, TEXT("Travel Result: %s"), result ? *FString("Success") : *FString("Failed..."));
+//	}
+//}
+//void UBaseGameInstance::OnDestroySessionComplete(FName SessionName, bool bWasSuccessful)
+//{
+//	
+//}
 
+//void UBaseGameInstance::OnFindSessionsComplete(bool bWasSuccessful)
+//{
+//	if (bWasSuccessful)
+//	{
+//		// 검색된 세션 목록을 가져온다.
+//		if (SessionSearch == nullptr) return;
+//
+//		TArray<FOnlineSessionSearchResult> searchResults = SessionSearch->SearchResults;
+//
+//		UE_LOG(LogTemp, Warning, TEXT("Find Sessions: %d"), searchResults.Num());
+//
+//		for (int32 i = 0; i < searchResults.Num(); i++)
+//		{
+//			FString roomName;
+//			searchResults[i].Session.SessionSettings.Get(FName("ROOM_NAME"), roomName);
+//			FString hostName;
+//			searchResults[i].Session.SessionSettings.Get(FName("HOST_NAME"), hostName);
+//			int32 openNumber = searchResults[i].Session.NumOpenPublicConnections;
+//			int32 maxNumber = searchResults[i].Session.SessionSettings.NumPublicConnections;
+//			int32 pingSpeed = searchResults[i].PingInMs;
+//
+//			UE_LOG(LogTemp, Warning, TEXT("Room Name: %s, HostName: %s, OpenNumber: %d, MaxNumber: %d, Ping Speed: %d"), *roomName, *hostName, openNumber, maxNumber, pingSpeed);
+//		}
+//	}
+//	else
+//	{
+//		UE_LOG(LogTemp, Warning, TEXT("Session search failed..."));
+//	}
+//}
 
-		UGlobalDataTable::GetLevelDataName(GetWorld(), LevelName);
-
-
-
-		UULXRGlobal::AssetPackagePath(UWorld::StaticClass(), LevelName, LevelPath);
-
-		FString OpenLevel = FString::Printf(TEXT("%s?Listen"), *LevelPath);
-		bool result = GetWorld()->ServerTravel(OpenLevel, true);
-		UE_LOG(LogTemp, Warning, TEXT("Travel Result: %s"), result ? *FString("Success") : *FString("Failed..."));
-	}
-}
-void UBaseGameInstance::OnDestroySessionComplete(FName SessionName, bool bWasSuccessful)
-{
-	
-}
-
-void UBaseGameInstance::OnFindSessionsComplete(bool bWasSuccessful)
-{
-	if (bWasSuccessful)
-	{
-		// 검색된 세션 목록을 가져온다.
-		if (SessionSearch == nullptr) return;
-
-		TArray<FOnlineSessionSearchResult> searchResults = SessionSearch->SearchResults;
-
-		UE_LOG(LogTemp, Warning, TEXT("Find Sessions: %d"), searchResults.Num());
-
-		for (int32 i = 0; i < searchResults.Num(); i++)
-		{
-			FString roomName;
-			searchResults[i].Session.SessionSettings.Get(FName("ROOM_NAME"), roomName);
-			FString hostName;
-			searchResults[i].Session.SessionSettings.Get(FName("HOST_NAME"), hostName);
-			int32 openNumber = searchResults[i].Session.NumOpenPublicConnections;
-			int32 maxNumber = searchResults[i].Session.SessionSettings.NumPublicConnections;
-			int32 pingSpeed = searchResults[i].PingInMs;
-
-			UE_LOG(LogTemp, Warning, TEXT("Room Name: %s, HostName: %s, OpenNumber: %d, MaxNumber: %d, Ping Speed: %d"), *roomName, *hostName, openNumber, maxNumber, pingSpeed);
-		}
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Session search failed..."));
-	}
-}
-
-void UBaseGameInstance::OnJoinSessionComplete(FName sessionName, EOnJoinSessionCompleteResult::Type result)
-{
-	switch (result)
-	{
-	case EOnJoinSessionCompleteResult::Success:
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Success: %s"), *sessionName.ToString());
-
-		APlayerController* playerCon = GetWorld()->GetFirstPlayerController();
-		if (playerCon != nullptr)
-		{
-			// join된 세션 호스트의 ServerTravel 된 맵 주소를 받아온다.
-			FString url;
-			SessionInterface->GetResolvedConnectString(sessionName, url);
-			UE_LOG(LogTemp, Warning, TEXT("Connection URL: %s"), *url);
-
-			// 주소를 받았다면, 그 주소에 따라서 맵 이동한다.
-			if (!url.IsEmpty())
-			{
-				playerCon->ClientTravel(url, ETravelType::TRAVEL_Absolute);
-			}
-		}
-	}
-	break;
-	case EOnJoinSessionCompleteResult::SessionIsFull:
-		UE_LOG(LogTemp, Warning, TEXT("SessionIsFull"));
-		break;
-	case EOnJoinSessionCompleteResult::SessionDoesNotExist:
-		UE_LOG(LogTemp, Warning, TEXT("SessionDoesNotExist"));
-		break;
-	case EOnJoinSessionCompleteResult::CouldNotRetrieveAddress:
-		UE_LOG(LogTemp, Warning, TEXT("CouldNotRetrieveAddress"));
-		break;
-	case EOnJoinSessionCompleteResult::AlreadyInSession:
-		UE_LOG(LogTemp, Warning, TEXT("AlreadyInSession"));
-		break;
-	case EOnJoinSessionCompleteResult::UnknownError:
-		UE_LOG(LogTemp, Warning, TEXT("UnknownError"));
-		break;
-	default:
-		break;
-	}
-	//SessionInterface->JoinSession(0, FName(sessionName), SessionSearch->SearchResults[index]);
-}
+//void UBaseGameInstance::OnJoinSessionComplete(FName sessionName, EOnJoinSessionCompleteResult::Type result)
+//{
+//	switch (result)
+//	{
+//	case EOnJoinSessionCompleteResult::Success:
+//	{
+//		UE_LOG(LogTemp, Warning, TEXT("Success: %s"), *sessionName.ToString());
+//
+//		APlayerController* playerCon = GetWorld()->GetFirstPlayerController();
+//		if (playerCon != nullptr)
+//		{
+//			// join된 세션 호스트의 ServerTravel 된 맵 주소를 받아온다.
+//			FString url;
+//			SessionInterface->GetResolvedConnectString(sessionName, url);
+//			UE_LOG(LogTemp, Warning, TEXT("Connection URL: %s"), *url);
+//
+//			// 주소를 받았다면, 그 주소에 따라서 맵 이동한다.
+//			if (!url.IsEmpty())
+//			{
+//				playerCon->ClientTravel(url, ETravelType::TRAVEL_Absolute);
+//			}
+//		}
+//	}
+//	break;
+//	case EOnJoinSessionCompleteResult::SessionIsFull:
+//		UE_LOG(LogTemp, Warning, TEXT("SessionIsFull"));
+//		break;
+//	case EOnJoinSessionCompleteResult::SessionDoesNotExist:
+//		UE_LOG(LogTemp, Warning, TEXT("SessionDoesNotExist"));
+//		break;
+//	case EOnJoinSessionCompleteResult::CouldNotRetrieveAddress:
+//		UE_LOG(LogTemp, Warning, TEXT("CouldNotRetrieveAddress"));
+//		break;
+//	case EOnJoinSessionCompleteResult::AlreadyInSession:
+//		UE_LOG(LogTemp, Warning, TEXT("AlreadyInSession"));
+//		break;
+//	case EOnJoinSessionCompleteResult::UnknownError:
+//		UE_LOG(LogTemp, Warning, TEXT("UnknownError"));
+//		break;
+//	default:
+//		break;
+//	}
+//	//SessionInterface->JoinSession(0, FName(sessionName), SessionSearch->SearchResults[index]);
+//}
 
 
 void UBaseGameInstance::HandleTravelFailure(UWorld* World, ETravelFailure::Type FailureType, const FString& Reason)

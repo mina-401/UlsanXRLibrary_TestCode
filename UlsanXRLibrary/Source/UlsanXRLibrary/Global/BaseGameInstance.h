@@ -6,21 +6,19 @@
 #include "Engine/GameInstance.h"
 #include "Engine/NetDriver.h"
 
-#include "Interfaces/OnlineSessionInterface.h"
-#include "OnlineSessionSettings.h"
-
-#include "OnlineSubsystem.h"
-#include "Interfaces/OnlineIdentityInterface.h"
-//#include "Online/OnlineServices.h"
-//#include "Online/Lobbies.h"
 #include "BaseGameInstance.generated.h"
 
-using namespace UE::Online;
+//namespace UE {
+//	namespace Online {
+//		class IOnlineServices;
+//		using IOnlineServicesPtr = TSharedPtr<IOnlineServices>;
+//		class IAuth;   using IAuthPtr = TSharedPtr<IAuth>;
+//		class ILobbies; using ILobbiesPtr = TSharedPtr<ILobbies>;
+//		struct FAccountId;
+//	}
+//}
 
 
-/**
- * 
- */
 UCLASS()
 class ULSANXRLIBRARY_API UBaseGameInstance : public UGameInstance
 {
@@ -30,65 +28,58 @@ class ULSANXRLIBRARY_API UBaseGameInstance : public UGameInstance
 	friend class UFallGlobal;
 
 public:
+	virtual void OnStart() override;
+	void StartLogin();
+	virtual void Shutdown() override;
 
-	// Get the Online Subsystem Interface
+	UFUNCTION(BlueprintCallable)
+	void HostLobby(const FString& Addr);          // 버킷ID = Addr
 
-	/*inline IOnlineSubsystem* GetOSS() { return IOnlineSubsystem::Get(); }
+	UFUNCTION(BlueprintCallable)
+	void JoinLobbyByAddr(const FString& Addr);    // 버킷 검색 → 첫 결과 조인
 
-	inline FUniqueNetIdPtr GetLocalUserId(int32 LocalUserNum = 0)
-	{
-		if (IOnlineSubsystem* OSS = IOnlineSubsystem::Get())
-			if (auto Id = OSS->GetIdentityInterface(); Id.IsValid())
-				return Id->GetUniquePlayerId(LocalUserNum);
-		return nullptr;
-	}
+private:
+	// 로그인 완료 후 셋업
+	void OnAuthLoginOk(const UE::Online::FAccountId& AccountId);
 
-	inline ILobbiesPtr GetLobbiesIF() const
-	{
-		if (TSharedPtr<IOnlineServices> Services = UE::Online::GetServices())
-			return Services->GetLobbiesInterface();
-		return nullptr;
-	}*/
+	// VoiceChat
+	void InitAndConnectVoice();
+	void LoginVoice(const UE::Online::FAccountId& AccountId);
+
+private:
+	// OSS v2
+	//TWeakPtr<UE::Online::IOnlineServices> ServicesWeak;
+	//TWeakPtr<UE::Online::IAuth>           AuthWeak;
+	//TWeakPtr<UE::Online::ILobbies> LobbiesWeak;
+
+	//// 내 계정(로그인 완료 시 저장)
+	//UE::Online::FAccountId MyAccountId;
+
+	//// 전역 보이스 핸들
+	//class IVoiceChat* Voice = nullptr;
+
+	//// 검색 후 폴링용 (간단 버전)
+	//FTimerHandle SearchPollTimer;
+	//FString PendingBucketId;
 
 
-
-	UFUNCTION(BlueprintCallable, Category = "Lobby")
-	void JoinLobbyByAddr(const FString& LobbyIdStr);
-
-	UFUNCTION(BlueprintCallable, Category = "Lobby")
-	void HostLobby(const FString& Addr);
-
-	//static FString MakeJoinCode(int32 Len = 7)
-	//{
-	//	static const TCHAR* Alphabet = TEXT("ABCDEFGHJKLMNPQRSTUVWXYZ23456789"); // 32자(헷갈리는 O/0,I/1 제외)
-	//	FString Code; Code.Reserve(Len);
-	//	for (int32 i = 0; i < Len; ++i)
-	//	{
-	//		Code += Alphabet[FMath::RandRange(0, 31)];
-	//	}
-	//	return Code;
-	//}
-
-	//void WriteHostWithLobby(const FString& MapPath, int32 ListenPort, const FString& AdvertiseAddr);
 
 public:
 	UPROPERTY()
 	FString BaseSessionName = TEXT("UXLR");
 
 
-	IOnlineSessionPtr SessionInterface;
-	TSharedPtr<class FOnlineSessionSearch> SessionSearch;
 
 	UFUNCTION(BlueprintCallable)
 	FString GetPlayWorldLevel();
 
-	void CreateSession(FString roomName, int32 playerCount);
+	//void CreateSession(FString roomName, int32 playerCount);
 
 
-	void OnCreateSessionComplete(FName sessionName, bool bWasSuccessful);
-	void OnDestroySessionComplete(FName SessionName, bool bWasSuccessful);
-	void OnFindSessionsComplete(bool bWasSuccessful);
-	void OnJoinSessionComplete(FName sessionName, EOnJoinSessionCompleteResult::Type result);
+	//void OnCreateSessionComplete(FName sessionName, bool bWasSuccessful);
+	//void OnDestroySessionComplete(FName SessionName, bool bWasSuccessful);
+	//void OnFindSessionsComplete(bool bWasSuccessful);
+	//void OnJoinSessionComplete(FName sessionName, EOnJoinSessionCompleteResult::Type result);
 
 
 public:
