@@ -410,7 +410,9 @@ void APlayCharacter::BookTravel()
             PC->C2S_PartyTravel(DestUrl);
         }
         GetWidgetFromMain(ETitleUIType::Ready);
-        CurWidget->StartBookTravel(DestUrl);
+
+        const FString& Name = CurItem->DataKey;
+        CurWidget->StartBookTravel(DestUrl, Name);
        /* TimeEventComponent->AddEndEvent(
             0.5f,
             [this, DestUrl]()

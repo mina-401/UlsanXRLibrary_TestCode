@@ -58,7 +58,7 @@ public:
 	void ConnectBookTravel(const FString& _IP, const FString& _Port);
 
 	UFUNCTION(BlueprintCallable)
-	void StartBookTravel(const FString& _IP);
+	void StartBookTravel(const FString& _IP, const FString& Name);
 
 	// 서버 연결 함수
 	//UFUNCTION(BlueprintCallable)
