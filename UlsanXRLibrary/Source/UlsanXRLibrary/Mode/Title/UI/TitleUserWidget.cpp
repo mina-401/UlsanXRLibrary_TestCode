@@ -49,6 +49,10 @@ bool UTitleUserWidget::IsChild(UTitleUserWidget* _Top)
 	{
 		ETitleUIType Type = AllEnum[i];
 
+		if(Wigets.Contains(Type) == false)
+		{
+			continue;
+		}
 		if (Wigets[Type] == _Top)
 		{
 			return true;
@@ -68,6 +72,11 @@ void UTitleUserWidget::WidgetTopView(UTitleUserWidget* _Top)
 	for (size_t i = 0; i < AllEnum.Num(); i++)
 	{
 		ETitleUIType Type = AllEnum[i];
+
+		if (Wigets.Contains(Type) == false)
+		{
+			continue;
+		}
 
 		if (UCanvasPanelSlot* CanvasSlot = Cast<UCanvasPanelSlot>(Wigets[Type]->Slot))
 		{

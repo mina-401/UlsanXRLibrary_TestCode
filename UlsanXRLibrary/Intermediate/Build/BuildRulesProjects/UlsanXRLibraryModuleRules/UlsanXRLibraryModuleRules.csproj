@@ -17,6 +17,7 @@
   <ItemGroup>
   <Compile Include="..\..\..\..\Plugins\AdvancedSessions\AdvancedSessions\Source\AdvancedSessions\AdvancedSessions.Build.cs"><Link>Plugins\AdvancedSessions\AdvancedSessions\Source\AdvancedSessions\AdvancedSessions.Build.cs</Link></Compile>
   <Compile Include="..\..\..\..\Plugins\AdvancedSessions\AdvancedSteamSessions\Source\AdvancedSteamSessions\AdvancedSteamSessions.Build.cs"><Link>Plugins\AdvancedSessions\AdvancedSteamSessions\Source\AdvancedSteamSessions\AdvancedSteamSessions.Build.cs</Link></Compile>
+  <Compile Include="..\..\..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\AsyncLoadingScreen.Build.cs"><Link>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\AsyncLoadingScreen.Build.cs</Link></Compile>
   <Compile Include="..\..\..\..\Source\UlsanXRLibrary.Target.cs"><Link>Source\UlsanXRLibrary.Target.cs</Link></Compile>
   <Compile Include="..\..\..\..\Source\UlsanXRLibraryEditor.Target.cs"><Link>Source\UlsanXRLibraryEditor.Target.cs</Link></Compile>
   <Compile Include="..\..\..\..\Source\UlsanXRLibrary\UlsanXRLibrary.Build.cs"><Link>Source\UlsanXRLibrary\UlsanXRLibrary.Build.cs</Link></Compile>

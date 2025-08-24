@@ -226,6 +226,33 @@
     <None Include="..\..\Plugins\AdvancedSessions\AdvancedSteamSessions\Resources\Icon128.png">
       <Filter>Plugins\AdvancedSessions\AdvancedSteamSessions\Resources</Filter>
     </None>
+    <Filter Include="Plugins\AsyncLoadingScreen">
+      <UniqueIdentifier>{473B2C78-9D3D-381D-9867-99AAB1A440C8}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\AsyncLoadingScreen\AsyncLoadingScreen.uplugin">
+      <Filter>Plugins\AsyncLoadingScreen</Filter>
+    </None>
+    <Filter Include="Plugins\AsyncLoadingScreen\Config">
+      <UniqueIdentifier>{77899B3E-6F45-3ED3-B107-E5BE75208A6A}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\AsyncLoadingScreen\Config\FilterPlugin.ini">
+      <Filter>Plugins\AsyncLoadingScreen\Config</Filter>
+    </None>
+    <Filter Include="Plugins\AsyncLoadingScreen\Resources">
+      <UniqueIdentifier>{A50938C1-C1FC-3942-AD36-BF058CC71883}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\AsyncLoadingScreen\Resources\Icon128.png">
+      <Filter>Plugins\AsyncLoadingScreen\Resources</Filter>
+    </None>
+    <None Include="..\..\Plugins\AsyncLoadingScreen\Resources\Icon256.png">
+      <Filter>Plugins\AsyncLoadingScreen\Resources</Filter>
+    </None>
+    <None Include="..\..\Plugins\AsyncLoadingScreen\Resources\Icon512.png">
+      <Filter>Plugins\AsyncLoadingScreen\Resources</Filter>
+    </None>
+    <None Include="..\..\Plugins\AsyncLoadingScreen\Resources\Icon64.png">
+      <Filter>Plugins\AsyncLoadingScreen\Resources</Filter>
+    </None>
     <Filter Include="Plugins\AdvancedSessions\AdvancedSteamSessions\Source">
       <UniqueIdentifier>{722C4DBB-AF1D-3CA4-9354-758A3EEFAA88}</UniqueIdentifier>
     </Filter>
@@ -274,6 +301,111 @@
     <ClCompile Include="..\..\Plugins\AdvancedSessions\AdvancedSteamSessions\Source\AdvancedSteamSessions\Private\SteamWSRequestUGCDetailsCallbackProxy.cpp">
       <Filter>Plugins\AdvancedSessions\AdvancedSteamSessions\Source\AdvancedSteamSessions\Private</Filter>
     </ClCompile>
+    <Filter Include="Plugins\AsyncLoadingScreen\Source">
+      <UniqueIdentifier>{1F312AD0-29F0-357A-B7F1-6B564F4AA402}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen">
+      <UniqueIdentifier>{58401497-5D21-37A3-AA2E-8E885647CD3A}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\AsyncLoadingScreen.Build.cs">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen</Filter>
+    </None>
+    <Filter Include="Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private">
+      <UniqueIdentifier>{A8308AC0-FA0E-39A8-8259-ECB330D7766C}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private\AsyncLoadingScreen.cpp">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private\AsyncLoadingScreenLibrary.cpp">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private\LoadingScreenSettings.cpp">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private\SBackgroundWidget.cpp">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private\SCenterLayout.cpp">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private\SClassicLayout.cpp">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private\SDualSidebarLayout.cpp">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private\SHorizontalLoadingWidget.cpp">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private\SLetterboxLayout.cpp">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private\SLoadingCompleteText.cpp">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private\SLoadingScreenLayout.cpp">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private\SLoadingWidget.cpp">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private\SSidebarLayout.cpp">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private\STipWidget.cpp">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private\SVerticalLoadingWidget.cpp">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Private</Filter>
+    </ClCompile>
+    <Filter Include="Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public">
+      <UniqueIdentifier>{3EBC24DC-B092-33D4-A7D3-EF8B57E82654}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public\AsyncLoadingScreen.h">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public\AsyncLoadingScreenLibrary.h">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public\LoadingScreenSettings.h">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public\SBackgroundWidget.h">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public\SCenterLayout.h">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public\SClassicLayout.h">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public\SDualSidebarLayout.h">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public\SHorizontalLoadingWidget.h">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public\SLetterboxLayout.h">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public\SLoadingCompleteText.h">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public\SLoadingScreenLayout.h">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public\SLoadingWidget.h">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public\SSidebarLayout.h">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public\STipWidget.h">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public\SVerticalLoadingWidget.h">
+      <Filter>Plugins\AsyncLoadingScreen\Source\AsyncLoadingScreen\Public</Filter>
+    </ClInclude>
     <Filter Include="Source\UlsanXRLibrary">
       <UniqueIdentifier>{98C1E109-013B-355B-9A3B-515F8B5383BF}</UniqueIdentifier>
     </Filter>

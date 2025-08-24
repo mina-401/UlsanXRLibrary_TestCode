@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UlsanXRLibraryModuleRules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Development")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0ae9312c054c45cacf7e1421824a1de354827d8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+052104fe955683bb905879d23f1d3c53d7903d84")]
 [assembly: System.Reflection.AssemblyProductAttribute("UlsanXRLibraryModuleRules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UlsanXRLibraryModuleRules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
