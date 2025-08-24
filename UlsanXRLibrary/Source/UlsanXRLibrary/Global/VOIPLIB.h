@@ -18,4 +18,6 @@ public:
 	//UFUNCTION()
 	//void MyFunction();
 	
+	UFUNCTION(BlueprintCallable)
+	static void ClearVoicePackets(UObject* _WorldContextObject);
 };

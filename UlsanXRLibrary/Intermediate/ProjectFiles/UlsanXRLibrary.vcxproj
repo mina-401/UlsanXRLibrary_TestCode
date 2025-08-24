@@ -67,7 +67,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{6C29CE32-FC5D-321B-BB34-9E847A0F124F}</ProjectGuid>
+    <ProjectGuid>{8540ED0D-AC54-31C9-A53F-AF6A8D13429F}</ProjectGuid>
     <RootNamespace>UlsanXRLibrary</RootNamespace>
   </PropertyGroup>
   <Import Project="UECommon.props" />
