@@ -428,11 +428,11 @@ void UBaseGameInstance::ConnectBookTravel(const FString& _IP, const FString& _Po
 	UGameplayStatics::OpenLevel(GetWorld(), FName(*ConnectLevelName));
 }
 
-void UBaseGameInstance::StartBookTravel(const FString& _IP, const FString& _Port)
+void UBaseGameInstance::StartBookTravel(const FString& _IP, const FString& _Port, const FString& Name)
 {
 
 	FString LevelPath = TEXT("");
-	FString LevelName = UULXRConst::Level::EndLevelName;
+	FString LevelName = Name;
 
 
 	UGlobalDataTable::GetLevelDataName(GetWorld(), LevelName);
@@ -446,11 +446,11 @@ void UBaseGameInstance::StartBookTravel(const FString& _IP, const FString& _Port
 	UGameplayStatics::OpenLevel(GetWorld(), *LevelPath, true, TEXT("listen"));
 
 }
-void UBaseGameInstance::LeaderStartBookTravel(const FString& _URL)
+void UBaseGameInstance::LeaderStartBookTravel(const FString& _URL, const FString& Name)
 {
 
 	FString LevelPath = TEXT("");
-	FString LevelName = UULXRConst::Level::EndLevelName;
+	FString LevelName = Name;
 
 
 	UGlobalDataTable::GetLevelDataName(GetWorld(), LevelName);

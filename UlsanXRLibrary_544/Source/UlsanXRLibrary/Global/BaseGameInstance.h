@@ -96,9 +96,9 @@ public:
 	void ConnectBookTravel(const FString& _IP, const FString& _Port);
 
 	UFUNCTION(BlueprintCallable)
-	void StartBookTravel(const FString& _IP, const FString& _Port);
+	void StartBookTravel(const FString& _IP, const FString& _Port, const FString& Name);
 
-	void LeaderStartBookTravel(const FString& _URL);
+	void LeaderStartBookTravel(const FString& _URL, const FString& Name);
 
 	UFUNCTION(BlueprintCallable)
 	void Connect(const FString& _IP, const FString& _Port);

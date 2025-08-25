@@ -155,7 +155,7 @@ void UTitleUserWidget::StartServer()
 
 	int a = 0;
 }
-void UTitleUserWidget::StartBookTravel(const FString& _IP)
+void UTitleUserWidget::StartBookTravel(const FString& _IP, const FString& Name)
 {
 
 
@@ -164,7 +164,7 @@ void UTitleUserWidget::StartBookTravel(const FString& _IP)
 
 	if (GameInstance == nullptr) return;
 
-	GameInstance->StartBookTravel(_IP,Port);
+	GameInstance->StartBookTravel(_IP,Port,Name);
 
 }
 
